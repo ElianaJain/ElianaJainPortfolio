@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Technical Writing Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #0f0e0d;
+      --paper: #f5f2ee;
+      --rule: #d4cfc9;
+      --accent: #c84b2f;
+      --accent-dim: #e8d5d0;
+      --mid: #6b6560;
+      --mono-bg: #eeeae5;
+      --col-gap: clamp(1.5rem, 4vw, 3.5rem);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Instrument Sans', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      font-size: clamp(15px, 1.05vw, 17px);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* ── MASTHEAD ─────────────────────────────────────────────── */
+    header {
+      border-bottom: 2px solid var(--ink);
+      padding: clamp(3rem, 8vw, 6rem) var(--col-gap) clamp(2rem, 5vw, 3.5rem);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent 0px,
+        transparent calc(100% / 12 - 1px),
+        var(--rule) calc(100% / 12 - 1px),
+        var(--rule) calc(100% / 12)
+      );
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .masthead-left { position: relative; z-index: 1; }
+
+    .eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 2rem;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.8rem, 6vw, 5.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .tagline {
+      margin-top: 1.25rem;
+      max-width: 60ch;
+      color: var(--mid);
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+    .header-meta {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.75rem;
+      text-align: right;
+    }
+
+    .meta-pill {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      background: var(--ink);
+      color: var(--paper);
+      padding: 0.3rem 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .header-links {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      margin-top: 0.5rem;
+    }
+
+    .header-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--mid);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .header-links a:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* ── NAV ───────────────────────────────────────────────────── */
+    nav {
+      border-bottom: 1px solid var(--rule);
+      padding: 0 var(--col-gap);
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    nav::-webkit-scrollbar { display: none; }
+
+    nav a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      padding: 1rem 1.25rem;
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    nav a:hover { color: var(--ink); border-color: var(--ink); }
+    nav a.active { color: var(--accent); border-color: var(--accent); }
+
+    /* ── LAYOUT ────────────────────────────────────────────────── */
+    main {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 var(--col-gap);
+    }
+
+    section {
+      padding: clamp(3rem, 7vw, 5rem) 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    section:last-child { border-bottom: none; }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--ink);
+      flex: 1;
+    }
+
+    h2 em { font-style: italic; color: var(--accent); }
+
+    .rule-line {
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+      margin-bottom: 0.4rem;
+    }
+
+    /* ── ABOUT / INTRO ─────────────────────────────────────────── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--col-gap);
+      align-items: start;
+    }
+
+    @media (max-width: 700px) {
+      .about-grid { grid-template-columns: 1fr; }
+      header { grid-template-columns: 1fr; }
+      .header-meta { align-items: flex-start; text-align: left; }
+      .header-links { justify-content: flex-start; }
+    }
+
+    .about-copy p { margin-bottom: 1rem; color: var(--ink); }
+    .about-copy p:last-child { margin-bottom: 0; }
+
+    .about-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.25rem 1.5rem;
+      background: var(--mono-bg);
+      border-left: 3px solid var(--accent);
+    }
+
+    .stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.2rem;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .stat-desc {
+      font-size: 0.85rem;
+      color: var(--mid);
+      line-height: 1.35;
+    }
+
+    .stat-desc strong {
+      display: block;
+      color: var(--ink);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    /* ── WORK SAMPLES ──────────────────────────────────────────── */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr));
+      gap: 1.5px;
+      background: var(--rule);
+      border: 1.5px solid var(--rule);
+    }
+
+    .work-card {
+      background: var(--paper);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: background 0.25s;
+      cursor: default;
+    }
+    .work-card:hover { background: #f0ece6; }
+
+    .card-type {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .card-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      line-height: 1.2;
+      color: var(--ink);
+    }
+
+    .card-desc {
+      font-size: 0.9rem;
+      color: var(--mid);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: auto;
+    }
+
+    .tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--mono-bg);
+      color: var(--mid);
+      padding: 0.25rem 0.6rem;
+    }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--ink);
+      width: fit-content;
+      padding-bottom: 1px;
+      margin-top: 0.5rem;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .card-link:hover { color: var(--accent); border-color: var(--accent); }
+    .card-link::after { content: '→'; }
+
+    /* ── EXPERIENCE TIMELINE ───────────────────────────────────── */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: var(--col-gap);
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--rule);
+      position: relative;
+    }
+
+    @media (max-width: 640px) {
+      .timeline-item { grid-template-columns: 1fr; }
+    }
+
+    .timeline-item:last-child { border-bottom: none; }
+
+    .tl-meta {
+      padding-top: 0.15rem;
+    }
+
+    .tl-period {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      color: var(--mid);
+      margin-bottom: 0.4rem;
+    }
+
+    .tl-company {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+    }
+
+    .tl-role {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.25rem;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .tl-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .tl-bullets li {
+      font-size: 0.9rem;
+      color: var(--mid);
+      padding-left: 1.2rem;
+      position: relative;
+      line-height: 1.55;
+    }
+    .tl-bullets li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 400;
+    }
+
+    .tl-highlight {
+      display: inline-block;
+      background: var(--accent-dim);
+      color: var(--accent);
+      font-weight: 600;
+      padding: 0 0.2rem;
+      font-style: normal;
+    }
+
+    /* ── SKILLS ────────────────────────────────────────────────── */
+    .skills-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--col-gap);
+    }
+
+    @media (max-width: 600px) {
+      .skills-wrapper { grid-template-columns: 1fr; }
+    }
+
+    .skills-group h3 {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .skill-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .skill-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.88rem;
+      color: var(--ink);
+    }
+
+    .skill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .tools-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tool-badge {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      border: 1px solid var(--rule);
+      padding: 0.3rem 0.75rem;
+      color: var(--mid);
+      background: var(--mono-bg);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .tool-badge:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── CERTS & AWARDS ────────────────────────────────────────── */
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+      gap: 1rem;
+    }
+
+    .cert-card {
+      border: 1px solid var(--rule);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      transition: border-color 0.2s;
+    }
+    .cert-card:hover { border-color: var(--accent); }
+
+    .cert-name {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+
+    .cert-issuer {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+    }
+
+    .award-box {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 2rem 2.5rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2rem;
+      align-items: center;
+      margin-top: 1.5rem;
+    }
+
+    .award-icon {
+      font-size: 3rem;
+      line-height: 1;
+    }
+
+    .award-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .award-desc {
+      font-size: 0.85rem;
+      color: #b0aba5;
+      line-height: 1.55;
+    }
+
+    /* ── FOOTER ────────────────────────────────────────────────── */
+    footer {
+      border-top: 2px solid var(--ink);
+      padding: 2.5rem var(--col-gap);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.25rem;
+      color: var(--ink);
+    }
+
+    .footer-note {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--mid);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── ANIMATIONS ────────────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-up {
+      opacity: 0;
+      animation: fadeUp 0.55s ease forwards;
+    }
+    .fade-up:nth-child(1) { animation-delay: 0.05s; }
+    .fade-up:nth-child(2) { animation-delay: 0.15s; }
+    .fade-up:nth-child(3) { animation-delay: 0.25s; }
+    .fade-up:nth-child(4) { animation-delay: 0.35s; }
+    .fade-up:nth-child(5) { animation-delay: 0.45s; }
+    .fade-up:nth-child(6) { animation-delay: 0.55s; }
+
+    /* scroll reveal */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+<!-- ── HEADER ─────────────────────────────────────────────────── -->
+<header>
+  <div class="masthead-left">
+    <div class="eyebrow">Technical Writing Portfolio</div>
+    <h1>Docs that <em>build</em><br>trust at scale.</h1>
+    <p class="tagline">7+ years owning developer and enterprise documentation — from API references to AI-assisted content systems — at companies like SAP and Meta.</p>
+  </div>
+  <div class="header-meta">
+    <div class="meta-pill">Open to opportunities</div>
+    <div class="meta-pill" style="background:var(--accent);">Lead Technical Writer</div>
+    <div class="header-links">
+      <a href="https://github.com/" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/" target="_blank">LinkedIn</a>
+      <a href="mailto:hello@example.com">Email</a>
+    </div>
+  </div>
+</header>
+
+<!-- ── NAV ────────────────────────────────────────────────────── -->
+<nav>
+  <a href="#about" class="active">About</a>
+  <a href="#work">Work Samples</a>
+  <a href="#experience">Experience</a>
+  <a href="#skills">Skills</a>
+  <a href="#certs">Credentials</a>
+</nav>
+
+<main>
+
+  <!-- ── ABOUT ──────────────────────────────────────────────── -->
+  <section id="about">
+    <div class="section-header">
+      <span class="section-label">01 / About</span>
+      <div class="rule-line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-copy reveal">
+        <p>I write documentation that developers trust and end users actually use. My work sits at the intersection of <strong>content strategy, information architecture, and engineering collaboration</strong> — translating complex SaaS and enterprise systems into clear, maintainable documentation.</p>
+        <p>At SAP Ariba, I owned end-to-end documentation for user, admin, and API surfaces across the Business Network — building AI-assisted content workflows, establishing quality evaluation frameworks, and mentoring writing teams. Before that, at Meta, I helped train ML models through precision image annotation at scale.</p>
+        <p>I'm currently building an <strong>AI-powered robot dog</strong> using Raspberry Pi and SunFounder hardware — because the best technical writers understand the systems they document. The full build log lives on GitHub.</p>
+      </div>
+      <div class="about-stats reveal">
+        <div class="stat-row">
+          <div class="stat-num">7+</div>
+          <div class="stat-desc"><strong>Years of Experience</strong>SaaS, enterprise, and API documentation</div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-num">2K</div>
+          <div class="stat-desc"><strong>Enterprise Users</strong>Impacted by AI documentation systems at SAP</div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-num">10K+</div>
+          <div class="stat-desc"><strong>ML Annotations</strong>Training data contributed to Meta's models</div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-num">10</div>
+          <div class="stat-desc"><strong>Writers Mentored</strong>In editorial quality and docs delivery</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WORK SAMPLES ───────────────────────────────────────── -->
+  <section id="work">
+    <div class="section-header">
+      <span class="section-label">02 / Work Samples</span>
+      <div class="rule-line"></div>
+    </div>
+    <div class="work-grid">
+
+      <div class="work-card reveal">
+        <div class="card-type">API Documentation</div>
+        <div class="card-title">SAP Business Network API Reference</div>
+        <div class="card-desc">Produced comprehensive API reference docs with endpoint descriptions, parameter tables, and annotated sample payloads. Collaborated directly with engineering to ensure accuracy across versioned releases.</div>
+        <div class="card-tags">
+          <span class="tag">REST API</span>
+          <span class="tag">DITA/XML</span>
+          <span class="tag">GitHub</span>
+          <span class="tag">Agile</span>
+        </div>
+        <a class="card-link" href="https://github.com/" target="_blank">View on GitHub</a>
+      </div>
+
+      <div class="work-card reveal">
+        <div class="card-type">Content Strategy</div>
+        <div class="card-title">AI Documentation Governance Framework</div>
+        <div class="card-desc">Defined operational guardrails and quality standards for AI-assisted documentation at SAP Ariba — including prompt evaluation rubrics, output consistency standards, and human-in-the-loop review protocols.</div>
+        <div class="card-tags">
+          <span class="tag">AI/LLM</span>
+          <span class="tag">Prompt Eng.</span>
+          <span class="tag">Content Ops</span>
+          <span class="tag">Style Guide</span>
+        </div>
+        <a class="card-link" href="https://github.com/" target="_blank">View on GitHub</a>
+      </div>
+
+      <div class="work-card reveal">
+        <div class="card-type">Docs-as-Code</div>
+        <div class="card-title">Automated Publishing Pipeline</div>
+        <div class="card-desc">Designed and maintained docs-as-code workflows using DITA/XML and GitHub, enabling content reuse, automated publishing, and version-controlled delivery aligned with sprint releases.</div>
+        <div class="card-tags">
+          <span class="tag">PowerShell</span>
+          <span class="tag">DITA</span>
+          <span class="tag">GitHub Actions</span>
+          <span class="tag">Markdown</span>
+        </div>
+        <a class="card-link" href="https://github.com/" target="_blank">View on GitHub</a>
+      </div>
+
+      <div class="work-card reveal">
+        <div class="card-type">Terminology & Standards</div>
+        <div class="card-title">SAP Business Network Redesign</div>
+        <div class="card-desc">Led 3 complex projects redesigning terminology, compliance standards, and content governance across the SAP Business Network — improving consistency at scale for enterprise content systems.</div>
+        <div class="card-tags">
+          <span class="tag">Information Arch.</span>
+          <span class="tag">Governance</span>
+          <span class="tag">Enterprise</span>
+        </div>
+        <a class="card-link" href="https://github.com/" target="_blank">View on GitHub</a>
+      </div>
+
+      <div class="work-card reveal">
+        <div class="card-type">Personal Project</div>
+        <div class="card-title">AI Robot Dog — Build Log</div>
+        <div class="card-desc">Live documentation of an AI-powered robot dog built on Raspberry Pi and SunFounder hardware. Covers embedded systems integration, Python programming, autonomous movement goals, and computer vision experiments.</div>
+        <div class="card-tags">
+          <span class="tag">Raspberry Pi</span>
+          <span class="tag">Python</span>
+          <span class="tag">AI/ML</span>
+          <span class="tag">Hardware</span>
+        </div>
+        <a class="card-link" href="https://github.com/" target="_blank">View build log</a>
+      </div>
+
+      <div class="work-card reveal">
+        <div class="card-type">Style Guide</div>
+        <div class="card-title">Cross-Functional Content Standards</div>
+        <div class="card-desc">Partnered with engineering, product, UX, and support to build style guides and content governance standards that ensured cross-functional alignment and long-term maintainability of 2,000+ user docs.</div>
+        <div class="card-tags">
+          <span class="tag">AP Style</span>
+          <span class="tag">Chicago Style</span>
+          <span class="tag">UX Writing</span>
+          <span class="tag">Figma</span>
+        </div>
+        <a class="card-link" href="https://github.com/" target="_blank">View on GitHub</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── EXPERIENCE ─────────────────────────────────────────── -->
+  <section id="experience">
+    <div class="section-header">
+      <span class="section-label">03 / Experience</span>
+      <div class="rule-line"></div>
+    </div>
+    <div class="timeline">
+
+      <div class="timeline-item reveal">
+        <div class="tl-meta">
+          <div class="tl-period">Jan 2026 – Present</div>
+          <div class="tl-company">Personal Project</div>
+        </div>
+        <div>
+          <div class="tl-role">AI Conversational Robot</div>
+          <ul class="tl-bullets">
+            <li>Assembling an AI-powered robot dog using <em class="tl-highlight">Raspberry Pi + SunFounder</em> hardware, building hands-on embedded systems and Python skills toward autonomous movement and computer vision.</li>
+            <li>Maintaining a public <em class="tl-highlight">GitHub repository</em> documenting the full build process — a live example of applied technical writing for a hardware/software integration project.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="tl-meta">
+          <div class="tl-period">Jul 2023 – Dec 2025</div>
+          <div class="tl-company">SAP Ariba</div>
+        </div>
+        <div>
+          <div class="tl-role">Lead Technical Writer</div>
+          <ul class="tl-bullets">
+            <li>Owned end-to-end documentation strategy across user, administration, and API content — establishing structured guidelines that improved AI system output consistency for <em class="tl-highlight">2,000 enterprise users</em>.</li>
+            <li>Led 3 complex projects redesigning SAP Business Network for terminology, compliance, and standards.</li>
+            <li>Implemented content evaluation frameworks and quality standards that reduced documentation inconsistencies in AI-assisted workflows.</li>
+            <li>Defined internal rules and operational guardrails for AI systems, standardizing outputs across all product documentation.</li>
+            <li>Built and maintained scalable docs-as-code workflows using <em class="tl-highlight">DITA/XML and GitHub</em>, improving content reuse and operational efficiency.</li>
+            <li>Mentored <em class="tl-highlight">10 writers</em> in editorial quality, content structure, and documentation delivery best practices.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="tl-meta">
+          <div class="tl-period">Dec 2018 – Jul 2023</div>
+          <div class="tl-company">SAP Ariba</div>
+        </div>
+        <div>
+          <div class="tl-role">Associate Technical Writer</div>
+          <ul class="tl-bullets">
+            <li>Produced and maintained user, administrator, and API documentation ensuring compliance and version control.</li>
+            <li>Collaborated with engineering to produce API reference documentation including endpoint descriptions, parameters, and sample code.</li>
+            <li>Supported multi-team documentation planning and release notes coordination in an <em class="tl-highlight">Agile environment</em>.</li>
+            <li>Automated documentation authoring and publishing tasks using <em class="tl-highlight">PowerShell</em> and docs-as-code pipelines.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="tl-meta">
+          <div class="tl-period">Jul 2018 – Nov 2018</div>
+          <div class="tl-company">Facebook / Aditi Consulting</div>
+        </div>
+        <div>
+          <div class="tl-role">Product Operations Analyst</div>
+          <ul class="tl-bullets">
+            <li>Developed and maintained internal process documentation supporting workflows for <em class="tl-highlight">100+ news publishers</em>.</li>
+            <li>Assisted with evaluation tracking, reporting, and cross-team coordination.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="tl-meta">
+          <div class="tl-period">Mar 2014 – Jul 2016</div>
+          <div class="tl-company">Facebook / Aditi Consulting</div>
+        </div>
+        <div>
+          <div class="tl-role">User Operations Analyst</div>
+          <ul class="tl-bullets">
+            <li>Supported ML model training by defining <em class="tl-highlight">10,000+ image annotations</em> — established annotation standards that improved model accuracy, consistency, and output quality across products.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── SKILLS ─────────────────────────────────────────────── -->
+  <section id="skills">
+    <div class="section-header">
+      <span class="section-label">04 / Skills</span>
+      <div class="rule-line"></div>
+    </div>
+    <div class="skills-wrapper">
+      <div class="skills-group reveal">
+        <h3>Core Competencies</h3>
+        <div class="skill-list">
+          <div class="skill-item"><div class="skill-dot"></div>AI-Assisted Content Workflows & Human-in-the-Loop Systems</div>
+          <div class="skill-item"><div class="skill-dot"></div>LLM Evaluation & Prompt Engineering</div>
+          <div class="skill-item"><div class="skill-dot"></div>Documentation Strategy & Information Architecture</div>
+          <div class="skill-item"><div class="skill-dot"></div>Docs-as-Code & Versioned Content Workflows</div>
+          <div class="skill-item"><div class="skill-dot"></div>API, Admin, & User Documentation</div>
+          <div class="skill-item"><div class="skill-dot"></div>Cross-Functional Collaboration (Eng, PM, UX, Support)</div>
+          <div class="skill-item"><div class="skill-dot"></div>Quality Standards, Guidelines & Evaluation Frameworks</div>
+          <div class="skill-item"><div class="skill-dot"></div>Agile Delivery & Content Operations</div>
+          <div class="skill-item"><div class="skill-dot"></div>AP Style & Chicago Style</div>
+        </div>
+      </div>
+      <div class="skills-group reveal">
+        <h3>Tools & Technologies</h3>
+        <div class="tools-cloud">
+          <span class="tool-badge">DITA CMS</span>
+          <span class="tool-badge">MadCap Flare</span>
+          <span class="tool-badge">GitHub</span>
+          <span class="tool-badge">Jira</span>
+          <span class="tool-badge">Confluence</span>
+          <span class="tool-badge">WalkMe</span>
+          <span class="tool-badge">Figma</span>
+          <span class="tool-badge">Python</span>
+          <span class="tool-badge">PowerShell</span>
+          <span class="tool-badge">Markdown</span>
+          <span class="tool-badge">XML/DITA</span>
+          <span class="tool-badge">HTML</span>
+          <span class="tool-badge">Claude</span>
+          <span class="tool-badge">ChatGPT</span>
+          <span class="tool-badge">Adobe Illustrator</span>
+          <span class="tool-badge">Photoshop</span>
+          <span class="tool-badge">SnagIt</span>
+          <span class="tool-badge">Camtasia</span>
+          <span class="tool-badge">SharePoint</span>
+          <span class="tool-badge">OneNote</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CERTS & AWARDS ─────────────────────────────────────── -->
+  <section id="certs">
+    <div class="section-header">
+      <span class="section-label">05 / Credentials</span>
+      <div class="rule-line"></div>
+    </div>
+
+    <div class="certs-grid reveal">
+      <div class="cert-card">
+        <div class="cert-name">UI/UX Design for AI Products</div>
+        <div class="cert-issuer">Stanford (Online)</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-name">Prompt Engineering</div>
+        <div class="cert-issuer">Coursera</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-name">Generative AI</div>
+        <div class="cert-issuer">DeepLearning.AI</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-name">UX Principles</div>
+        <div class="cert-issuer">Coursera</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-name">B.Sc. Archaeological Studies</div>
+        <div class="cert-issuer">University of Wisconsin – La Crosse</div>
+      </div>
+    </div>
+
+    <div class="award-box reveal">
+      <div class="award-icon">🏆</div>
+      <div>
+        <div class="award-title">Hasso Plattner Founders' Award — Finalist</div>
+        <div class="award-desc">SAP, 2023 · Contributed to the SAP Ariba Category Management project, recognized for innovation in Products & Technology. One of SAP's most prestigious internal innovation awards.</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-name">Technical Writing Portfolio</div>
+  <div class="footer-note">Built with HTML · Hosted on GitHub Pages · Updated 2026</div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        e.target.style.transitionDelay = (i % 3) * 0.08 + 's';
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => io.observe(el));
+
+  // Active nav on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+</script>
+</body>
+</html>
