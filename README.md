@@ -29,8 +29,8 @@ This portfolio represents 7+ years of owning developer and customer-facing docum
 
 | Sample | Type | Tools |
 |---|---|---|
-| AI Robot Dog — Build Log | Personal Project | Raspberry Pi, Python, AI/ML |
-| SAP Business Network Redesign | Terminology & Standards | Information Architecture, Governance |
+| AI Robot Dog | Personal Project | Raspberry Pi, Python, AI/ML |
+| SAP Business Network | Terminology & Standards | Information Architecture, Governance |
 | SAP Ariba API Developer Portal Project | API Documentation | DITA/XML, GitHub, REST API |
 | Cross-Functional Content Standards | Style Guide | AP Style, Chicago Style, Figma |
 | AI Documentation Governance Framework | Content Strategy | LLM, Prompt Engineering, Content Ops |
