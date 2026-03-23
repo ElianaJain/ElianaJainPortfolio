@@ -80,14 +80,14 @@ Recognized for innovation in Products & Technology on the SAP Ariba Category Man
 
 ---
 
-## Deploy to GitHub Pages
+<!-- ## Deploy to GitHub Pages
 
 1. Fork or clone this repository
 2. Ensure `index.html` is in the root of the repo
 3. Go to **Settings → Pages**
 4. Set source to **Deploy from branch → main → / (root)**
 5. Your site will be live at `[https://elianajain.github.io/ElianaJainPortfolio/]`
-
+-->
 ---
 
 ## Repository Structure
