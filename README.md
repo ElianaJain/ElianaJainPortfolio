@@ -104,7 +104,7 @@ portfolio/
 
 - **GitHub** — [github.com/your-elianajain](https://github.com/elianajain)
 - **LinkedIn** — [linkedin.com/in/elianajain](https://linkedin.com/in/elianajain)
-- **Email** — [jain.eliana@gmail.com](mailto:jain.eliana@gmail.com)
+- **Email** — [Email](mailto:jain.eliana@gmail.com)
 
 ---
 
