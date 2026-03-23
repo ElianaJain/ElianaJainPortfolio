@@ -102,7 +102,7 @@ portfolio/
 
 ## Contact
 
-- **GitHub** — [[github.com/ElianaJain](https://github.com/ElianaJain)]
+- **GitHub** — [github.com/ElianaJain](https://github.com/ElianaJain)
 - **LinkedIn** — [linkedin.com/in/elianajain](https://linkedin.com/in/elianajain)
 - **Email** — [Email](mailto:jain.eliana@gmail.com)
 
