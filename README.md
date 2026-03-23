@@ -8,7 +8,7 @@ A portfolio site built as a single HTML file, deployable to GitHub Pages. It cov
 
 ## Live Site
 
-[View Portfolio →](https://your-username.github.io/portfolio)
+[View Portfolio →](https://elianajain.github.io/portfolio)
 
 ---
 
@@ -29,12 +29,13 @@ This portfolio represents 7+ years of owning developer and customer-facing docum
 
 | Sample | Type | Tools |
 |---|---|---|
-| SAP Business Network API Reference | API Documentation | DITA/XML, GitHub, REST API |
+| AI Robot Dog — Build Log | Personal Project | Raspberry Pi, Python, AI/ML |
+| SAP Business Network Redesign | Terminology & Standards | Information Architecture, Governance |
+| SAP Ariba API Developer Portal Project | API Documentation | DITA/XML, GitHub, REST API |
+| Cross-Functional Content Standards | Style Guide | AP Style, Chicago Style, Figma |
 | AI Documentation Governance Framework | Content Strategy | LLM, Prompt Engineering, Content Ops |
 | Automated Publishing Pipeline | Docs-as-Code | PowerShell, GitHub Actions, Markdown |
-| SAP Business Network Redesign | Terminology & Standards | Information Architecture, Governance |
-| AI Robot Dog — Build Log | Personal Project | Raspberry Pi, Python, AI/ML |
-| Cross-Functional Content Standards | Style Guide | AP Style, Chicago Style, Figma |
+
 
 ---
 
@@ -101,9 +102,9 @@ portfolio/
 
 ## Contact
 
-- **GitHub** — [github.com/your-username](https://github.com/your-username)
-- **LinkedIn** — [linkedin.com/in/your-profile](https://linkedin.com/in/your-profile)
-- **Email** — hello@example.com
+- **GitHub** — [github.com/your-elianajain](https://github.com/elianajain)
+- **LinkedIn** — [linkedin.com/in/elianajain](https://linkedin.com/in/elianajain)
+- **Email** — [jain.eliana@gmail.com](mailto:jain.eliana@gmail.com)
 
 ---
 
