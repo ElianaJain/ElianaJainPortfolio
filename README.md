@@ -8,7 +8,7 @@ A portfolio site built as a single HTML file, deployable to GitHub Pages. It cov
 
 ## Live Site
 
-[View Portfolio →](https://elianajain.github.io/portfolio)
+[View Portfolio →](https://elianajain.github.io/ElianaJainPortfolio/)
 
 ---
 
@@ -16,11 +16,11 @@ A portfolio site built as a single HTML file, deployable to GitHub Pages. It cov
 
 This portfolio represents 7+ years of owning developer and customer-facing documentation for complex SaaS and enterprise platforms. It highlights work across:
 
+- **AI Robot Dog Build Log** — Personal project documenting a Raspberry Pi + SunFounder hardware build with Python, computer vision, and autonomous movement goals
 - **API Documentation** — Partnered with engineering to identify and verify missing APIs, then authored complete endpoint documentation published to the API developer portal
 - **AI Documentation Governance** — Built evaluation frameworks, prompt guardrails, and quality standards for AI-assisted content workflows at SAP Ariba
 - **Docs-as-Code** — Designed automated publishing pipelines using DITA/XML, GitHub, and PowerShell
 - **Terminology & Standards** — Led redesign of SAP Business Network content for compliance, consistency, and governance
-- **AI Robot Dog Build Log** — Personal project documenting a Raspberry Pi + SunFounder hardware build with Python, computer vision, and autonomous movement goals
 - **Style Guides & Content Standards** — Cross-functional content governance built with engineering, product, UX, and support teams
 
 ---
@@ -86,7 +86,7 @@ Recognized for innovation in Products & Technology on the SAP Ariba Category Man
 2. Ensure `index.html` is in the root of the repo
 3. Go to **Settings → Pages**
 4. Set source to **Deploy from branch → main → / (root)**
-5. Your site will be live at `https://ElianaJain.github.io/portfolio`
+5. Your site will be live at `[https://elianajain.github.io/ElianaJainPortfolio/]`
 
 ---
 
