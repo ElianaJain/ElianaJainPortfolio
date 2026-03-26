@@ -68,8 +68,8 @@ DITA CMS · MadCap Flare · GitHub · Jira · Confluence · WalkMe · Figma · P
 
 | Certification | Issuer |
 |---|---|
-| Basics of Robotics - SIEMENS|
-| Introduction to OSHA: Safety and Compliance - Coursera |
+| Basics of Robotics | SIEMENS|
+| Introduction to OSHA: Safety and Compliance | Coursera |
 | UI/UX Design for AI Products | Stanford (Online) |
 | Prompt Engineering | Coursera |
 | Generative AI | DeepLearning.AI |
