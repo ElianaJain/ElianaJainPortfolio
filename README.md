@@ -36,7 +36,6 @@ This portfolio represents 7+ years of owning developer and customer-facing docum
 | AI Documentation Governance Framework | Content Strategy | LLM, Prompt Engineering, Content Ops |
 | Automated Publishing Pipeline | Docs-as-Code | PowerShell, GitHub Actions, Markdown |
 
-
 ---
 
 ## Experience
@@ -94,8 +93,9 @@ Recognized for innovation in Products & Technology on the SAP Ariba Category Man
 
 ```
 portfolio/
-├── index.html       # Full portfolio — single self-contained file
-└── README.md        # This file
+├── README.md        # This file
+└── config.yml       # CSS for color, fonts, and layout of the HTML page.
+└── index.html       # Full portfolio — single self-contained file
 ```
 
 ---
