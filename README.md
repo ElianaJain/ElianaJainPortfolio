@@ -73,6 +73,8 @@ Jira · Confluence · Figma · WalkMe · ServiceNow · Adobe Suite · SnagIt · 
 
 | Certification | Issuer |
 |---|---|
+| Basics of Robotics | SIEMENS|
+| Introduction to OSHA: Safety and Compliance | Coursera |
 | UI/UX Design for AI Products | Stanford (Online) |
 | Prompt Engineering | Coursera |
 | Generative AI | DeepLearning.AI |
