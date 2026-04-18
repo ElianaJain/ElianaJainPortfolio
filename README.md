@@ -29,11 +29,10 @@ This portfolio represents 7+ years of owning developer and enterprise documentat
 | Sample | Type | Link |
 |---|---|---|
 | AI Robot Dog Build Log | Personal Project | [View on GitHub](https://github.com/users/ElianaJain/projects/1) |
-| AI Documentation Governance | Content Strategy | [Score and Weights](https://help.sap.com/docs/categories/sap-ariba-category-management-administration-guide/about-score-and-weights) |
+| Score and Weights — Category Management | User-Facing Conceptual Doc | [View Sample](https://help.sap.com/docs/categories/sap-ariba-category-management-administration-guide/about-score-and-weights) |
 | cXML Element Reference — IncoTerm | Developer Reference | [View Sample](https://help.sap.com/docs/business-network-for-supply-chain/cxml-solutions/incoterm-element) |
 | cXML Element Reference — DPAS | Developer Reference | [View Sample](https://help.sap.com/docs/business-network-for-supply-chain/cxml-solutions/dpas-element) |
-| Terminology & Standards | Content Governance | [View Sample](https://help.sap.com/docs/business-network-for-trading-partners/guided-integration-for-trading-partners-59ee04ae427245dfbb7d2766c14270b4/workflow-for-guided-integration-trading-partners) |
-| Cross-Functional Content Standards | Style Guide | — |
+| SWOT Analysis Task Documentation | Task-Based Procedure | [View Sample](https://help.sap.com/docs/categories/sap-ariba-category-management-user-guide/adding-editing-and-deleting-strengths-in-swot-matrix) |
 
 ---
 
