@@ -1,8 +1,8 @@
 # Technical Writing Portfolio
 
-**Lead Technical Writer · 7+ years · SaaS, Enterprise, API & AI Documentation**
+**Lead Technical Writer · 7+ years · Editorial Strategy, API & AI Documentation, Developer Communications**
 
-A portfolio site built as a single HTML file, deployable to GitHub Pages. It covers documentation strategy, API reference work, AI-assisted content systems, and docs-as-code workflows developed across SAP Ariba and Meta.
+A portfolio site built as a single HTML file, deployable to GitHub Pages. It covers editorial strategy, cXML reference documentation, AI content governance, docs-as-code workflows, and content standards developed across SAP Ariba and Meta.
 
 ---
 
@@ -14,38 +14,36 @@ A portfolio site built as a single HTML file, deployable to GitHub Pages. It cov
 
 ## About
 
-This portfolio represents 7+ years of owning developer and customer-facing documentation for complex SaaS and enterprise platforms. It highlights work across:
+This portfolio represents 7+ years of owning developer and enterprise documentation for complex SaaS platforms. It highlights work across:
 
-- **AI Robot Dog Build Log** — Personal project documenting a Raspberry Pi + SunFounder hardware build with Python, computer vision, and autonomous movement goals
-- **API Documentation** — Partnered with engineering to identify and verify missing APIs, then authored complete endpoint documentation published to the API developer portal
-- **AI Documentation Governance** — Built evaluation frameworks, prompt guardrails, and quality standards for AI-assisted content workflows at SAP Ariba
-- **Docs-as-Code** — Designed automated publishing pipelines using DITA/XML, GitHub, and PowerShell
-- **Terminology & Standards** — Led redesign of SAP Business Network content for compliance, consistency, and governance
+- **AI Robot Dog Build Log** — Personal project documenting a Raspberry Pi + SunFounder hardware build with Python, computer vision, and autonomous movement goals. Published to [Hashnode](https://hashnode.com/@elianajain).
+- **AI Documentation Governance** — Built prompt evaluation rubrics, output consistency standards, and human-in-the-loop review protocols for AI-assisted content workflows at SAP Ariba
+- **cXML Reference Documentation** — Authored element references, attribute tables, and annotated code samples for SAP Business Network for Supply Chain, including aerospace and defense procurement domains
+- **Terminology & Standards** — Led redesign of SAP Business Network content for compliance, terminology consistency, and governance at enterprise scale
 - **Style Guides & Content Standards** — Cross-functional content governance built with engineering, product, UX, and support teams
 
 ---
 
 ## Work Samples
 
-| Sample | Type | Tools |
+| Sample | Type | Link |
 |---|---|---|
-| AI Robot Dog | Personal Project | Raspberry Pi, Python, AI/ML |
-| SAP Business Network | Terminology & Standards | Information Architecture, Governance |
-| SAP Ariba API Developer Portal Project | API Documentation | DITA/XML, GitHub, REST API |
-| Cross-Functional Content Standards | Style Guide | AP Style, Chicago Style, Figma |
-| AI Documentation Governance Framework | Content Strategy | LLM, Prompt Engineering, Content Ops |
-| Automated Publishing Pipeline | Docs-as-Code | PowerShell, GitHub Actions, Markdown |
-
+| AI Robot Dog Build Log | Personal Project | [View on GitHub](https://github.com/users/ElianaJain/projects/1) |
+| AI Documentation Governance | Content Strategy | [Score and Weights](https://help.sap.com/docs/categories/sap-ariba-category-management-administration-guide/about-score-and-weights) |
+| cXML Element Reference — IncoTerm | Developer Reference | [View Sample](https://help.sap.com/docs/business-network-for-supply-chain/cxml-solutions/incoterm-element) |
+| cXML Element Reference — DPAS | Developer Reference | [View Sample](https://help.sap.com/docs/business-network-for-supply-chain/cxml-solutions/dpas-element) |
+| Terminology & Standards | Content Governance | [View Sample](https://help.sap.com/docs/business-network-for-trading-partners/guided-integration-for-trading-partners-59ee04ae427245dfbb7d2766c14270b4/workflow-for-guided-integration-trading-partners) |
+| Cross-Functional Content Standards | Style Guide | — |
 
 ---
 
 ## Experience
 
 **Lead Technical Writer** · SAP Ariba · Jul 2023 – Dec 2025
-Owned end-to-end documentation strategy for user, admin, and API content serving 2,000 enterprise users. Established AI content governance standards, mentored 10 writers, and maintained scalable docs-as-code workflows.
+Established editorial strategy, voice and tone guidelines, and content governance standards that improved documentation quality for 2,000+ enterprise users across SAP Business Network and SAP Business Network for Supply Chain. Coached and mentored 10 writers. Authored cXML documentation including aerospace and defense procurement domains. Built quality standards and evaluation frameworks for AI-assisted documentation workflows.
 
 **Associate Technical Writer** · SAP Ariba · Dec 2018 – Jul 2023
-Produced API reference, user, and admin documentation. Automated publishing pipelines using PowerShell. Supported Agile release coordination across multiple product teams.
+Produced API reference documentation in collaboration with engineering teams. Wrote user-facing documentation for SAP Ariba Category Management. Authored Intelligent Configuration Manager parameter reference topics for SAP Ariba Strategic Sourcing solutions. Automated publishing pipelines using PowerShell and docs-as-code workflows.
 
 **Product Operations Analyst** · Facebook via Aditi Consulting · Jul 2018 – Nov 2018
 Developed internal process documentation supporting workflows for 100+ news publishers.
@@ -57,11 +55,17 @@ Defined 10,000+ image annotations to support ML model training, establishing sta
 
 ## Skills
 
-**Competencies**
-AI-Assisted Content Workflows · LLM Evaluation & Prompt Engineering · Documentation Strategy · Information Architecture · Docs-as-Code · API Documentation · Cross-Functional Collaboration · Quality Standards & Evaluation Frameworks · Agile Delivery · AP Style · Chicago Style
+**Editorial & Content**
+Editorial strategy · Voice and tone guidelines · SME coaching · End-to-end editing · Information architecture · Content governance · AP Style · Chicago Style
 
-**Tools & Technologies**
-DITA CMS · MadCap Flare · GitHub · Jira · Confluence · WalkMe · Figma · Python · PowerShell · Markdown · XML/DITA · HTML · Claude · ChatGPT · Adobe Illustrator · Photoshop · SnagIt · Camtasia · SharePoint
+**Technical**
+API documentation (REST) · cXML · Docs-as-code · DITA/XML · GitHub · MadCap Flare · Ixiasoft · Markdown · HTML5/CSS · PowerShell · Python
+
+**AI & Content Ops**
+LLM evaluation · Prompt engineering · Human-in-the-loop review · AI content governance frameworks
+
+**Tools**
+Jira · Confluence · Figma · WalkMe · ServiceNow · Adobe Suite · SnagIt · Camtasia · Claude · ChatGPT
 
 ---
 
@@ -72,41 +76,13 @@ DITA CMS · MadCap Flare · GitHub · Jira · Confluence · WalkMe · Figma · P
 | UI/UX Design for AI Products | Stanford (Online) |
 | Prompt Engineering | Coursera |
 | Generative AI | DeepLearning.AI |
+| Basics of Robotics | Siemens (Coursera) |
 | UX Principles | Coursera |
 | B.Sc. Archaeological Studies | University of Wisconsin – La Crosse |
 
 🏆 **Hasso Plattner Founders' Award — Finalist** · SAP, 2023
-Recognized for innovation in Products & Technology on the SAP Ariba Category Management project.
+Recognized for innovation in Products & Technology on the SAP Ariba Category Management project. One of SAP's most prestigious internal awards.
 
 ---
-
-<!-- ## Deploy to GitHub Pages
-
-1. Fork or clone this repository
-2. Ensure `index.html` is in the root of the repo
-3. Go to **Settings → Pages**
-4. Set source to **Deploy from branch → main → / (root)**
-5. Your site will be live at `[https://elianajain.github.io/ElianaJainPortfolio/]`
----
--->
-
 
 ## Repository Structure
-
-```
-portfolio/
-├── index.html       # Full portfolio — single self-contained file
-└── README.md        # This file
-```
-
----
-
-## Contact
-
-- **GitHub** — [github.com/ElianaJain](https://github.com/ElianaJain)
-- **LinkedIn** — [linkedin.com/in/elianajain](https://linkedin.com/in/elianajain)
-- **Email** — [Email](mailto:jain.eliana@gmail.com)
-
----
-
-*Built with HTML, CSS, and vanilla JavaScript · No frameworks · No dependencies*
