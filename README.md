@@ -1,6 +1,6 @@
 # Technical Writing Portfolio
 
-**Lead Technical Writer · 7+ years · Editorial Strategy, API & AI Documentation, Developer Communications**
+**Technical Writer & Content Stategist · 7+ years · Editorial Strategy, API & AI Documentation, Developer Communications**
 
 A portfolio site built as a single HTML file, deployable to GitHub Pages. It covers editorial strategy, cXML reference documentation, AI content governance, docs-as-code workflows, and content standards developed across SAP Ariba and Meta.
 
