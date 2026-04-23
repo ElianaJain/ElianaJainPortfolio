@@ -38,7 +38,7 @@ This portfolio represents 7+ years of owning developer and enterprise documentat
 
 ## Experience
 
-**Technical Writer** · SAP Ariba · Jul 2023 – Dec 2025
+**Lead Technical Writer** · SAP Ariba · Jul 2023 – Dec 2025
 Established editorial strategy, voice and tone guidelines, and content governance standards that improved documentation quality for 2,000+ enterprise users across SAP Business Network and SAP Business Network for Supply Chain. Coached and mentored 10 writers. Authored cXML documentation including aerospace and defense procurement domains. Built quality standards and evaluation frameworks for AI-assisted documentation workflows.
 
 **Associate Technical Writer** · SAP Ariba · Dec 2018 – Jul 2023
