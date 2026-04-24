@@ -507,15 +507,15 @@
         <div class="finding-title">Inconsistent error messaging across the same feature</div>
       </div>
       <div class="finding-body">
-        <p class="analysis">Two separate prompts submitted to Gemini's music generation feature returned different error messages for what appears to be the same failure. The copy is inconsistent in vocabulary, tone, and guidance — indicating no single content owner for this feature's error states.</p>
+        <p class="analysis">Two separate prompts submitted to Gemini's music generation feature returned different error messages for what appears to be the same failure. The copy is inconsistent in vocabulary, tone, and guidance thus indicating no single content owner for this feature's error states.</p>
 
         <div class="comparison">
           <div class="comparison-header">
             <div class="comparison-header-cell">Error Message 1</div>
+            <div class="comparison-row">
+            <div class="comparison-cell">"Something went wrong while trying to generate your track. Please try again with a different prompt or slightly adjusted details."</div>
             <div class="comparison-header-cell">Error Message 2</div>
           </div>
-          <div class="comparison-row">
-            <div class="comparison-cell">"Something went wrong while trying to generate your track. Please try again with a different prompt or slightly adjusted details."</div>
             <div class="comparison-cell">"Something went wrong while trying to create your track. Please try again with a slightly different description or a new style!"</div>
           </div>
         </div>
@@ -532,7 +532,7 @@
 
         <div class="recommendation">
           <div class="rec-label">Recommended Copy</div>
-          <div class="rec-copy">"We couldn't create your track this time. Music generation works best with prompts that include genre and mood. Specific BPM or style details may occasionally cause issues — try simplifying your request."</div>
+          <div class="rec-copy">"We couldn't create your track this time. Music generation works best with prompts that include genre, mood, and tempo. Specifying BPM or style details may occasionally cause issues, try simplifying your request."</div>
           <div class="rec-rationale">One consistent message, specific guidance, no exclamation points in failure states. Acknowledges the limitation without blaming the user.</div>
         </div>
       </div>
@@ -547,18 +547,18 @@
       <div class="finding-body">
         <div class="original-copy">
           <div class="copy-label">Original</div>
-          "Something went wrong while trying to generate your track. Please try again with a different prompt or slightly adjusted details."
+          "Gemini couldn't create your track. Try a different description or adjust your details, then select <em>Generate</em> again."
         </div>
 
         <div class="analysis">
-          The phrase "something went wrong" is the weakest possible error message. It communicates only that a failure occurred — not what failed, why it failed, or what the user can do differently. "Try again with a slightly different description" gives the user no actionable information when their original prompt was already well-formed (genre, theme, BPM).
+          The phrase "something went wrong" is the weakest possible error message. It communicates only that a failure occurred, but not what failed, why it failed, or what the user can do differently. "Try again with a slightly different description" gives the user no actionable information when their original prompt was already well-formed (genre, theme, BPM).
           <br><br>
-          A user who submitted "create an upbeat song with tropical themes, BPM 120" — a specific, reasonable request — receives guidance that implies their input was the problem. It wasn't. The feature failed. The copy should say so.
+          A user who submitted "create an upbeat song with tropical themes, BPM 120" — a specific, reasonable request, receives guidance that implies their input was the problem. It wasn't. The feature failed. The copy should say so.
         </div>
 
         <div class="recommendation">
           <div class="rec-label">Recommended Copy</div>
-          <div class="rec-copy">"Music generation isn't available right now. Your prompt looks good — save it and try again in a few minutes."</div>
+          <div class="rec-copy">"Gemini can't create tracks right now. Your description is saved. Select <em>Generate</em> again later to pick up where you left off."</div>
           <div class="rec-rationale">Locates the problem in the system, not the user. Validates the input. Gives a concrete next action.</div>
         </div>
       </div>
@@ -579,8 +579,8 @@
 
         <div class="recommendation">
           <div class="rec-label">Recommended Copy (Loading State)</div>
-          <div class="rec-copy">"Composing your track — building melody, rhythm, and arrangement. This usually takes 20–40 seconds."</div>
-          <div class="rec-rationale">Names what is happening, sets a time expectation, reframes latency as process rather than failure. Reduces user anxiety and support contact about feature reliability.</div>
+          <div class="rec-copy">"Gemini is composing your track: melody, rhythm, and arrangement. This may take up to 40 seconds."</div>
+          <div class="rec-rationale">Names what is happening, sets a time expectation, reframes latency as process rather than failure. Reduces user anxiety and support contact about feature reliability. I used the formula [Product name] is [performing an action]: {var1, var2, var3...}. This may take up to {x} seconds. </div>
         </div>
       </div>
     </div>
@@ -593,9 +593,9 @@
       </div>
       <div class="finding-body">
         <div class="analysis">
-          Gemini surfaces thumbs up/down feedback controls after responses, giving users a direct channel to signal accuracy problems. This is a meaningful content design choice — it acknowledges that responses may be wrong and builds correction into the interaction pattern rather than treating every output as authoritative.
+          Gemini surfaces thumbs up/down feedback controls after responses, giving users a direct channel to signal accuracy problems. This is a meaningful content design choice. It acknowledges that responses may be wrong and builds correction into the interaction pattern rather than treating every output as authoritative.
           <br><br>
-          The placement is unobtrusive and the mechanism is familiar. This is the right instinct. The gap is that the feedback loop isn't made explicit to users — most won't know what happens after they flag a response or whether it affects future outputs.
+          The placement is unobtrusive and the mechanism is familiar. This is the right instinct. The gap is that the feedback loop isn't made explicit to users, in which most won't know what happens after they flag a response or whether it affects future outputs.
         </div>
       </div>
     </div>
