@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Documentation Governance — Writing Sample — Eliana Jain</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAFAF7;
+    --paper: #FFFFFF;
+    --ink: #1C1C1A;
+    --muted: #888884;
+    --border: #E4E4DF;
+    --accent: #2B5C3F;
+    --accent-light: #EBF3EE;
+    --label-bg: #F0EDE6;
+    --label-text: #7A6A50;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* SPECULATIVE LABEL */
+  .spec-banner {
+    background: var(--label-bg);
+    border-bottom: 1px solid #DDD8CE;
+    padding: 0.8rem 0;
+  }
+
+  .spec-inner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .spec-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: var(--label-text);
+    color: white;
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+
+  .spec-text {
+    font-size: 0.82rem;
+    color: var(--label-text);
+    line-height: 1.4;
+  }
+
+  /* HEADER */
+  header {
+    padding: 3.5rem 0 2.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .doc-type {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .context-note {
+    font-size: 0.88rem;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 2rem;
+  }
+
+  /* MEMO HEADER */
+  .memo-header {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 2.5rem 0;
+  }
+
+  .memo-header-top {
+    background: var(--ink);
+    padding: 0.8rem 1.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--bg);
+  }
+
+  .memo-fields {
+    padding: 1.2rem 1.5rem;
+  }
+
+  .memo-field {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 0.5rem;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.88rem;
+  }
+
+  .memo-field:last-child {
+    border-bottom: none;
+  }
+
+  .field-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-top: 2px;
+  }
+
+  .field-value {
+    color: var(--ink);
+  }
+
+  /* MEMO BODY */
+  .memo-body {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 2.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .memo-section {
+    margin-bottom: 2rem;
+  }
+
+  .memo-section:last-child {
+    margin-bottom: 0;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  p {
+    font-size: 0.95rem;
+    color: #3A3A38;
+    line-height: 1.8;
+    margin-bottom: 0.8rem;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  .memo-list {
+    margin: 0.8rem 0 0.8rem 1.2rem;
+  }
+
+  .memo-list li {
+    font-size: 0.95rem;
+    color: #3A3A38;
+    line-height: 1.8;
+    margin-bottom: 0.3rem;
+  }
+
+  .memo-list li strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* PULL QUOTE */
+  .pull-quote {
+    border-left: 3px solid var(--accent);
+    padding: 0.8rem 1.2rem;
+    margin: 1.5rem 0;
+    background: var(--accent-light);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .pull-quote p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--accent);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* ANNOTATION SIDEBAR */
+  .annotated {
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    gap: 1.5rem;
+    margin: 2rem 0;
+    align-items: start;
+  }
+
+  .annotation {
+    background: var(--label-bg);
+    border: 1px solid #DDD8CE;
+    border-radius: 6px;
+    padding: 1rem;
+  }
+
+  .annotation-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--label-text);
+    margin-bottom: 0.4rem;
+  }
+
+  .annotation-text {
+    font-size: 0.78rem;
+    color: var(--label-text);
+    line-height: 1.5;
+  }
+
+  /* CRAFT NOTES */
+  .craft-notes {
+    margin: 3rem 0;
+    padding: 2rem;
+    background: var(--accent-light);
+    border: 1px solid #C8DDD2;
+    border-radius: 8px;
+  }
+
+  .craft-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .craft-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .craft-item-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+
+  .craft-item-desc {
+    font-size: 0.8rem;
+    color: #4A6B58;
+    line-height: 1.5;
+  }
+
+  /* FOOTER */
+  footer {
+    margin-top: 4rem;
+    padding: 2rem 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--ink);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .footer-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--accent); }
+
+  @media (max-width: 640px) {
+    .annotated { grid-template-columns: 1fr; }
+    .craft-grid { grid-template-columns: 1fr; }
+    .memo-field { grid-template-columns: 70px 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- SPECULATIVE LABEL -->
+<div class="spec-banner">
+  <div class="container">
+    <div class="spec-inner">
+      <span class="spec-tag">Writing Sample</span>
+      <span class="spec-text">This memo is a speculative writing sample demonstrating executive communication and AI content strategy thinking. It is not based on a specific project.</span>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="container">
+    <div class="doc-type">Executive Communication Sample &nbsp;·&nbsp; AI Documentation Strategy</div>
+    <h1>AI Documentation Quality Initiative</h1>
+    <p class="context-note">A director-level memo presenting documentation quality results to senior leadership, written in a strategic and visionary tone.</p>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- MEMO HEADER -->
+  <div class="memo-header">
+    <div class="memo-header-top">Memorandum</div>
+    <div class="memo-fields">
+      <div class="memo-field">
+        <span class="field-label">To</span>
+        <span class="field-value">Senior Leadership, Content and Product Organization</span>
+      </div>
+      <div class="memo-field">
+        <span class="field-label">From</span>
+        <span class="field-value">Director, Technical Documentation</span>
+      </div>
+      <div class="memo-field">
+        <span class="field-label">Date</span>
+        <span class="field-value">April 15, 2026</span>
+      </div>
+      <div class="memo-field">
+        <span class="field-label">Re</span>
+        <span class="field-value">AI Documentation Quality Initiative — Results and Strategic Outlook</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MEMO BODY -->
+  <div class="memo-body">
+
+    <div class="memo-section">
+      <h2>Executive Summary</h2>
+      <p>Over the past 18 months, our documentation process changed significantly. We adopted AI tooling and built the governance infrastructure to make AI-assisted content trustworthy at enterprise scale. The results validate that investment and point toward opportunities worth expanding.</p>
+    </div>
+
+    <div class="memo-section">
+      <h2>What We Built</h2>
+      <p>Documentation quality at scale has historically been a structural challenge. Without shared standards, decisions vary across teams. Review cycles slow down. Consistency drifts across product lines.</p>
+      <p>We addressed this systematically by establishing three interlocking frameworks:</p>
+
+      <ul class="memo-list">
+        <li><strong>Prompt evaluation rubrics</strong> that standardize how AI systems generate documentation outputs, reducing variability across 2,000 enterprise users.</li>
+        <li><strong>Human-in-the-loop review protocols</strong> that preserve editorial judgment at critical decision points without eliminating the efficiency gains AI provides.</li>
+        <li><strong>Output consistency standards</strong> that give writers, reviewers, and product teams a shared language for evaluating documentation quality, independent of who produced the content.</li>
+      </ul>
+
+      <p>Together these frameworks reduced documentation inconsistencies in AI-assisted workflows and created a repeatable, auditable content operation.</p>
+    </div>
+
+    <div class="pull-quote">
+      <p>What we built is not a documentation solution. It is an AI governance model.</p>
+    </div>
+
+    <div class="memo-section">
+      <h2>Why This Matters Beyond Documentation</h2>
+      <p>As organizations across every industry grapple with how to deploy AI responsibly in content-generating workflows, we have already solved the hard problem: how do you maintain quality, consistency, and human accountability when AI is doing significant portions of the work?</p>
+      <p>Our frameworks are transferable. They represent institutional knowledge that has direct application to product development, customer communications, compliance documentation, and any function where AI-assisted output carries reputational or regulatory risk.</p>
+    </div>
+
+    <div class="memo-section">
+      <h2>Strategic Recommendation</h2>
+      <p>We should treat our documentation governance frameworks as an organizational asset, not an internal process artifact. Specifically I recommend:</p>
+
+      <ul class="memo-list">
+        <li><strong>Formalize and publish our methodology</strong> as a white paper or industry contribution. This positions our organization as a thought leader in responsible AI content operations at a moment when that credibility is scarce and valuable.</li>
+        <li><strong>Expand the framework's application</strong> beyond documentation into adjacent content functions including customer success, product marketing, and compliance, where the same quality and consistency challenges exist.</li>
+        <li><strong>Invest in the documentation function</strong> as a strategic capability rather than a support cost. The team that built this infrastructure has demonstrated it can architect systems that scale. That is a different value proposition than traditional technical writing.</li>
+      </ul>
+    </div>
+
+    <div class="memo-section">
+      <h2>Closing</h2>
+      <p>The documentation quality initiative began as an operational problem. It became something more significant: proof that AI can be deployed responsibly in high-stakes content environments when the right governance infrastructure exists.</p>
+      <p>We built that infrastructure. The question now is how broadly we apply it.</p>
+      <p>I welcome the opportunity to discuss next steps with the leadership team.</p>
+    </div>
+
+  </div>
+
+  <!-- CRAFT NOTES -->
+  <div class="craft-notes">
+    <div class="craft-label">Craft Notes — What This Sample Demonstrates</div>
+    <div class="craft-grid">
+      <div>
+        <div class="craft-item-title">Executive tone</div>
+        <div class="craft-item-desc">Strategic framing over operational detail. Written for a leadership audience that needs context and direction, not implementation steps.</div>
+      </div>
+      <div>
+        <div class="craft-item-title">Audience awareness</div>
+        <div class="craft-item-desc">Each section answers the question a senior leader would ask: what did we do, why does it matter, and what should we do next.</div>
+      </div>
+      <div>
+        <div class="craft-item-title">Content strategy thinking</div>
+        <div class="craft-item-desc">Positions documentation governance as an organizational asset, not a departmental function. Connects content work to business value explicitly.</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-name">Eliana Jain</div>
+      <div class="footer-links">
+        <a href="https://elianajain.github.io/ElianaJainPortfolio/">Portfolio</a>
+        <a href="https://elianajain.hashnode.dev">Hashnode</a>
+        <a href="mailto:jain.eliana@gmail.com">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
