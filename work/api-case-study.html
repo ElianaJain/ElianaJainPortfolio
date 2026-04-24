@@ -550,7 +550,7 @@
       <h2>Key Finding: The 403 Error</h2>
     </div>
 
-    <p>The most significant gap I found was in how the documentation described the 403 error response. This is a finding that illustrates the broader problem with inherited API docs — generic descriptions that don't reflect what the API actually does.</p>
+    <p>The most significant gap I found was in how the documentation described the 403 error response. This is a finding that illustrates the broader problem with inherited API docs having generic descriptions that don't reflect what the API actually does.</p>
 
     <div class="finding-block">
       <div class="finding-header">
@@ -582,7 +582,7 @@
 
         <div class="insight">
           <div class="insight-label">Why This Matters</div>
-          <div class="insight-text">A 403 in this context is not a generic permissions error. It is specifically an OAuth authorization failure. Without that distinction, a developer could spend significant time debugging the wrong thing — checking endpoint access, user roles, or network configuration — when the actual issue is an invalid or expired OAuth token. Accurate error documentation reduces debugging time and support escalations.</div>
+          <div class="insight-text">It is specifically an OAuth authorization failure. Without that distinction, a developer could spend significant time debugging the wrong thing. They might check endpoint access, user roles, or network configuration when the actual issue is an invalid or expired OAuth token. Accurate error documentation reduces debugging time and support escalations.</div>
         </div>
       </div>
     </div>
