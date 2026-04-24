@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API Documentation Case Study — Eliana Jain</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0F1117;
+    --surface: #1A1D27;
+    --surface-2: #22263A;
+    --border: #2E3348;
+    --ink: #E8E6E0;
+    --muted: #7A7D8F;
+    --accent: #4A9EFF;
+    --accent-dim: #1A3A5C;
+    --green: #4ADE80;
+    --green-dim: #0F3020;
+    --amber: #FBB040;
+    --amber-dim: #3A2A0A;
+    --code-bg: #141820;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* HEADER */
+  header {
+    padding: 4rem 0 3rem;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -10%;
+    width: 60%;
+    height: 200%;
+    background: radial-gradient(ellipse, rgba(74,158,255,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .container {
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+  }
+
+  .meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 560px;
+    line-height: 1.6;
+  }
+
+  .byline {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+  }
+
+  .byline-item {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .byline-item span {
+    color: var(--ink);
+  }
+
+  /* OVERVIEW GRID */
+  .overview-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 3rem 0;
+  }
+
+  .overview-cell {
+    background: var(--surface);
+    padding: 1.5rem;
+  }
+
+  .overview-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .overview-value {
+    font-size: 0.95rem;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+
+  /* SECTION */
+  section {
+    margin: 4rem 0;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--ink);
+  }
+
+  p {
+    color: #B8B6B0;
+    margin-bottom: 1rem;
+    font-size: 0.97rem;
+  }
+
+  /* PROCESS STEPS */
+  .process {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1.5rem 0;
+  }
+
+  .process-step {
+    background: var(--surface);
+    padding: 1.5rem 1.2rem;
+  }
+
+  .step-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+
+  .step-title {
+    font-family: 'Fraunces', serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+
+  .step-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* FINDING BLOCK */
+  .finding-block {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 2rem 0;
+  }
+
+  .finding-header {
+    background: var(--surface);
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .finding-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+  }
+
+  .badge-problem {
+    background: var(--amber-dim);
+    color: var(--amber);
+    border: 1px solid rgba(251,176,64,0.2);
+  }
+
+  .badge-resolution {
+    background: var(--green-dim);
+    color: var(--green);
+    border: 1px solid rgba(74,222,128,0.2);
+  }
+
+  .finding-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .finding-body {
+    padding: 1.5rem;
+    background: var(--bg);
+  }
+
+  /* CODE BLOCKS */
+  .code-comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.2rem 0;
+  }
+
+  .code-block {
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .code-header {
+    padding: 0.5rem 1rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .code-header.before {
+    background: var(--amber-dim);
+    color: var(--amber);
+    border-bottom: 1px solid rgba(251,176,64,0.2);
+  }
+
+  .code-header.after {
+    background: var(--green-dim);
+    color: var(--green);
+    border-bottom: 1px solid rgba(74,222,128,0.2);
+  }
+
+  .code-content {
+    background: var(--code-bg);
+    padding: 1rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: #C8C5BE;
+  }
+
+  .code-content .key {
+    color: var(--accent);
+  }
+
+  .code-content .value {
+    color: var(--green);
+  }
+
+  .code-content .comment {
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .code-content .highlight {
+    color: var(--amber);
+  }
+
+  /* INSIGHT BOX */
+  .insight {
+    background: var(--accent-dim);
+    border: 1px solid rgba(74,158,255,0.2);
+    border-radius: 6px;
+    padding: 1.2rem 1.5rem;
+    margin: 1.2rem 0;
+  }
+
+  .insight-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .insight-text {
+    font-size: 0.92rem;
+    color: var(--ink);
+    line-height: 1.6;
+  }
+
+  /* IMPACT */
+  .impact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .impact-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+  }
+
+  .impact-icon {
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .impact-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+
+  .impact-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* TAKEAWAY */
+  .takeaway {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 2rem 0;
+  }
+
+  .takeaway-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .takeaway-text {
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.6;
+  }
+
+  /* FOOTER */
+  footer {
+    margin-top: 5rem;
+    padding: 2rem 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-name {
+    font-family: 'Fraunces', serif;
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--ink);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .footer-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--accent); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .finding-block {
+    animation: fadeUp 0.4s ease both;
+  }
+
+  @media (max-width: 640px) {
+    .overview-grid { grid-template-columns: 1fr; }
+    .process { grid-template-columns: repeat(2, 1fr); }
+    .code-comparison { grid-template-columns: 1fr; }
+    .impact-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="meta">Case Study &nbsp;·&nbsp; API Documentation &nbsp;·&nbsp; SAP Ariba</div>
+    <h1>Documenting What the <em>Docs Left Out</em></h1>
+    <p class="subtitle">How gap analysis, endpoint testing, and engineering collaboration produced accurate REST API documentation for SAP Ariba's procurement and sourcing platform.</p>
+    <div class="byline">
+      <div class="byline-item">Author <span>Eliana Jain</span></div>
+      <div class="byline-item">Product <span>SAP Ariba REST APIs</span></div>
+      <div class="byline-item">Audience <span>Internal Engineers and Developer Portal Users</span></div>
+      <div class="byline-item">Domain <span>Procurement and Sourcing</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="overview-grid">
+    <div class="overview-cell">
+      <div class="overview-label">The Problem</div>
+      <div class="overview-value">Existing API docs were incomplete, leaving engineers without accurate information to integrate successfully</div>
+    </div>
+    <div class="overview-cell">
+      <div class="overview-label">My Role</div>
+      <div class="overview-value">Reviewed existing documentation, tested endpoints, consulted engineers, drafted and submitted for review</div>
+    </div>
+    <div class="overview-cell">
+      <div class="overview-label">The Outcome</div>
+      <div class="overview-value">Accurate, complete API reference documentation published to the SAP Developer Portal</div>
+    </div>
+  </div>
+
+  <!-- SECTION 1: CONTEXT -->
+  <section>
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <h2>Context</h2>
+    </div>
+    <p>SAP Ariba's REST APIs support procurement and sourcing workflows for enterprise customers. Developers — both internal engineers and external customers with Developer Portal access — rely on this documentation to build integrations, automate purchasing workflows, and connect Ariba to third-party systems.</p>
+    <p>When I inherited the existing API documentation, I found it incomplete. Error codes were undocumented or incorrectly described, authentication requirements were vague, and the gap between what the docs said and what the endpoints actually did created real friction for developers trying to integrate.</p>
+  </section>
+
+  <!-- SECTION 2: PROCESS -->
+  <section>
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <h2>Process</h2>
+    </div>
+    <p>My approach to API documentation follows a consistent four-step process that prioritizes accuracy over speed.</p>
+
+    <div class="process">
+      <div class="process-step">
+        <div class="step-number">Step 01</div>
+        <div class="step-title">Review existing docs</div>
+        <div class="step-desc">Audit current documentation for gaps, inaccuracies, and missing error codes or parameters</div>
+      </div>
+      <div class="process-step">
+        <div class="step-number">Step 02</div>
+        <div class="step-title">Test the endpoints</div>
+        <div class="step-desc">Submit real requests to verify documented behavior against actual API responses</div>
+      </div>
+      <div class="process-step">
+        <div class="step-number">Step 03</div>
+        <div class="step-title">Consult engineering</div>
+        <div class="step-desc">Bring findings to engineers to confirm root causes and verify corrections before drafting</div>
+      </div>
+      <div class="process-step">
+        <div class="step-number">Step 04</div>
+        <div class="step-title">Draft and submit</div>
+        <div class="step-desc">Write accurate documentation and submit for technical review before publishing</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: KEY FINDING -->
+  <section>
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <h2>Key Finding: The 403 Error</h2>
+    </div>
+
+    <p>The most significant gap I found was in how the documentation described the 403 error response. This is a finding that illustrates the broader problem with inherited API docs — generic descriptions that don't reflect what the API actually does.</p>
+
+    <div class="finding-block">
+      <div class="finding-header">
+        <span class="finding-badge badge-problem">Before</span>
+        <div class="finding-title">403 described generically or not at all</div>
+      </div>
+      <div class="finding-body">
+        <p>The existing documentation either omitted the 403 response entirely or described it with a generic "Forbidden" label that gave developers no actionable information. A developer hitting a 403 had no way to know what was causing it or how to resolve it.</p>
+
+        <div class="code-comparison">
+          <div class="code-block">
+            <div class="code-header before">Before</div>
+            <div class="code-content">
+              <span class="key">"status"</span>: <span class="value">403</span>,<br>
+              <span class="key">"error"</span>: <span class="value">"Forbidden"</span><br>
+              <span class="comment">// No further description</span>
+            </div>
+          </div>
+          <div class="code-block">
+            <div class="code-header after">After</div>
+            <div class="code-content">
+              <span class="key">"status"</span>: <span class="value">403</span>,<br>
+              <span class="key">"error"</span>: <span class="value">"Forbidden"</span>,<br>
+              <span class="key">"cause"</span>: <span class="highlight">"OAuth token invalid<br>or missing"</span>,<br>
+              <span class="key">"resolution"</span>: <span class="value">"Verify OAuth<br>credentials and reauthorize"</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="insight">
+          <div class="insight-label">Why This Matters</div>
+          <div class="insight-text">A 403 in this context is not a generic permissions error. It is specifically an OAuth authorization failure. Without that distinction, a developer could spend significant time debugging the wrong thing — checking endpoint access, user roles, or network configuration — when the actual issue is an invalid or expired OAuth token. Accurate error documentation reduces debugging time and support escalations.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="finding-block">
+      <div class="finding-header">
+        <span class="finding-badge badge-resolution">Resolution</span>
+        <div class="finding-title">Documented the OAuth cause and trigger conditions</div>
+      </div>
+      <div class="finding-body">
+        <p>After testing the endpoint and confirming with engineering, I updated the 403 documentation to specify that the error indicates an OAuth token issue, and documented the conditions that trigger it. This gave developers a precise diagnosis and a clear path to resolution.</p>
+        <p>The correction required testing, an engineering conversation to confirm root cause, and a drafted update submitted through the standard review process before publishing to the SAP Developer Portal.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: IMPACT -->
+  <section>
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <h2>Impact</h2>
+    </div>
+
+    <div class="impact-grid">
+      <div class="impact-card">
+        <div class="impact-icon">🎯</div>
+        <div class="impact-title">Accurate error documentation</div>
+        <div class="impact-desc">Error codes now reflect actual API behavior, not generic HTTP status descriptions, giving developers actionable information at the point of failure.</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-icon">🔍</div>
+        <div class="impact-title">Verified against real behavior</div>
+        <div class="impact-desc">Every documented response was tested against live endpoints and confirmed with engineering, not inferred from existing copy or assumed from HTTP standards.</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-icon">🌐</div>
+        <div class="impact-title">Published to SAP Developer Portal</div>
+        <div class="impact-desc">Documentation reached both internal engineers and external customers with Developer Portal access, serving the full audience for SAP Ariba's procurement and sourcing APIs.</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-icon">🤝</div>
+        <div class="impact-title">Engineering-validated process</div>
+        <div class="impact-desc">The review and approval process established a collaborative workflow between documentation and engineering that improved accuracy across the API reference.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAKEAWAY -->
+  <div class="takeaway">
+    <div class="takeaway-label">Key Takeaway</div>
+    <div class="takeaway-text">Inherited API documentation is almost always incomplete. The work of a technical writer is not to transcribe what exists but to verify what is true, find what is missing, and document what developers actually need to succeed.</div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-name">Eliana Jain</div>
+      <div class="footer-links">
+        <a href="https://elianajain.github.io/ElianaJainPortfolio/">Portfolio</a>
+        <a href="https://elianajain.hashnode.dev">Hashnode</a>
+        <a href="mailto:jain.eliana@gmail.com">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
