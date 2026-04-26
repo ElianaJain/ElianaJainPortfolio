@@ -285,7 +285,11 @@
       transition: background 0.25s;
       cursor: default;
     }
-    .work-card:hover { background: #f0ece6; }
+
+    .work-card:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+      max-width: 340px;
+    } { background: #f0ece6; }
 
     .card-type {
       font-family: 'DM Mono', monospace;
