@@ -63,15 +63,19 @@ Strategically identified core target demographics, forged partnerships, and cult
 ## Skills
 
 **Content & Strategy**
+
 Content design · Content strategy · Information architecture · Editorial strategy · Voice and tone · Style guide development · Content governance · AP Style · Chicago Style · Microsoft Writing Style Guide
 
 **Technical**
+
 API documentation (REST) · cXML · Docs-as-code · DITA/XML · GitHub · MadCap Flare · Markdown · HTML · PowerShell · Python
 
 **AI & Developer Content**
+
 LLM evaluation · Prompt engineering · AI content review · Developer documentation · Technical tutorials · Release notes · Error message writing · UX writing
 
 **Tools**
+
 Jira · Confluence · Figma · WalkMe · ServiceNow · Adobe Suite · SnagIt · Camtasia · Claude · ChatGPT · Grok
 
 ---
