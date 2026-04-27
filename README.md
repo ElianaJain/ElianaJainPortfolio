@@ -54,7 +54,7 @@ Developed and maintained internal process documentation supporting workflows for
 
 Supported ML model training by defining 10,000+ image annotations, establishing annotation standards that improved model accuracy, consistency, and output quality across products.
 
-****Marketing Consultant (Contract)** · MeWe · Jul 2013 – Mar 2014
+**Marketing Consultant (Contract)** · MeWe · Jul 2013 – Mar 2014
 
 Strategically identified core target demographics, forged partnerships, and cultivated relationships with startup leadership, contributing to growth to 9 million active users.
 
