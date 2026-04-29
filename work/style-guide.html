@@ -986,7 +986,42 @@ code {
     <div>
       <p class="section-eyebrow">Universal rules</p>
       <h2 class="section-title">Grammar and style</h2>
+      <p>My writing style is a blend of Microsoft Writing Style, Chicago Manual of Style, and my own editorial instincts. The following are elements that I have used to create my own style guide: 
+        <p><table>
+  <tr>
+    <th>Microsoft Writing Style Guide</th>
+    <th>Chicago Manual of Style</th>
+    <th>Editorial</th>
+  </tr>
+  <tr>
+    <td>
+      <li>Active voice as a non-negotiable</li>
+      <li>Second person throughout</li>
+      <li>Sentence case for headings</li>
+      <li>Bold UI element names</li>
+      <li>Specific, actionable error messages</li>
+      <li>"Select" instead of "click"</li>
+      <li>Periods outside quotation marks for UI text</li>
+      <li>Plain language over technical jargon</li>
+    </td>
+    <td>
+      <li>Oxford comma used consistently</li>
+      <li>Spelling out numbers in running text</li>
+      <li>Formal punctuation choices</li>
+    </td>
+    <td>
+      <p>Some rules are distinctly mine and don't come from any official guides:</p>
+      <li>Avoid using em dashes</li>
+      <li>"Correct" before "Incorrect" in all examples</li>
+      <li>Three-question structure for error messages</li>
+      <li>Banned words list that goes beyond standard guides</li>
+      <li>Explicit AI agent directives alongside human rules</li></p>
     </div>
+    </td>
+  </tr>
+</table>
+    </p>
+
   </div>
 
   <div class="grammar-grid">
@@ -1027,7 +1062,7 @@ code {
     </div>
 
     <div class="grammar-card">
-      <div class="grammar-title">Em dashes — never</div>
+      <div class="grammar-title">Em dashes — avoid</div>
       <div class="example-row">
         <div class="example-label ok">Correct</div>
         <div class="example-text">"The endpoint returns a token. Use it in subsequent requests."</div>
@@ -1188,13 +1223,13 @@ code {
     </div>
     <div class="ct-structure">
       <div class="ct-structure-label">Required per endpoint</div>
-      <div class="ct-step"><div class="ct-step-num">1</div><div class="ct-step-text"><strong>Endpoint</strong> — HTTP method and path</div></div>
+      <div class="ct-step"><div class="ct-step-num">1</div><div class="ct-step-text"><strong>Endpoint</strong> — HTTP method and path.</div></div>
       <div class="ct-step"><div class="ct-step-num">2</div><div class="ct-step-text"><strong>Description</strong> — What it does. One to two sentences.</div></div>
-      <div class="ct-step"><div class="ct-step-num">3</div><div class="ct-step-text"><strong>Authentication</strong> — Credentials required and how to pass them</div></div>
-      <div class="ct-step"><div class="ct-step-num">4</div><div class="ct-step-text"><strong>Request parameters</strong> — Name, type, required/optional, description, example</div></div>
-      <div class="ct-step"><div class="ct-step-num">5</div><div class="ct-step-text"><strong>Response</strong> — Schema with field descriptions and success example</div></div>
-      <div class="ct-step"><div class="ct-step-num">6</div><div class="ct-step-text"><strong>Error codes</strong> — Every possible code with cause and resolution</div></div>
-      <div class="ct-step"><div class="ct-step-num">7</div><div class="ct-step-text"><strong>Code sample</strong> — Complete, runnable example in at least one language</div></div>
+      <div class="ct-step"><div class="ct-step-num">3</div><div class="ct-step-text"><strong>Authentication</strong> — Credentials required and how to pass them.</div></div>
+      <div class="ct-step"><div class="ct-step-num">4</div><div class="ct-step-text"><strong>Request parameters</strong> — Name, type, required/optional, description, example.</div></div>
+      <div class="ct-step"><div class="ct-step-num">5</div><div class="ct-step-text"><strong>Response</strong> — Schema with field descriptions and success example.</div></div>
+      <div class="ct-step"><div class="ct-step-num">6</div><div class="ct-step-text"><strong>Error codes</strong> — Every possible code with cause and resolution.</div></div>
+      <div class="ct-step"><div class="ct-step-num">7</div><div class="ct-step-text"><strong>Code sample</strong> — Complete, runnable example in at least one language.</div></div>
       <div class="ct-tone">
         <div class="ct-tone-label">Tone register</div>
         <div class="ct-tone-text">Neutral, precise, and complete. Zero ambiguity.</div>
@@ -1220,7 +1255,7 @@ code {
       <div class="ct-structure-label">Three required questions</div>
       <div class="ct-step"><div class="ct-step-num">1</div><div class="ct-step-text"><strong>What happened?</strong> Name the failure specifically.</div></div>
       <div class="ct-step"><div class="ct-step-num">2</div><div class="ct-step-text"><strong>Why did it happen?</strong> If known, state the cause.</div></div>
-      <div class="ct-step"><div class="ct-step-num">3</div><div class="ct-step-text"><strong>What to do next?</strong> State the resolution. Do not make the reader search for the answer.</div></div>
+      <div class="ct-step"><div class="ct-step-num">3</div><div class="ct-step-text"><strong>What to do next?</strong> State the resolution. Do not make the reader search for the answer. If the issue cannot be resolved, direct the user to support.</div></div>
       <div class="ct-tone">
         <div class="ct-tone-label">Tone register</div>
         <div class="ct-tone-text">Direct, helpful, and non-blaming. Under 30 words.</div>
@@ -1268,7 +1303,7 @@ code {
 <span class="cs">[One sentence: action required, or "No action required."]</span>
 
 <span class="cm">✓  "Added support for webhook event filtering."</span>
-<span class="cm">✗  "We are thrilled to announce an exciting new feature."</span></pre>
+<span class="cm">✗  "We are thrilled to announce an exciting new feature!"</span></pre>
       </div>
     </div>
     <div class="ct-structure">
@@ -1301,14 +1336,14 @@ code {
   <div class="banned-wrap">
     <table class="banned-table">
       <thead>
-        <tr><th>Banned</th><th>Use instead</th></tr>
+        <tr><th>Banned</th><th>Suggested/th></tr>
       </thead>
       <tbody>
         <tr><td><span class="banned-word">leverage</span></td><td><span class="suggested">use</span></td></tr>
         <tr><td><span class="banned-word">utilize</span></td><td><span class="suggested">use</span></td></tr>
         <tr><td><span class="banned-word">robust</span></td><td><span class="suggested">specific description of what makes it strong</span></td></tr>
         <tr><td><span class="banned-word">seamlessly</span></td><td><span class="suggested">remove entirely or describe the specific behavior</span></td></tr>
-        <tr><td><span class="banned-word">easy</span></td><td><span class="suggested">remove entirely — what is easy for one developer is not easy for another</span></td></tr>
+        <tr><td><span class="banned-word">easy</span></td><td><span class="suggested">remove entirely, what is easy for one developer is not easy for another</span></td></tr>
         <tr><td><span class="banned-word">simply</span></td><td><span class="suggested">remove entirely</span></td></tr>
         <tr><td><span class="banned-word">just</span></td><td><span class="suggested">remove entirely</span></td></tr>
         <tr><td><span class="banned-word">straightforward</span></td><td><span class="suggested">remove entirely</span></td></tr>
@@ -1370,7 +1405,7 @@ code {
     <div class="ai-instruction"><span class="ai-num">06</span><div class="ai-text">Flag any claim that cannot be verified as uncertain rather than stating it as fact.</div></div>
     <div class="ai-instruction"><span class="ai-num">07</span><div class="ai-text">Keep all sentences under 25 words. Flag any sentence that exceeds this limit.</div></div>
     <div class="ai-instruction"><span class="ai-num">08</span><div class="ai-text">Do not add information not present in the source material. If information is missing, say so explicitly.</div></div>
-    <div class="ai-instruction"><span class="ai-num">09</span><div class="ai-text">Do not use passive voice. Rewrite passive constructions in active voice before finalizing output.</div></div>
+    <div class="ai-instruction"><span class="ai-num">09</span><div class="ai-text">Use active voice. Rewrite passive constructions in active voice before finalizing output.</div></div>
     <div class="ai-instruction"><span class="ai-num">10</span><div class="ai-text">When uncertain about tone, default to precise and neutral rather than conversational.</div></div>
   </div>
 </section>
@@ -1382,8 +1417,8 @@ code {
       <strong>Eliana Jain</strong> — Technical writer and content designer. Developer Content Style Guide v1.0.
     </div>
     <ul class="footer-links">
-      <li><a href="https://github.com/ElianaJain/ElianaJainPortfolio" target="_blank">GitHub</a></li>
-      <li><a href="https://elianajain.github.io/ElianaJainPortfolio/work/developer-content-style-guide.md" target="_blank">Source .md</a></li>
+      <li><a href="https://github.com/ElianaJain/ElianaJainPortfolio" target="_blank">Back to portfolio</a></li>
+      <li><a href="https://elianajain.github.io/ElianaJainPortfolio/work/style-guide.html" target="_blank">Style guide</a></li>
       <li><a href="#top">Back to top</a></li>
     </ul>
   </div>
