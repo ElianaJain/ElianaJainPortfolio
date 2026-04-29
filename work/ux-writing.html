@@ -917,8 +917,8 @@ textarea.fw-input { resize: none; min-height: 72px; }
           <div class="fw-form-row">
             <label class="fw-label">Start date <span class="fw-req">*</span></label>
             <input class="fw-input error" value="03/15/2025" readonly/>
-            <div class="fw-error-msg"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="var(--error-text)" stroke-width="1.2"/><path d="M6 3.5v3M6 8.5v.25" stroke="var(--error-text)" stroke-width="1.2" stroke-linecap="round"/></svg> Start date can't be in the past. Choose today or a future date.</div>
-            <div class="fw-annotation" style="margin-top:8px;"><div class="fw-annotation-label">Past date</div><div class="fw-annotation-copy">Names the rule AND the fix. Two sentences, not one.</div></div>
+            <div class="fw-error-msg"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="var(--error-text)" stroke-width="1.2"/><path d="M6 3.5v3M6 8.5v.25" stroke="var(--error-text)" stroke-width="1.2" stroke-linecap="round"/></svg>Choose today or a future date.</div>
+            <div class="fw-annotation" style="margin-top:8px;"><div class="fw-annotation-label">Past date</div><div class="fw-annotation-copy">Names the rule AND the fix. No need to start with what they user can't do, the focus in how the user can effeciently file forms without blame.</div></div>
           </div>
           <div class="fw-form-actions">
             <button class="fw-btn-primary">Save as draft</button>
@@ -1006,7 +1006,7 @@ textarea.fw-input { resize: none; min-height: 72px; }
     <div class="case-study-body">
       <div class="case-section" id="problem">
         <h3 class="case-section-title">The problem</h3>
-        <p class="case-body">Most SaaS products treat error states, validation messages, and empty states as afterthoughts: copy written at the end of a sprint, usually by an engineer, usually in the form of "Something went wrong. Please try again."</p>
+        <p class="case-body">Most SaaS products treat error states, validation messages, and empty states as afterthoughts: copy written at the end of a sprint, usually in the form of a generic phrase such as "Something went wrong. Please try again."</p>
         <p class="case-body">That copy fails users in the moments they most need clarity: when they've hit a wall, made a mistake, or are new and don't yet know what the product does. For a field operations tool whose users are managing real-world work on a deadline, vague error copy isn't just frustrating. It's a productivity cost.</p>
         <div class="case-pull">This sample demonstrates how intentional UX writing turns those three pattern types into moments of trust rather than friction.</div>
       </div>
@@ -1049,9 +1049,9 @@ textarea.fw-input { resize: none; min-height: 72px; }
 
       <div class="case-section" id="errors">
         <h3 class="case-section-title">Error states: three sentences, three jobs</h3>
-        <p class="case-body">Every error state follows the same structure: name the failure, provide context or reassurance, give a recovery path. "Changes couldn't be saved. Your session expired while you were editing. Your draft is safe. Sign back in to continue." Three moves. Each carries new information.</p>
+        <p class="case-body">Every error state follows the same structure: name the failure, provide context or reassurance, give a recovery path. "Couldn't save changes. Your session expired, but your draft is safe. Sign back in to continue." Three moves. Each carries new information.</p>
         <p class="case-body">No apologies. "We're sorry for the inconvenience" adds no information and undermines the calm, professional tone field operations teams need. They need resolution, not sympathy.</p>
-        <p class="case-body">The destructive confirmation modal applies different rules. The headline uses the object name rather than a generic "are you sure?" Specific consequences ("47 tasks") stop confident users from confirming by habit. "Keep project" not "Cancel" — positive-framed, unambiguous, describes the outcome rather than the action.</p>
+        <p class="case-body">The destructive confirmation modal follows different rules. The headline uses the object name rather than a generic "Are you sure?" Specific consequences, such as "47 tasks will be deleted," stop confident users from confirming by habit. Use "Keep project" instead of "Cancel". It is positive-framed, unambiguous, and describes the outcome rather than the action. Reserve "Delete" for permanently removing an object from the system or any irreversible change. Use "Cancel" only to dismiss a modal or action without making any changes. </p>
       </div>
 
       <div class="case-section" id="system">
@@ -1126,8 +1126,8 @@ textarea.fw-input { resize: none; min-height: 72px; }
         <tr><td>FV-02</td><td>Success / Project ID</td><td>Available</td></tr>
         <tr><td>FV-03</td><td>Hint / Description</td><td>Describe the project scope used in reports and shared with external reviewers.</td></tr>
         <tr><td>FV-04</td><td>Error / Project lead</td><td>A project lead is required before publishing.</td></tr>
-        <tr><td>FV-05</td><td>Error / Start date</td><td>Start date can't be in the past. Choose today or a future date.</td></tr>
-        <tr><td>FV-06</td><td>Submit / Error count</td><td>Fix <code>{errorCount}</code> error before publishing <em>(count = 1)</em><br>Fix <code>{errorCount}</code> errors before publishing <em>(count &gt; 1)</em></td></tr>
+        <tr><td>FV-05</td><td>Error / Start date</td><td>Choose today or a future date.</td></tr>
+        <tr><td>FV-06</td><td>Submit / Error count</td><td>Fix <code>{errorCount}</code> {errorCount === 1 ? 'error' : 'errors'} before publishing.</td></tr>
       </tbody>
     </table>
   </div>
@@ -1138,9 +1138,10 @@ textarea.fw-input { resize: none; min-height: 72px; }
       <thead><tr><th>ID</th><th>Element</th><th>Copy</th></tr></thead>
       <tbody>
         <tr><td>ER-01</td><td>Banner / Session expired</td><td>Changes couldn't be saved. Your session expired while you were editing. Your draft is safe. Sign back in to continue.</td></tr>
-        <tr><td>ER-02</td><td>Banner / Bulk failure</td><td><code>{memberCount}</code> team member couldn't be added... <em>(count = 1)</em><br><code>{memberCount}</code> team members couldn't be added... <em>(count &gt; 1)</em></td></tr>
+        <tr><td>ER-02</td><td>Banner / Bulk failure</td><td>Couldn't add <code>{memberCount}</code> {memberCount === 1 ? 'team member' : 'team members'}.</td></tr>
         <tr><td>ER-03</td><td>Banner / No lead</td><td>This project has no active lead. Tasks can still be assigned, but reports won't generate until a lead is set.</td></tr>
-        <tr><td>ER-04</td><td>Banner / Upload unavailable</td><td>File upload is temporarily unavailable. Our team is working on it. You can still add and update tasks while we sort this out — file uploads should be back within an hour.</td></tr>
+        <tr><td>ER-04</td><td>Banner / Upload unavailable</td><td>File upload is temporarily unavailable. You can still add and update tasks while we work on it. We'll restore file uploads as soon as possible.</td></tr>
+        <tr><td>ER-04</td><td>Banner / Upload unavailable</td><td>File upload is temporarily unavailable. You can still add and update tasks while we work on it. Check our status page for updates.</td></tr>
         <tr><td>ER-05</td><td>Modal / Title</td><td>Delete "<code>{projectName}</code>"?</td></tr>
         <tr><td>ER-06</td><td>Modal / Body</td><td>This will permanently delete the project and its <code>{taskCount}</code> tasks. Team members will lose access.</td></tr>
         <tr><td>ER-07</td><td>Modal / Safe action</td><td>Keep project</td></tr>
@@ -1154,7 +1155,7 @@ textarea.fw-input { resize: none; min-height: 72px; }
 <footer>
   <div class="site-footer">
     <div class="footer-left">
-      <strong>Elly [Last Name]</strong> — UX writer and content designer.
+      <strong>Eliana Jain</strong> — UX writer and content designer.
       Built as a portfolio work sample. Fieldwork is a fictional product.
     </div>
     <ul class="footer-links">
