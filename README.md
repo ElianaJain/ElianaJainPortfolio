@@ -32,6 +32,8 @@ I am currently building an AI-powered robot dog using Raspberry Pi and SunFounde
 | cXML Element Reference — IncoTerm | Technical Documentation | [View Sample](https://help.sap.com/docs/business-network-for-supply-chain/cxml-solutions/incoterm-element) |
 | cXML Element Reference — DPAS | Technical Documentation | [View Sample](https://help.sap.com/docs/business-network-for-supply-chain/cxml-solutions/dpas-element) |
 | Score and Weights — Category Management | Content Strategy | [View Sample](https://help.sap.com/docs/categories/sap-ariba-category-management-administration-guide/about-score-and-weights) |
+| Error States, Form Validation, and Empty States | UX Writing Sample | [View Sample](https://elianajain.github.io/ElianaJainPortfolio/work/ux-writing.html) |
+| Developer Content Style Guide | Style Guide | [View Style Guide](https://elianajain.github.io/ElianaJainPortfolio/work/style-guide.html) |
 | AI Robot Dog Build Log | Personal Project | [View on GitHub](https://github.com/users/ElianaJain/projects/1) |
 
 ---
