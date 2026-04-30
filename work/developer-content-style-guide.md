@@ -44,12 +44,12 @@ These rules apply to all content types. No exceptions.
 **Paragraph length:** Keep paragraphs to 3 to 4 sentences maximum in documentation. Longer paragraphs are acceptable in blog posts and narrative content.
 
 **Em dashes:** Do not use em dashes. Use a period, comma, or colon instead.
-* Incorrect: "The endpoint returns a token — use it in subsequent requests."
 * Correct: "The endpoint returns a token. Use it in subsequent requests."
+* Incorrect: "The endpoint returns a token — use it in subsequent requests."
 
 **Oxford comma:** Always use the Oxford comma in lists of three or more items.
-* Incorrect: "The API supports JSON, XML and CSV."
 * Correct: "The API supports JSON, XML, and CSV."
+* Incorrect: "The API supports JSON, XML and CSV."
 
 **Contractions:** Use contractions in tutorials, blog posts, and error messages. Avoid contractions in formal API reference documentation.
 
@@ -59,7 +59,7 @@ These rules apply to all content types. No exceptions.
 
 ## Banned Words and Phrases
 
-Never use the following words or phrases in any content type. They add length without meaning.
+Avoid using the following words or phrases in any content type. They add length without meaning.
 
 | Banned | Suggested |
 |--------|-----------|
@@ -91,14 +91,14 @@ Never use the following words or phrases in any content type. They add length wi
 Follow Microsoft Writing Style Guide conventions for UI elements.
 
 **Bold** all UI element names when referenced in documentation.
-* Incorrect: "Select Save to confirm your changes."
 * Correct: "Select **Save** to confirm your changes."
+* Incorrect: "Select Save to confirm your changes."
 
 Capitalize UI element names exactly as they appear in the interface. Do not alter capitalization.
 
 **Quotations:** Use quotation marks to call out UI text. Periods must be outside quotation marks.
-* Incorrect: Select "Menu."
 * Correct: Select "Menu".
+* Incorrect: Select "Menu."
 
 Use the following verbs consistently for UI interactions:
 
@@ -246,17 +246,17 @@ Every error message must answer three questions:
 
 ### Rules
 
-Never use "something went wrong." Name the failure specifically.
-* Incorrect: "Something went wrong. Please try again."
+Avoid using "something went wrong." Name the failure specifically.
 * Correct: "The request timed out. Check your network connection and try again."
+* Incorrect: "Something went wrong. Please try again."
 
 Never use exclamation points in error messages.
-* Incorrect: "Invalid input! Please try again!"
 * Correct: "The value you entered is not valid. Enter a number between 1 and 100."
+* Incorrect: "Invalid input! Please try again!"
 
 Locate the failure accurately. If the system failed, say so. Do not imply the user caused an error they did not cause.
-* Incorrect: "Your request could not be processed."
 * Correct: "The server could not process your request. Try again in a few minutes."
+* Incorrect: "Your request could not be processed."
 
 Use consistent vocabulary across all error messages for the same product. Do not use "generate" in one error and "create" in another for the same action.
 
@@ -292,8 +292,8 @@ Blog posts do not have a required structure, but strong developer posts typicall
 ### Rules
 
 Lead with the specific, not the general.
-* Incorrect: "AI is changing how we think about documentation."
 * Correct: "I spent three months documenting an AI assistant and learned that the hardest part is not writing about what it does. It is writing about what it will not do."
+* Incorrect: "AI is changing how we think about documentation."
 
 Show your work. Explain how you reached your conclusions. Developer audiences are skeptical of claims without evidence.
 
@@ -324,20 +324,20 @@ Every release note entry must include:
 ### Rules
 
 Use active voice. The product or feature performs the action, not a passive construction.
-* Incorrect: "Error code `429` is now returned when rate limits are exceeded."
 * Correct: "The API now returns error code `429` when rate limits are exceeded."
+* Incorrect: "Error code `429` is now returned when rate limits are exceeded."
 
 Be specific about what changed. Do not describe the feature in general terms.
-* Incorrect: "Improved performance for large datasets."
 * Correct: "Query response times for datasets over 1 million rows have decreased by an average of 40%."
+* Incorrect: "Improved performance for large datasets."
 
 Note breaking changes explicitly and prominently. Use a **Breaking Change** label.
 
 Keep each entry to 120 to 150 words maximum.
 
 Do not use marketing language in release notes.
-* Incorrect: "We are thrilled to announce an exciting new feature."
 * Correct: "Added support for webhook event filtering."
+* Incorrect: "We are thrilled to announce an exciting new feature."
 
 ### Release Note Template
 
