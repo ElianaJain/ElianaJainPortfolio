@@ -8,7 +8,7 @@
 
 ## The problem
 
-Most SaaS products treat error states, validation messages, and empty states as afterthoughts: copy that gets written at the end of a sprint, usually by an engineer, usually in the form of "Something went wrong. Please try again."
+Most SaaS products treat error states, validation messages, and empty states as afterthoughts: copy that gets written at the end of a sprint, usually in the form of "Something went wrong. Please try again."
 
 That copy fails users in the moments they most need clarity: when they've hit a wall, when they've made a mistake, or when they're new and don't yet know what the product does. For a field operations tool whose users are managing real-world work on a deadline, vague error copy isn't just frustrating. It's a productivity cost.
 
@@ -41,8 +41,8 @@ The standard validation message pattern is to name the error: "Invalid input," "
 
 Every validation message in this sample is written as an instruction, not a diagnosis:
 
-- "Remove special characters. Only letters, numbers, and hyphens are allowed." Not "Invalid characters."
-- "Start date can't be in the past. Choose today or a future date." Not "Invalid date."
+- "Letters, numbers, and hyphens only." Not "Invalid characters."
+- "Choose today or a future date." Not "Invalid date."
 - "A project lead is required before publishing." Not "Required field."
 
 The third example includes a consequence ("before publishing") that the standard pattern omits entirely. Knowing *why* a field is required reduces frustration and speeds resolution. The user understands the system's logic rather than fighting an unexplained rule.
