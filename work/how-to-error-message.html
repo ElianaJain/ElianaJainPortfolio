@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Write an Error Message — Eliana Jain</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAFAF8;
+    --ink: #1A1A18;
+    --muted: #888880;
+    --border: #E0DDD8;
+    --accent: #C84B31;
+    --accent-light: #FDF0ED;
+    --correct-bg: #F0F7F0;
+    --correct-border: #2D6A4F;
+    --correct-text: #1A4A35;
+    --incorrect-bg: #FDF0ED;
+    --incorrect-border: #C84B31;
+    --incorrect-text: #8B2A15;
+    --step-bg: #F5F3EF;
+    --code-bg: #F0EDE8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* TOP NAV */
+  .top-nav {
+    padding: 0.75rem 2rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-back {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: gap 0.2s;
+  }
+
+  .nav-back:hover { gap: 0.75rem; }
+
+  .nav-type {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* HERO */
+  .hero {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 5rem 2rem 3rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 2px;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 1.2rem;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-intro {
+    font-size: 1.05rem;
+    color: #555550;
+    max-width: 560px;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+  }
+
+  .meta-item {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .meta-item span { color: var(--ink); }
+
+  /* MAIN */
+  .main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 4rem 2rem 6rem;
+  }
+
+  /* SECTION */
+  .section {
+    margin-bottom: 4rem;
+  }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+
+  h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin: 1.5rem 0 0.6rem;
+    letter-spacing: 0.02em;
+  }
+
+  p {
+    font-size: 0.97rem;
+    color: #444440;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  p:last-child { margin-bottom: 0; }
+
+  /* THREE QUESTIONS */
+  .three-questions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 2rem 0;
+  }
+
+  .question-card {
+    background: var(--bg);
+    padding: 1.5rem;
+  }
+
+  .q-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+
+  .q-question {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .q-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* STEPS */
+  .steps {
+    counter-reset: steps;
+    margin: 1.5rem 0;
+  }
+
+  .step {
+    counter-increment: steps;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    align-items: start;
+  }
+
+  .step-num {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .step-content {}
+
+  .step-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .step-body {
+    font-size: 0.93rem;
+    color: #444440;
+    line-height: 1.7;
+  }
+
+  /* EXAMPLE PAIR */
+  .example-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.2rem 0;
+  }
+
+  .example {
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .example-header {
+    padding: 0.4rem 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .example-header::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .example.incorrect .example-header {
+    background: var(--incorrect-bg);
+    color: var(--incorrect-border);
+    border-bottom: 1px solid rgba(200,75,49,0.2);
+  }
+
+  .example.incorrect .example-header::before {
+    background: var(--incorrect-border);
+  }
+
+  .example.correct .example-header {
+    background: var(--correct-bg);
+    color: var(--correct-border);
+    border-bottom: 1px solid rgba(45,106,79,0.2);
+  }
+
+  .example.correct .example-header::before {
+    background: var(--correct-border);
+  }
+
+  .example-body {
+    padding: 0.9rem 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    line-height: 1.6;
+    background: #FAFAF8;
+  }
+
+  .example.incorrect .example-body { color: var(--incorrect-text); }
+  .example.correct .example-body { color: var(--correct-text); }
+
+  .example-annotation {
+    padding: 0.5rem 1rem 0.75rem;
+    font-size: 0.75rem;
+    color: var(--muted);
+    line-height: 1.4;
+    background: #FAFAF8;
+    border-top: 1px solid var(--border);
+  }
+
+  /* TEMPLATE */
+  .template {
+    background: var(--step-bg);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--ink);
+    border-radius: 0 6px 6px 0;
+    padding: 1.2rem 1.5rem;
+    margin: 1.5rem 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--ink);
+    line-height: 1.8;
+  }
+
+  .template-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+  }
+
+  /* RULE CARDS */
+  .rules {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .rule-card {
+    background: var(--step-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1.2rem;
+  }
+
+  .rule-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+
+  .rule-desc {
+    font-size: 0.85rem;
+    color: #555550;
+    line-height: 1.5;
+  }
+
+  /* WORKED EXAMPLES */
+  .worked-example {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1.5rem 0;
+  }
+
+  .we-header {
+    background: var(--ink);
+    padding: 0.75rem 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .we-scenario {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #E8E6E0;
+  }
+
+  .we-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.6);
+  }
+
+  .we-body {
+    padding: 1.5rem;
+    background: var(--bg);
+  }
+
+  .we-analysis {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin: 1rem 0;
+  }
+
+  .we-q {
+    background: var(--step-bg);
+    border-radius: 4px;
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+  }
+
+  .we-q-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+  }
+
+  .we-q-text {
+    font-size: 0.82rem;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+
+  .we-result {
+    background: var(--correct-bg);
+    border: 1px solid rgba(45,106,79,0.2);
+    border-radius: 4px;
+    padding: 0.9rem 1rem;
+    margin-top: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--correct-text);
+    line-height: 1.6;
+  }
+
+  .we-result-label {
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--correct-border);
+    margin-bottom: 0.4rem;
+  }
+
+  /* CHECKLIST */
+  .checklist {
+    list-style: none;
+    margin: 1.5rem 0;
+  }
+
+  .checklist li {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    margin-bottom: 0.6rem;
+    font-size: 0.93rem;
+    color: #444440;
+    line-height: 1.5;
+  }
+
+  .checklist li::before {
+    content: '□';
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* FOOTER */
+  footer {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1rem;
+    color: var(--ink);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .footer-links a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .footer-links a:hover { color: var(--accent); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero { animation: fadeUp 0.5s ease both; }
+  .section { animation: fadeUp 0.4s ease both; }
+
+  @media (max-width: 600px) {
+    .three-questions { grid-template-columns: 1fr; }
+    .example-pair { grid-template-columns: 1fr; }
+    .rules { grid-template-columns: 1fr; }
+    .we-analysis { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="top-nav">
+  <a href="https://elianajain.github.io/ElianaJainPortfolio/" class="nav-back">← Portfolio</a>
+  <span class="nav-type">How-To Guide · UX Writing</span>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">How-To Guide · Error Message Writing</div>
+  <h1>How to Write an Error Message Using the <em>Three-Question Structure</em></h1>
+  <p class="hero-intro">Error messages are the most read and least written documentation in any product. This guide covers a repeatable three-question structure that produces clear, actionable, non-blaming error messages every time.</p>
+  <div class="hero-meta">
+    <div class="meta-item">Author <span>Eliana Jain</span></div>
+    <div class="meta-item">Audience <span>Technical Writers · UX Writers · Product Teams</span></div>
+    <div class="meta-item">Reading time <span>5 minutes</span></div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- SECTION 1: WHY -->
+  <div class="section">
+    <div class="section-label">01 · Why error messages matter</div>
+    <h2>The most read documentation nobody writes carefully</h2>
+    <p>Error messages are documentation. They appear at the exact moment a user needs help, which makes them more important than most content a technical writer produces. Yet they are often written by engineers under deadline pressure, reviewed by nobody, and never updated.</p>
+    <p>A bad error message creates three problems: the user doesn't know what happened, doesn't know why it happened, and doesn't know what to do next. A good error message answers all three questions in one sentence.</p>
+  </div>
+
+  <!-- SECTION 2: THE STRUCTURE -->
+  <div class="section">
+    <div class="section-label">02 · The three-question structure</div>
+    <h2>Every error message must answer three questions</h2>
+    <p>Before writing an error message, answer these three questions. The answers become the message.</p>
+
+    <div class="three-questions">
+      <div class="question-card">
+        <div class="q-number">Question 01</div>
+        <div class="q-question">What happened?</div>
+        <div class="q-desc">Name the failure specifically. Never write "something went wrong." That tells the user nothing.</div>
+      </div>
+      <div class="question-card">
+        <div class="q-number">Question 02</div>
+        <div class="q-question">Why did it happen?</div>
+        <div class="q-desc">State the cause if known. If unknown, say so honestly. Don't imply the user caused an error they didn't cause.</div>
+      </div>
+      <div class="question-card">
+        <div class="q-number">Question 03</div>
+        <div class="q-question">What should they do next?</div>
+        <div class="q-desc">Give a specific action. If the issue can't be resolved by the user, direct them to support. Never leave them without a next step.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: HOW TO WRITE -->
+  <div class="section">
+    <div class="section-label">03 · How to write it</div>
+    <h2>Step by step</h2>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-title">Identify what actually failed</div>
+          <div class="step-body">Talk to engineering. Test the scenario yourself. Find out exactly what the system couldn't do — not just the HTTP status code, but the specific action that failed. "File upload failed" is better than "Error 500." "Your session expired" is better than "Unauthorized."</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-title">Locate the failure accurately</div>
+          <div class="step-body">Decide whether the failure was caused by the user, the system, or an external factor. This determines the tone. If the system failed, say so. Don't write copy that implies the user did something wrong when they didn't. Mislocating blame is the most common error message mistake.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-title">Write the three answers in order</div>
+          <div class="step-body">What happened. Why it happened. What to do next. Not all three need separate sentences — a well-constructed sentence can answer two at once. But all three questions must be answered. If you can't answer question two, say "We're not sure what caused this" rather than omitting it entirely.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <div class="step-title">Apply the rules</div>
+          <div class="step-body">Active voice. Present tense. Under 30 words. No exclamation points. No "please." No "something went wrong." No blame. Specific action for the next step. Check every word against this list before publishing.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <div class="step-title">Test it with a real user</div>
+          <div class="step-body">Read the error message out loud. If it sounds like a legal disclaimer or a robot, rewrite it. If a user reads it and still doesn't know what to do, rewrite it. The test is simple: can someone act on this message within five seconds of reading it?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: TEMPLATE -->
+  <div class="section">
+    <div class="section-label">04 · The template</div>
+    <h2>A reusable starting point</h2>
+    <p>Use this template as a starting point. Not every message will follow it exactly — but every message should answer the same three questions.</p>
+
+    <div class="template">
+      <div class="template-label">Template</div>
+      [What failed] could not [action]. [Reason if known]. [Next step].
+    </div>
+
+    <div class="example-pair">
+      <div class="example incorrect">
+        <div class="example-header">Incorrect</div>
+        <div class="example-body">Something went wrong. Please try again.</div>
+        <div class="example-annotation">What failed? Why? What does "try again" mean? None of the three questions are answered.</div>
+      </div>
+      <div class="example correct">
+        <div class="example-header">Correct</div>
+        <div class="example-body">Your file could not be uploaded. Files must be under 10 MB. Compress your file and try again.</div>
+        <div class="example-annotation">What failed: file upload. Why: size limit. What next: compress and retry.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5: RULES -->
+  <div class="section">
+    <div class="section-label">05 · The rules</div>
+    <h2>Non-negotiables for every error message</h2>
+
+    <div class="rules">
+      <div class="rule-card">
+        <div class="rule-title">No exclamation points</div>
+        <div class="rule-desc">A user in an error state is already frustrated. Exclamation points add inappropriate energy to a failure moment.</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-title">No "something went wrong"</div>
+        <div class="rule-desc">This phrase communicates nothing. Name the failure specifically every time, no exceptions.</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-title">Active voice only</div>
+        <div class="rule-desc">"The server couldn't process your request" not "Your request could not be processed." The subject acts.</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-title">Under 30 words</div>
+        <div class="rule-desc">Error messages are read under stress. Short messages are processed faster and acted on more reliably.</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-title">No blame without cause</div>
+        <div class="rule-desc">Only imply user error when the user actually caused the error. Misplaced blame erodes trust immediately.</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-title">Always give a next step</div>
+        <div class="rule-desc">Even if the error can't be resolved by the user, direct them somewhere. "Contact support" is better than nothing.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 6: WORKED EXAMPLES -->
+  <div class="section">
+    <div class="section-label">06 · Worked examples</div>
+    <h2>The three-question structure applied</h2>
+
+    <div class="worked-example">
+      <div class="we-header">
+        <span class="we-scenario">Scenario 01 · File upload failure</span>
+        <span class="we-tag">System error</span>
+      </div>
+      <div class="we-body">
+        <p style="font-size:0.88rem;color:#666;margin-bottom:1rem;">The user tries to upload a file. The upload fails because the file exceeds the size limit.</p>
+        <div class="we-analysis">
+          <div class="we-q">
+            <div class="we-q-label">What happened?</div>
+            <div class="we-q-text">The file could not be uploaded.</div>
+          </div>
+          <div class="we-q">
+            <div class="we-q-label">Why?</div>
+            <div class="we-q-text">The file exceeds the 10 MB size limit.</div>
+          </div>
+          <div class="we-q">
+            <div class="we-q-label">What next?</div>
+            <div class="we-q-text">Compress the file and try again.</div>
+          </div>
+        </div>
+        <div class="we-result">
+          <div class="we-result-label">Final message</div>
+          Your file could not be uploaded. Files must be under 10 MB. Compress your file and try again.
+        </div>
+      </div>
+    </div>
+
+    <div class="worked-example">
+      <div class="we-header">
+        <span class="we-scenario">Scenario 02 · Session expiry</span>
+        <span class="we-tag">Auth error</span>
+      </div>
+      <div class="we-body">
+        <p style="font-size:0.88rem;color:#666;margin-bottom:1rem;">The user's session expired while they were editing a form. Changes were not saved.</p>
+        <div class="we-analysis">
+          <div class="we-q">
+            <div class="we-q-label">What happened?</div>
+            <div class="we-q-text">Changes could not be saved.</div>
+          </div>
+          <div class="we-q">
+            <div class="we-q-label">Why?</div>
+            <div class="we-q-text">The session expired while editing.</div>
+          </div>
+          <div class="we-q">
+            <div class="we-q-label">What next?</div>
+            <div class="we-q-text">Sign back in to continue. Draft is safe.</div>
+          </div>
+        </div>
+        <div class="we-result">
+          <div class="we-result-label">Final message</div>
+          Couldn't save changes. Your session expired while you were editing. Your draft is safe. Sign back in to continue.
+        </div>
+      </div>
+    </div>
+
+    <div class="worked-example">
+      <div class="we-header">
+        <span class="we-scenario">Scenario 03 · Feature unavailable</span>
+        <span class="we-tag">Service error</span>
+      </div>
+      <div class="we-body">
+        <p style="font-size:0.88rem;color:#666;margin-bottom:1rem;">A feature is temporarily down. The user tries to use it and gets an error.</p>
+        <div class="we-analysis">
+          <div class="we-q">
+            <div class="we-q-label">What happened?</div>
+            <div class="we-q-text">File upload is temporarily unavailable.</div>
+          </div>
+          <div class="we-q">
+            <div class="we-q-label">Why?</div>
+            <div class="we-q-text">We are working on it.</div>
+          </div>
+          <div class="we-q">
+            <div class="we-q-label">What next?</div>
+            <div class="we-q-text">Core features still work. Check back soon.</div>
+          </div>
+        </div>
+        <div class="we-result">
+          <div class="we-result-label">Final message</div>
+          File upload is temporarily unavailable. You can still add and update tasks while we work on it. We'll restore file uploads as soon as possible.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 7: CHECKLIST -->
+  <div class="section">
+    <div class="section-label">07 · Before you publish</div>
+    <h2>Error message checklist</h2>
+    <p>Run every error message through this checklist before it ships.</p>
+    <ul class="checklist">
+      <li>Does the message name the failure specifically?</li>
+      <li>Does it explain why the failure happened, or acknowledge if unknown?</li>
+      <li>Does it give the user a clear next step?</li>
+      <li>Is the voice active?</li>
+      <li>Is the tense present?</li>
+      <li>Is it under 30 words?</li>
+      <li>Does it avoid "something went wrong"?</li>
+      <li>Does it avoid exclamation points?</li>
+      <li>Does it accurately locate the failure — system or user?</li>
+      <li>Can a user act on it within five seconds of reading it?</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Eliana Jain</div>
+  <div class="footer-links">
+    <a href="https://elianajain.github.io/ElianaJainPortfolio/">Portfolio</a>
+    <a href="https://elianajain.hashnode.dev">Hashnode</a>
+    <a href="mailto:jain.eliana@gmail.com">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>
