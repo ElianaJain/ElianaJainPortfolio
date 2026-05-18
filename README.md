@@ -100,7 +100,7 @@ Recognized for innovation in Products & Technology on the SAP Ariba Category Man
 
 ---
 
-## Repository Structure
+<!-- ## Repository Structure
 
 ```
 ElianaJainPortfolio/
@@ -115,5 +115,5 @@ ElianaJainPortfolio/
 ```
 
 ---
-
+-->
 *Built with HTML · Hosted on GitHub Pages · Updated 2026*
