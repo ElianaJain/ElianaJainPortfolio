@@ -29,8 +29,10 @@ I am currently building an AI-powered robot dog using Raspberry Pi and SunFounde
 | Burial, Identity, and the Post-Roman World | Research Documentation | [View Case Study](https://elianajain.github.io/ElianaJainPortfolio/work/sanisera-research.html) |
 | Developer Content Style Guide | Style Guide | [View Style Guide](https://elianajain.github.io/ElianaJainPortfolio/work/developer-content-style-guide.md) |
 | AI Documentation Quality Initiative | Writing Sample | [View Sample](https://elianajain.github.io/ElianaJainPortfolio/work/ai-governance-sample.html) |
+| How to Write an Error Message| How-To Guide | [View Guide](https://elianajain.github.io/ElianaJainPortfolio/work/how-to-error-message.html) |
 | cXML Element Reference — IncoTerm | Technical Documentation | [View Sample](https://help.sap.com/docs/business-network-for-supply-chain/cxml-solutions/incoterm-element) |
 | cXML Element Reference — DPAS | Technical Documentation | [View Sample](https://help.sap.com/docs/business-network-for-supply-chain/cxml-solutions/dpas-element) |
+| Mass Approve Order Deviations| Procedural Documentation | [View Guide](https://help.sap.com/docs/ariba/f5681fbd739744be88f4f5e8f8a49ead/9686ccf39c9341e9b809bfe3e61505ab.html) |
 | Score and Weights — Category Management | Content Strategy | [View Sample](https://help.sap.com/docs/categories/sap-ariba-category-management-administration-guide/about-score-and-weights) |
 | Error States, Form Validation, and Empty States | UX Writing Sample | [View Sample](https://elianajain.github.io/ElianaJainPortfolio/work/ux-writing.html) |
 | Developer Content Style Guide | Style Guide | [View Style Guide](https://elianajain.github.io/ElianaJainPortfolio/work/style-guide.html) |
