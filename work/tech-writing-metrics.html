@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Technical Writing Metrics | Eliana Jain</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f2ee;
+    --ink: #0f0e0d;
+    --muted: #6b6560;
+    --border: #d4cfc9;
+    --accent: #c84b2f;
+    --accent-light: #e8d5d0;
+    --amber: #c84b2f;
+    --amber-light: #e8d5d0;
+    --red: #0f0e0d;
+    --red-light: #eeeae5;
+    --blue: #0f0e0d;
+    --blue-light: #eeeae5;
+    --surface: #ffffff;
+    --rule: #d4cfc9;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  /* TOP NAV */
+  .top-nav {
+    padding: 1rem 2.5rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-back {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: gap 0.2s;
+  }
+
+  .nav-back:hover { gap: 0.75rem; }
+
+  .nav-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* HERO */
+  .hero {
+    padding: 6rem 2.5rem 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 4rem;
+    align-items: end;
+  }
+
+  .hero-left {}
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 2px;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 800;
+    line-height: 0.95;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  h1 em {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--accent);
+  }
+
+  .hero-intro {
+    font-size: 1.05rem;
+    color: #555550;
+    line-height: 1.8;
+    font-style: italic;
+  }
+
+  /* HERO STATS */
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .stat-cell {
+    background: var(--surface);
+    padding: 1.5rem;
+  }
+
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.02em;
+  }
+
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  /* MAIN */
+  .main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 5rem 2.5rem 8rem;
+  }
+
+  /* SECTION */
+  .section {
+    margin-bottom: 5rem;
+  }
+
+  .section-header {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 1.5rem;
+    align-items: baseline;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-top: 4px;
+  }
+
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--accent);
+    margin: 2rem 0 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  p {
+    font-size: 0.97rem;
+    color: #3A3835;
+    line-height: 1.85;
+    margin-bottom: 1rem;
+  }
+
+  p:last-child { margin-bottom: 0; }
+
+  /* THREE LEVELS */
+  .three-levels {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--ink);
+    border: 2px solid var(--ink);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 2rem 0;
+  }
+
+  .level-card {
+    background: var(--surface);
+    padding: 2rem;
+  }
+
+  .level-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--border);
+    line-height: 1;
+    margin-bottom: 1rem;
+    letter-spacing: -0.03em;
+  }
+
+  .level-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .level-subtitle {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .level-desc {
+    font-size: 0.88rem;
+    color: #555550;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  .level-metrics {
+    list-style: none;
+    margin-top: 1.2rem;
+  }
+
+  .level-metrics li {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--ink);
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.4;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .level-metrics li::before {
+    content: '→';
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .level-metrics li:last-child { border-bottom: none; }
+
+  /* METRIC CARDS GRID */
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .metric-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.8rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+  }
+
+  .metric-card.findability::before { background: var(--accent); }
+  .metric-card.effectiveness::before { background: var(--amber); }
+  .metric-card.impact::before { background: var(--blue); }
+  .metric-card.qualitative::before { background: var(--red); }
+
+  .metric-card-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+
+  .metric-card.findability .metric-card-label { color: var(--accent); }
+  .metric-card.effectiveness .metric-card-label { color: var(--amber); }
+  .metric-card.impact .metric-card-label { color: var(--blue); }
+  .metric-card.qualitative .metric-card-label { color: var(--red); }
+
+  .metric-card-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+  }
+
+  .metric-card-desc {
+    font-size: 0.85rem;
+    color: #555550;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .metric-list {
+    list-style: none;
+  }
+
+  .metric-list li {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--ink);
+    padding: 0.35rem 0;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.4;
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+
+  .metric-list li::before {
+    content: '·';
+    flex-shrink: 0;
+    font-size: 1rem;
+    line-height: 1.2;
+    color: var(--muted);
+  }
+
+  .metric-list li:last-child { border-bottom: none; }
+
+  /* BEFORE AFTER */
+  .before-after {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    margin: 2rem 0;
+  }
+
+  .ba-panel {
+    padding: 2rem;
+  }
+
+  .ba-panel.before { background: var(--red-light); }
+  .ba-panel.after { background: var(--accent-light); }
+
+  .ba-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .ba-panel.before .ba-label { color: var(--red); }
+  .ba-panel.after .ba-label { color: var(--accent); }
+
+  .ba-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+  }
+
+  .ba-panel.before .ba-label::after { background: rgba(139,42,21,0.2); }
+  .ba-panel.after .ba-label::after { background: rgba(26,58,42,0.2); }
+
+  .ba-item {
+    font-size: 0.88rem;
+    color: var(--ink);
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    line-height: 1.5;
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+
+  .ba-item:last-child { border-bottom: none; }
+
+  .ba-icon {
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    margin-top: 2px;
+  }
+
+  /* PRINCIPLE BOX */
+  .principle {
+    background: var(--ink);
+    border-radius: 8px;
+    padding: 3rem;
+    margin: 2.5rem 0;
+    text-align: center;
+  }
+
+  .principle-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 1.2rem;
+  }
+
+  .principle-text {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    font-style: italic;
+    font-weight: 300;
+    color: #F2F0EB;
+    line-height: 1.5;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .principle-text em {
+    font-style: normal;
+    color: #A8C8B8;
+  }
+
+  /* CHECKLIST */
+  .checklist-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+  }
+
+  .checklist-item {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    padding: 0.9rem 1rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: #3A3835;
+    line-height: 1.4;
+  }
+
+  .check-icon {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-top: 1px;
+    border: 1px solid var(--accent);
+    border-radius: 2px;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* WALKME NOTE */
+  .walkme-note {
+    background: var(--amber-light);
+    border: 1px solid rgba(193,123,42,0.3);
+    border-left: 3px solid var(--amber);
+    border-radius: 0 6px 6px 0;
+    padding: 1.2rem 1.5rem;
+    margin: 1.5rem 0;
+    font-size: 0.88rem;
+    color: #4A3010;
+    line-height: 1.6;
+  }
+
+  .walkme-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 0.4rem;
+  }
+
+  /* FOOTER */
+  footer {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2.5rem 2.5rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .footer-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .footer-links a:hover { color: var(--accent); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero { animation: fadeUp 0.6s ease both; }
+  .section { animation: fadeUp 0.4s ease both; }
+
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; gap: 2rem; }
+    .three-levels { grid-template-columns: 1fr; }
+    .metrics-grid { grid-template-columns: 1fr; }
+    .before-after { grid-template-columns: 1fr; }
+    .checklist-grid { grid-template-columns: 1fr; }
+    .main { padding: 3rem 1.5rem 5rem; }
+    .hero { padding: 3rem 1.5rem 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="top-nav">
+  <a href="https://elianajain.github.io/ElianaJainPortfolio/" class="nav-back">← Portfolio</a>
+  <span class="nav-label">Case Study · Technical Writing Metrics</span>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Case Study · Content Effectiveness</div>
+    <h1>Measuring What<br><em>Actually Works</em></h1>
+    <p class="hero-intro">A framework for defining, tracking, and acting on technical writing metrics that go beyond page views. It measures whether documentation changes behavior at scale.</p>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-cell">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Measurement levels</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">12+</div>
+      <div class="stat-label">Specific metrics defined</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">2</div>
+      <div class="stat-label">Signal types: quant and qual</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">1</div>
+      <div class="stat-label">North star metric</div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- SECTION 1: THE PROBLEM -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2>The Problem With Page Views</h2>
+    </div>
+    <p>Most documentation teams default to page views as their primary metric. It's easy to measure, easy to report, and almost entirely useless as a signal of documentation quality.</p>
+    <p>High page views might mean your content is valuable. It might also mean it's confusing and users keep returning because it never resolves their question. Low page views might mean nobody needs that content. Or nobody can find it. The number alone tells you nothing about whether the documentation is working.</p>
+    <p>Effective documentation metrics measure outcomes, not activity. The question is never "did people read it." The question is "did people do the thing differently after reading it."</p>
+
+    <div class="before-after">
+      <div class="ba-panel before">
+        <div class="ba-label">Weak metrics</div>
+        <div class="ba-item"><span class="ba-icon">✗</span>Page views and unique visitors</div>
+        <div class="ba-item"><span class="ba-icon">✗</span>Time on page in isolation</div>
+        <div class="ba-item"><span class="ba-icon">✗</span>Number of documents published</div>
+        <div class="ba-item"><span class="ba-icon">✗</span>Word count or page count</div>
+        <div class="ba-item"><span class="ba-icon">✗</span>"Documentation is complete"</div>
+      </div>
+      <div class="ba-panel after">
+        <div class="ba-label">Strong metrics</div>
+        <div class="ba-item"><span class="ba-icon">✓</span>Support ticket reduction by topic</div>
+        <div class="ba-item"><span class="ba-icon">✓</span>Task completion rate after reading</div>
+        <div class="ba-item"><span class="ba-icon">✓</span>Tool adoption rate post-launch</div>
+        <div class="ba-item"><span class="ba-icon">✓</span>Return visit rate to same article</div>
+        <div class="ba-item"><span class="ba-icon">✓</span>Onboarding time reduction</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: THE FRAMEWORK -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2>The Three-Level Framework</h2>
+    </div>
+    <p>Effective documentation metrics operate at three levels. Each level answers a different question and requires different data sources. All three are necessary for a complete picture.</p>
+
+    <div class="three-levels">
+      <div class="level-card">
+        <div class="level-num">01</div>
+        <div class="level-title">Findability</div>
+        <div class="level-subtitle">Can they locate it?</div>
+        <div class="level-desc">Users can't benefit from documentation they can't find. Findability metrics reveal gaps in content architecture and search optimization.</div>
+        <ul class="level-metrics">
+          <li>Search terms with zero results</li>
+          <li>Time to first click from search</li>
+          <li>Navigation paths to content</li>
+          <li>Dead end pages with no next action</li>
+          <li>Failed search rate</li>
+        </ul>
+      </div>
+      <div class="level-card">
+        <div class="level-num">02</div>
+        <div class="level-title">Effectiveness</div>
+        <div class="level-subtitle">Does it actually help?</div>
+        <div class="level-desc">Finding the content is necessary but not sufficient. Effectiveness metrics measure whether users get what they need from the content once they find it.</div>
+        <ul class="level-metrics">
+          <li>Task completion rate after reading</li>
+          <li>Return visit rate to same article</li>
+          <li>Support ticket volume by topic</li>
+          <li>Time on page in context</li>
+          <li>User feedback scores</li>
+        </ul>
+      </div>
+      <div class="level-card">
+        <div class="level-num">03</div>
+        <div class="level-title">Impact</div>
+        <div class="level-subtitle">Is it changing behavior?</div>
+        <div class="level-desc">The highest level of measurement. Impact metrics connect documentation directly to business outcomes and behavioral change at scale.</div>
+        <ul class="level-metrics">
+          <li>Tool adoption rate post-launch</li>
+          <li>Support escalation reduction</li>
+          <li>Onboarding time reduction</li>
+          <li>Error rate reduction in workflows</li>
+          <li>Employee proficiency scores</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: METRICS IN DETAIL -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2>Metrics in Detail</h2>
+    </div>
+    <p>Each metric category requires different tools, different stakeholders, and different interpretive frameworks. Here's how to apply them in practice.</p>
+
+    <div class="metrics-grid">
+
+      <div class="metric-card findability">
+        <div class="metric-card-label">Level 01 · Findability</div>
+        <div class="metric-card-title">Search and Navigation</div>
+        <div class="metric-card-desc">Search data reveals where content architecture fails users before they even reach the content.</div>
+        <ul class="metric-list">
+          <li>Zero-result searches identify content gaps. These are terms users search for that return nothing</li>
+          <li>High bounce on search results pages means results aren't matching intent</li>
+          <li>Navigation path analysis shows whether users reach content through intended routes</li>
+          <li>Dead end pages with no outbound clicks suggest content that doesn't resolve the question</li>
+        </ul>
+      </div>
+
+      <div class="metric-card effectiveness">
+        <div class="metric-card-label">Level 02 · Effectiveness</div>
+        <div class="metric-card-title">Content Performance</div>
+        <div class="metric-card-desc">Effectiveness metrics reveal whether content resolves the user's need or sends them elsewhere.</div>
+        <ul class="metric-list">
+          <li>Return visits to the same article within a session suggest the content isn't resolving the issue</li>
+          <li>Support ticket volume by topic: track before and after documentation updates</li>
+          <li>Time on page interpreted in context. Short may mean users gave up. Long may mean confusion.</li>
+          <li>Thumbs up or down feedback where available gives direct user signal</li>
+        </ul>
+      </div>
+
+      <div class="metric-card impact">
+        <div class="metric-card-label">Level 03 · Impact</div>
+        <div class="metric-card-title">Behavioral Change</div>
+        <div class="metric-card-desc">Impact metrics connect documentation directly to business outcomes and user proficiency at scale.</div>
+        <ul class="metric-list">
+          <li>Tool adoption rate before and after documentation launch</li>
+          <li>Support escalation reduction over time by product area</li>
+          <li>Onboarding time reduction for new users following documented workflows</li>
+          <li>Error rate reduction in tasks covered by documentation</li>
+        </ul>
+      </div>
+
+      <div class="metric-card qualitative">
+        <div class="metric-card-label">Both levels · Qualitative</div>
+        <div class="metric-card-title">Feedback Signals</div>
+        <div class="metric-card-desc">Quantitative metrics tell you what happened. Qualitative signals tell you why. Both are necessary.</div>
+        <ul class="metric-list">
+          <li>Support team input on which topics generate the most questions</li>
+          <li>Stakeholder feedback during documentation reviews</li>
+          <li>User interviews and usability testing observations</li>
+          <li>Comments on documentation pages where available</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SECTION 4: REAL WORLD -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2>Applied at SAP Ariba</h2>
+    </div>
+    <p>At SAP Ariba I applied elements of this framework to documentation serving 2,000+ enterprise users across procurement and supply chain workflows. Two approaches shaped how I measured and improved content effectiveness.</p>
+
+    <div class="walkme-note">
+      <div class="walkme-label">WalkMe Integration</div>
+      I participated in WalkMe integration training at SAP Ariba as the team prepared to track how employees navigated documentation and where they encountered friction. WalkMe enabled tracking of page visits, navigation paths, drop-off points, and user journey patterns within the help system. The goal was to move from anecdotal feedback to behavioral data. The goal was to understand not just what users said about the documentation but what they actually did with it.
+    </div>
+
+    <h3>Support ticket analysis</h3>
+    <p>I worked closely with support teams to identify which documentation topics generated the highest volume of support escalations. High ticket volume on a documented topic was a signal that the existing content wasn't resolving the user's question. The content may have been incomplete, inaccurate, hard to find, or structured in a way that didn't match how users thought about the problem.</p>
+    <p>When I updated documentation based on support ticket patterns, I tracked whether ticket volume on those topics decreased in the weeks following. Decrease confirmed the documentation was working. Continued high volume signaled the content needed further revision.</p>
+
+    <h3>The north star metric</h3>
+    <p>Across both quantitative and qualitative approaches, the metric that mattered most was behavior change. If employees were using internal tools more confidently, making fewer errors, and contacting support less frequently after a documentation update, the documentation worked. If behavior didn't change, the content needed to change.</p>
+  </div>
+
+  <!-- SECTION 5: PRINCIPLE -->
+  <div class="principle">
+    <div class="principle-label">North Star</div>
+    <div class="principle-text">The question is never "did people read it." The question is "did people do the thing <em>differently</em> after reading it."</div>
+  </div>
+
+  <!-- SECTION 6: CHECKLIST -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2>Metrics Readiness Checklist</h2>
+    </div>
+    <p>Before launching documentation, establish your measurement baseline. Before reporting on documentation performance, verify your metrics are measuring outcomes rather than activity.</p>
+
+    <div class="checklist-grid">
+      <div class="checklist-item"><span class="check-icon">□</span>Have you defined what behavioral change this documentation should produce?</div>
+      <div class="checklist-item"><span class="check-icon">□</span>Do you have a baseline support ticket volume for this topic before the documentation ships?</div>
+      <div class="checklist-item"><span class="check-icon">□</span>Is search tracking enabled to identify zero-result queries?</div>
+      <div class="checklist-item"><span class="check-icon">□</span>Can you track task completion rate or tool adoption rate for the documented workflow?</div>
+      <div class="checklist-item"><span class="check-icon">□</span>Do you have a qualitative feedback channel: user surveys, support team input, or direct user access?</div>
+      <div class="checklist-item"><span class="check-icon">□</span>Have you identified which stakeholders will receive metrics reports and at what cadence?</div>
+      <div class="checklist-item"><span class="check-icon">□</span>Is there a review trigger: a metric threshold that signals content needs updating?</div>
+      <div class="checklist-item"><span class="check-icon">□</span>Are you measuring outcomes rather than activity: behavior change rather than page views?</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Eliana Jain</div>
+  <div class="footer-links">
+    <a href="https://elianajain.github.io/ElianaJainPortfolio/">Portfolio</a>
+    <a href="https://elianajain.hashnode.dev">Hashnode</a>
+    <a href="mailto:jain.eliana@gmail.com">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>
