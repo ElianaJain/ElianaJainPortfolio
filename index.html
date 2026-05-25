@@ -290,6 +290,10 @@
       grid-column: 3 / 3;
     }
 
+    .work-card:empty {
+      display: none;
+    }
+
     .card-type {
       font-family: 'DM Mono', monospace;
       font-size: 0.65rem;
@@ -796,8 +800,10 @@
     <span class="tag">GitHub</span>
     <span class="tag">Technical Docs</span>
   </div>
-  <a href="https://help.sap.com/docs/business-network-for-supply-chain/cxml-solutions/incoterm-element" class="card-link" target="_blank">Sample 1: IncoTerm Element</a>
-  <a href="https://help.sap.com/docs/business-network-for-supply-chain/cxml-solutions/dpas-element" class="card-link" target="_blank">Sample 2: DPAS Element</a>
+  <div style="display:flex; flex-direction:column; gap:0.4rem; margin-top:0.5rem;">
+    <a href="https://help.sap.com/docs/business-network-for-supply-chain/cxml-solutions/incoterm-element" class="card-link" target="_blank">Sample 1: IncoTerm Element</a>
+    <a href="https://help.sap.com/docs/business-network-for-supply-chain/cxml-solutions/dpas-element" class="card-link" target="_blank">Sample 2: DPAS Element</a>
+  </div>
 </div>
 
 <div class="work-card reveal">
