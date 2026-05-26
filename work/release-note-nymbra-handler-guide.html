@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Release Note: Nymbra Handler Guide v2.0 — Eliana Jain</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f0e0d;
+    --paper: #f5f2ee;
+    --rule: #d4cfc9;
+    --accent: #c84b2f;
+    --accent-dim: #e8d5d0;
+    --mid: #6b6560;
+    --mono-bg: #eeeae5;
+    --green: #2d6a4f;
+    --green-dim: #e0ede7;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Instrument Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: clamp(15px, 1.05vw, 17px);
+    line-height: 1.65;
+  }
+
+  .top-nav {
+    padding: 0.75rem 2rem;
+    border-bottom: 1px solid var(--rule);
+    background: var(--paper);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-back {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: gap 0.2s;
+  }
+
+  .nav-back:hover { gap: 0.75rem; }
+
+  .nav-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+
+  .hero {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 5rem 2rem 3rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 2px;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+
+  h1 em { font-style: italic; color: var(--accent); }
+
+  .hero-intro {
+    font-size: 1rem;
+    color: var(--mid);
+    max-width: 560px;
+    line-height: 1.75;
+    margin-bottom: 2rem;
+  }
+
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .meta-item {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+
+  .meta-item span { color: var(--ink); }
+
+  .disclaimer {
+    max-width: 860px;
+    margin: 2rem auto 0;
+    padding: 0.75rem 2rem;
+    background: var(--mono-bg);
+    border-left: 3px solid var(--mid);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.06em;
+    color: var(--mid);
+    line-height: 1.6;
+  }
+
+  .main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 4rem 2rem 6rem;
+  }
+
+  .release-doc {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .doc-header {
+    background: var(--ink);
+    padding: 2rem 2.5rem;
+  }
+
+  .doc-product {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(245,242,238,0.5);
+    margin-bottom: 0.75rem;
+  }
+
+  .doc-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--paper);
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+
+  .doc-subtitle {
+    font-size: 0.9rem;
+    color: rgba(245,242,238,0.6);
+    font-style: italic;
+  }
+
+  .doc-meta-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .doc-meta-item {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(245,242,238,0.4);
+  }
+
+  .doc-meta-item span { color: rgba(245,242,238,0.8); }
+
+  .version-badge {
+    display: inline-block;
+    margin-top: 1rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.75rem;
+    border-radius: 2px;
+    background: var(--accent);
+    color: white;
+  }
+
+  .doc-body { padding: 2.5rem; }
+
+  .doc-section {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .doc-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .doc-section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .doc-section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--accent-dim);
+  }
+
+  .doc-section h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+
+  p {
+    font-size: 0.95rem;
+    color: #3a3835;
+    line-height: 1.8;
+    margin-bottom: 0.9rem;
+  }
+
+  p:last-child { margin-bottom: 0; }
+
+  /* CHANGE SUMMARY TABLE */
+  .change-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin: 1.25rem 0;
+  }
+
+  .change-table thead {
+    background: var(--mono-bg);
+  }
+
+  .change-table th {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mid);
+    padding: 0.6rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .change-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink);
+    vertical-align: top;
+    line-height: 1.5;
+    font-size: 0.88rem;
+  }
+
+  .change-table tr:last-child td { border-bottom: none; }
+  .change-table td:first-child { font-weight: 600; white-space: nowrap; }
+
+  .change-tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.5rem;
+    border-radius: 2px;
+    margin-left: 0.5rem;
+  }
+
+  .change-tag.new { background: var(--green-dim); color: var(--green); }
+  .change-tag.updated { background: var(--accent-dim); color: var(--accent); }
+
+  /* STEPS */
+  .steps { counter-reset: steps; margin: 1.25rem 0; }
+
+  .step {
+    counter-increment: steps;
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    align-items: start;
+  }
+
+  .step-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--paper);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 500;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .step-action {
+    font-size: 0.93rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+    line-height: 1.4;
+  }
+
+  .step-detail {
+    font-size: 0.85rem;
+    color: var(--mid);
+    line-height: 1.6;
+  }
+
+  .ui { font-weight: 600; color: var(--ink); }
+
+  code {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    background: var(--mono-bg);
+    padding: 0.1rem 0.4rem;
+    border-radius: 2px;
+    color: var(--ink);
+  }
+
+  .note {
+    background: var(--mono-bg);
+    border-left: 3px solid var(--mid);
+    border-radius: 0 4px 4px 0;
+    padding: 1rem 1.25rem;
+    margin: 1.25rem 0;
+    font-size: 0.85rem;
+    color: var(--mid);
+    line-height: 1.6;
+  }
+
+  .note-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 0.3rem;
+  }
+
+  .warning {
+    background: #fdf0ed;
+    border: 1px solid var(--accent-dim);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 4px 4px 0;
+    padding: 1rem 1.25rem;
+    margin: 1.25rem 0;
+    font-size: 0.85rem;
+    color: #4a1a0f;
+    line-height: 1.6;
+  }
+
+  .warning-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+  }
+
+  .r-code {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 0.15rem 0.5rem;
+    border-radius: 2px;
+    background: var(--mono-bg);
+    border: 1px solid var(--rule);
+    color: var(--ink);
+    margin-right: 0.3rem;
+  }
+
+  .refusal-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin: 1.25rem 0;
+  }
+
+  .refusal-table th {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mid);
+    padding: 0.6rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--rule);
+    background: var(--mono-bg);
+  }
+
+  .refusal-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+    line-height: 1.5;
+    font-size: 0.85rem;
+    color: #3a3835;
+  }
+
+  .refusal-table tr:last-child td { border-bottom: none; }
+
+  .related-list {
+    list-style: none;
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .related-list li a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-dim);
+    padding-bottom: 1px;
+    transition: border-color 0.2s;
+  }
+
+  .related-list li a:hover { border-color: var(--accent); }
+
+  .craft-notes {
+    margin-top: 3rem;
+    padding: 2rem 2.5rem;
+    background: var(--mono-bg);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+  }
+
+  .craft-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+  }
+
+  .craft-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .craft-item-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+
+  .craft-item-desc {
+    font-size: 0.82rem;
+    color: var(--mid);
+    line-height: 1.5;
+  }
+
+  footer {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2rem;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1rem;
+    color: var(--ink);
+  }
+
+  .footer-links { display: flex; gap: 1.5rem; }
+
+  .footer-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mid);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .footer-links a:hover { color: var(--accent); }
+
+  @media (max-width: 600px) {
+    .craft-grid { grid-template-columns: 1fr; }
+    .doc-body { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="https://elianajain.github.io/ElianaJainPortfolio/" class="nav-back">← Portfolio</a>
+  <span class="nav-label">Writing Sample · Release Note</span>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">Writing Sample · Release Note</div>
+  <h1>Nymbra<br><em>Handler Guide v2.0</em></h1>
+  <p class="hero-intro">A release note documenting the second version of the Nymbra handler guide, covering updated session initialization, unfamiliar handler protocols, refusal behavior guidance, and emergency stop procedures.</p>
+  <div class="hero-meta">
+    <div class="meta-item">Author <span>Eliana Jain</span></div>
+    <div class="meta-item">Format <span>Software Release Note</span></div>
+    <div class="meta-item">Product <span>Nymbra AI Robot Dog</span></div>
+    <div class="meta-item">Audience <span>Primary and Secondary Handlers</span></div>
+  </div>
+</div>
+
+<div class="disclaimer">
+  This release note is part of the Nymbra personal robotics project. Nymbra is an AI-powered robot dog built on the SunFounder PiDog platform with Raspberry Pi. Full project documentation is available at elianajain.github.io/Nymbra.
+</div>
+
+<div class="main">
+  <div class="release-doc">
+
+    <div class="doc-header">
+      <div class="doc-product">Nymbra AI Robot Dog · Documentation Release</div>
+      <div class="doc-title">Handler Guide v2.0</div>
+      <div class="doc-subtitle">Updated session protocols, refusal behavior guidance, and emergency procedures</div>
+      <div class="doc-meta-bar">
+        <div class="doc-meta-item">Version <span>2.0</span></div>
+        <div class="doc-meta-item">Previous version <span>1.0</span></div>
+        <div class="doc-meta-item">Audience <span>Primary and Secondary Handlers</span></div>
+        <div class="doc-meta-item">Activation <span>Immediate</span></div>
+      </div>
+      <div class="version-badge">Major version update</div>
+    </div>
+
+    <div class="doc-body">
+
+      <!-- WHAT CHANGED -->
+      <div class="doc-section">
+        <div class="doc-section-label">What Changed</div>
+        <h2>Summary of updates in v2.0</h2>
+        <p>Handler Guide v2.0 introduces four updated sections that follow the natural handler workflow from session start to session end. Each section has been rewritten based on testing feedback and observed handler behavior during Phase 1 field sessions.</p>
+
+        <table class="change-table">
+          <thead>
+            <tr>
+              <th>Section</th>
+              <th>Change type</th>
+              <th>Summary</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Session Initialization <span class="change-tag updated">Updated</span></td>
+              <td>Rewritten</td>
+              <td>Expanded pre-session checklist, clarified startup sequence, added environment readiness criteria.</td>
+            </tr>
+            <tr>
+              <td>Unfamiliar Handler Protocol <span class="change-tag new">New</span></td>
+              <td>New section</td>
+              <td>Documents how Nymbra responds to handlers it has not previously interacted with and what primary handlers should do.</td>
+            </tr>
+            <tr>
+              <td>Refusal Behavior Guidance <span class="change-tag updated">Updated</span></td>
+              <td>Expanded</td>
+              <td>Refusal category table updated. Handler response steps added for each refusal category. Public setting guidance added.</td>
+            </tr>
+            <tr>
+              <td>Emergency Stop Procedures <span class="change-tag updated">Updated</span></td>
+              <td>Rewritten</td>
+              <td>Three-tier stop protocol replacing single-step shutdown. Recovery steps added for each tier.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="note">
+          <div class="note-label">No action required</div>
+          Existing sessions do not need to be restarted. Handler Guide v2.0 takes effect immediately for all new sessions. Review the updated sections before your next session.
+        </div>
+      </div>
+
+      <!-- SESSION INITIALIZATION -->
+      <div class="doc-section">
+        <div class="doc-section-label">Section 1 · Updated</div>
+        <h2>Session initialization</h2>
+        <p>The session initialization section has been expanded to include an environment readiness check before powering on Nymbra. Testing showed that handlers who skipped environment checks encountered avoidable movement errors during early session phases.</p>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <div class="step-action">Complete the environment readiness check.</div>
+              <div class="step-detail">Confirm the session area is clear of obstacles within a 1.5 meter radius. Confirm the floor surface is suitable for quadruped movement. Confirm no unauthorized persons are within the session area.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <div class="step-action">Verify hardware status before powering on.</div>
+              <div class="step-detail">Check that the battery level is above 40%. Confirm all limb joints move freely with no visible obstruction. Confirm the camera and sensor array are unobstructed.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <div class="step-action">Power on Nymbra and wait for the ready signal.</div>
+              <div class="step-detail">Press and hold the power button for two seconds. Wait for the startup sequence to complete. Nymbra signals session readiness with two short tones and a stable standing position.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <div class="step-action">Confirm handler identity.</div>
+              <div class="step-detail">State your handler name clearly within 1 meter of Nymbra's sensor array. Nymbra logs the session handler identity at startup. If Nymbra does not recognize your voice profile, see the Unfamiliar Handler Protocol section.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">5</div>
+            <div class="step-content">
+              <div class="step-action">Begin the session.</div>
+              <div class="step-detail">Issue your first instruction. Nymbra is now in active session mode and will respond to handler commands according to its current behavior configuration.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- UNFAMILIAR HANDLER PROTOCOL -->
+      <div class="doc-section">
+        <div class="doc-section-label">Section 2 · New</div>
+        <h2>Unfamiliar handler protocol</h2>
+        <p>This section is new in v2.0. It documents how Nymbra responds when it encounters a handler whose voice profile is not in its recognition database, and what primary handlers should do in these situations.</p>
+        <p>Nymbra distinguishes between primary handlers — those whose voice profiles are registered — and unfamiliar handlers — those whose voice profiles are not registered. Nymbra does not refuse interaction with unfamiliar handlers, but it applies a reduced trust level that limits certain behaviors until a primary handler authorizes the session.</p>
+
+        <div class="warning">
+          <div class="warning-label">Important</div>
+          Nymbra will not accept movement commands from an unfamiliar handler without primary handler authorization. This is a safety constraint, not an error. Do not attempt to override it.
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <div class="step-action">Recognize the unfamiliar handler signal.</div>
+              <div class="step-detail">Nymbra signals an unrecognized voice profile with a single amber indicator light and a verbal prompt: "Handler not recognized. Primary handler authorization required."</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <div class="step-action">Primary handler issues authorization.</div>
+              <div class="step-detail">The primary handler states: "Authorize secondary handler." Nymbra confirms with a green indicator light and a verbal confirmation: "Secondary handler authorized for this session."</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <div class="step-action">Confirm the secondary handler's session scope.</div>
+              <div class="step-detail">After authorization, Nymbra accepts movement and interaction commands from the secondary handler for the current session only. Authorization does not persist between sessions.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="note">
+          <div class="note-label">Note</div>
+          To register a new primary handler voice profile, see the Handler Registration section of the Nymbra Developer Environment documentation.
+        </div>
+      </div>
+
+      <!-- REFUSAL BEHAVIOR -->
+      <div class="doc-section">
+        <div class="doc-section-label">Section 3 · Updated</div>
+        <h2>Refusal behavior guidance</h2>
+        <p>The refusal behavior section has been expanded with handler response steps for each refusal category and new guidance for managing refusals in public settings. The refusal category table has been updated to include <code>R6</code>, which was added in Phase 1.</p>
+
+        <table class="refusal-table">
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Category</th>
+              <th>Handler response</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="r-code">R1</span></td>
+              <td>Physical safety — Nymbra refuses a command that would risk physical harm to itself or others.</td>
+              <td>Do not repeat the command. Assess the environment for the safety issue Nymbra has identified. Modify the environment or command and retry.</td>
+            </tr>
+            <tr>
+              <td><span class="r-code">R2</span></td>
+              <td>Boundary violation — Nymbra refuses a command that exceeds its defined operational boundaries.</td>
+              <td>Review the current session boundary configuration. Adjust boundaries in the session configuration file if the command is legitimate.</td>
+            </tr>
+            <tr>
+              <td><span class="r-code">R3</span></td>
+              <td>Uncertainty threshold — Nymbra refuses because confidence in its ability to complete the command safely is below threshold.</td>
+              <td>Simplify the command or break it into smaller steps. Nymbra will attempt each step individually.</td>
+            </tr>
+            <tr>
+              <td><span class="r-code">R4</span></td>
+              <td>Authorization — Nymbra refuses because the requesting handler does not have authorization for the requested action.</td>
+              <td>Primary handler issues authorization per the Unfamiliar Handler Protocol. Retry the command after authorization is confirmed.</td>
+            </tr>
+            <tr>
+              <td><span class="r-code">R5</span></td>
+              <td>Hardware state — Nymbra refuses because a hardware condition prevents safe execution.</td>
+              <td>Check battery level, joint status, and sensor array. Address the hardware condition before continuing the session.</td>
+            </tr>
+            <tr>
+              <td><span class="r-code">R6</span></td>
+              <td>Environment — Nymbra refuses because the detected environment is outside safe operating parameters.</td>
+              <td>Relocate the session to an environment within operating parameters. Do not attempt to override this refusal.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2 style="font-family:'DM Serif Display',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin:1.5rem 0 0.75rem;">Managing refusals in public settings</h2>
+        <p>When a refusal occurs in a public setting, it may attract attention from bystanders. The following steps help handlers manage the situation calmly without escalating concern.</p>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <div class="step-action">Do not repeat the refused command immediately.</div>
+              <div class="step-detail">Repeating a refused command in rapid succession signals to bystanders that the handler has lost control of the system. Pause for at least five seconds before any follow-up action.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <div class="step-action">Identify the refusal code.</div>
+              <div class="step-detail">Nymbra states the refusal code verbally in a low tone. If the environment is noisy, check the session log on your connected device for the code.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <div class="step-action">Apply the appropriate handler response for the refusal code.</div>
+              <div class="step-detail">See the refusal category table above. If the refusal cannot be resolved in the current environment, end the session using the standard shutdown procedure.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EMERGENCY STOP -->
+      <div class="doc-section">
+        <div class="doc-section-label">Section 4 · Updated</div>
+        <h2>Emergency stop procedures</h2>
+        <p>The emergency stop procedure has been rewritten in v2.0. The previous single-step shutdown has been replaced with a three-tier protocol that matches the severity of the situation. Use the lowest applicable tier first.</p>
+
+        <div class="warning">
+          <div class="warning-label">Warning</div>
+          Tier 3 hard stop cuts power immediately. Use Tier 3 only when Tier 1 and Tier 2 are not available or have failed. A hard stop may require hardware inspection before the next session.
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <div class="step-action">Tier 1 — Verbal stop command.</div>
+              <div class="step-detail">Say "Nymbra, stop" clearly. Nymbra halts all movement immediately and enters standby mode. Use this tier for routine stops and non-urgent situations. Recovery: issue a new command to resume the session.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <div class="step-action">Tier 2 — Software stop via connected device.</div>
+              <div class="step-detail">Select <span class="ui">Emergency Stop</span> in the Nymbra session interface on your connected device. Nymbra halts all movement and saves the current session log before entering standby. Use this tier when verbal commands are not being recognized. Recovery: restart the session from the session interface.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <div class="step-action">Tier 3 — Hardware hard stop.</div>
+              <div class="step-detail">Press and hold the power button for five seconds until all indicator lights go dark. Power is cut immediately. Use this tier only when Tier 1 and Tier 2 have failed or are unavailable. Recovery: inspect all limb joints and sensor array before powering on again. Review the session log on your connected device to identify the cause of the emergency.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="note">
+          <div class="note-label">Note</div>
+          After any Tier 3 hard stop, complete a full hardware inspection before starting a new session. Do not skip the inspection even if no physical damage is visible.
+        </div>
+      </div>
+
+      <!-- RELATED DOCS -->
+      <div class="doc-section">
+        <div class="doc-section-label">Related Documentation</div>
+        <h2>Learn more</h2>
+        <ul class="related-list">
+          <li><a href="https://elianajain.github.io/Nymbra">Nymbra Project Overview</a></li>
+          <li><a href="#">Nymbra Handler Guide v2.0 — Full Document</a></li>
+          <li><a href="#">Nymbra Refusal Categories Governance Document</a></li>
+          <li><a href="#">Nymbra Developer Environment Setup</a></li>
+          <li><a href="#">Handler Registration Guide</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CRAFT NOTES -->
+  <div class="craft-notes">
+    <div class="craft-label">Craft Notes — What This Sample Demonstrates</div>
+    <div class="craft-grid">
+      <div>
+        <div class="craft-item-title">Natural workflow order</div>
+        <div class="craft-item-desc">Sections follow the actual handler journey from session start to emergency shutdown. The reader never has to jump between sections to complete a task in sequence.</div>
+      </div>
+      <div>
+        <div class="craft-item-title">Three-tier severity structure</div>
+        <div class="craft-item-desc">The emergency stop procedure uses a tiered approach that matches action to severity. Handlers use the lowest applicable tier first, reducing unnecessary system stress while maintaining safety.</div>
+      </div>
+      <div>
+        <div class="craft-item-title">Structured refusal documentation</div>
+        <div class="craft-item-desc">Each refusal category includes a specific handler response, not just a description of what the refusal means. Documentation that tells users what happened and what to do next is more useful than documentation that only names the failure.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-name">Eliana Jain</div>
+  <div class="footer-links">
+    <a href="https://elianajain.github.io/ElianaJainPortfolio/">Portfolio</a>
+    <a href="https://elianajain.hashnode.dev">Hashnode</a>
+    <a href="mailto:jain.eliana@gmail.com">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>
