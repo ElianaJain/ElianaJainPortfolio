@@ -19,7 +19,6 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -31,7 +30,6 @@
       overflow-x: hidden;
     }
 
-    /* ── MASTHEAD ─────────────────────────────────────────────── */
     header {
       border-bottom: 2px solid var(--ink);
       padding: clamp(3rem, 8vw, 6rem) var(--col-gap) clamp(2rem, 5vw, 3.5rem);
@@ -87,10 +85,7 @@
       color: var(--ink);
     }
 
-    h1 em {
-      font-style: italic;
-      color: var(--accent);
-    }
+    h1 em { font-style: italic; color: var(--accent); }
 
     .tagline {
       margin-top: 1.25rem;
@@ -140,7 +135,6 @@
     }
     .header-links a:hover { color: var(--accent); border-color: var(--accent); }
 
-    /* ── NAV ───────────────────────────────────────────────────── */
     nav {
       border-bottom: 1px solid var(--rule);
       padding: 0 var(--col-gap);
@@ -166,7 +160,6 @@
     nav a:hover { color: var(--ink); border-color: var(--ink); }
     nav a.active { color: var(--accent); border-color: var(--accent); }
 
-    /* ── LAYOUT ────────────────────────────────────────────────── */
     main {
       max-width: 1280px;
       margin: 0 auto;
@@ -213,7 +206,6 @@
       margin-bottom: 0.4rem;
     }
 
-    /* ── ABOUT / INTRO ─────────────────────────────────────────── */
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -267,13 +259,20 @@
       font-size: 0.9rem;
     }
 
-    /* ── Work Samples ──────────────────────────────────────────── */
     .work-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 1.5px;
       background: var(--rule);
       border: 1.5px solid var(--rule);
+    }
+
+    @media (max-width: 900px) {
+      .work-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 560px) {
+      .work-grid { grid-template-columns: 1fr; }
     }
 
     .work-card {
@@ -285,14 +284,7 @@
       transition: background 0.25s;
       cursor: default;
     }
-
-    .work-card:last-child:nth-child(odd) {
-      grid-column: 3 / 3;
-    }
-
-    .work-card:empty {
-      display: none;
-    }
+    .work-card:hover { background: #f0ece6; }
 
     .card-type {
       font-family: 'DM Mono', monospace;
@@ -349,9 +341,7 @@
       transition: color 0.2s, border-color 0.2s;
     }
     .card-link:hover { color: var(--accent); border-color: var(--accent); }
-    .card-link::after { content: '→'; }
 
-    /* ── EXPERIENCE TIMELINE ───────────────────────────────────── */
     .timeline {
       display: flex;
       flex-direction: column;
@@ -373,9 +363,7 @@
 
     .timeline-item:last-child { border-bottom: none; }
 
-    .tl-meta {
-      padding-top: 0.15rem;
-    }
+    .tl-meta { padding-top: 0.15rem; }
 
     .tl-period {
       font-family: 'DM Mono', monospace;
@@ -416,11 +404,13 @@
       line-height: 1.55;
     }
     .tl-bullets li::before {
-      content: '—';
+      content: '';
       position: absolute;
       left: 0;
-      color: var(--accent);
-      font-weight: 400;
+      top: 0.55em;
+      width: 5px;
+      height: 1px;
+      background: var(--accent);
     }
 
     .tl-highlight {
@@ -432,7 +422,6 @@
       font-style: normal;
     }
 
-    /* ── SKILLS ────────────────────────────────────────────────── */
     .skills-wrapper {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -494,7 +483,6 @@
     }
     .tool-badge:hover { border-color: var(--accent); color: var(--accent); }
 
-    /* ── CERTS & AWARDS ────────────────────────────────────────── */
     .certs-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
@@ -525,6 +513,13 @@
       letter-spacing: 0.08em;
     }
 
+    .cert-detail {
+      font-size: 0.78rem;
+      color: var(--mid);
+      line-height: 1.5;
+      margin-top: 0.3rem;
+    }
+
     .award-box {
       background: var(--ink);
       color: var(--paper);
@@ -536,10 +531,7 @@
       margin-top: 1.5rem;
     }
 
-    .award-icon {
-      font-size: 3rem;
-      line-height: 1;
-    }
+    .award-icon { font-size: 3rem; line-height: 1; }
 
     .award-title {
       font-family: 'DM Serif Display', serif;
@@ -553,7 +545,6 @@
       line-height: 1.55;
     }
 
-    /* ── FOOTER ────────────────────────────────────────────────── */
     footer {
       border-top: 2px solid var(--ink);
       padding: 2.5rem var(--col-gap);
@@ -577,7 +568,6 @@
       letter-spacing: 0.08em;
     }
 
-    /* ── ANIMATIONS ────────────────────────────────────────────── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(18px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -594,14 +584,12 @@
     .fade-up:nth-child(5) { animation-delay: 0.45s; }
     .fade-up:nth-child(6) { animation-delay: 0.55s; }
 
-    /* scroll reveal */
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
     .reveal.visible { opacity: 1; transform: none; }
   </style>
 </head>
 <body>
 
-<!-- ── HEADER ─────────────────────────────────────────────────── -->
 <header>
   <div class="masthead-left">
     <div class="eyebrow">Technical Writing Portfolio</div>
@@ -621,10 +609,9 @@
   </div>
 </header>
 
-<!-- ── NAV ────────────────────────────────────────────────────── -->
 <nav>
   <a href="#about" class="active">About</a>
-  <a href="#work">Work Samples</a>
+  <a href="#work">Highlights & Work Samples</a>
   <a href="#experience">Experience</a>
   <a href="#skills">Skills</a>
   <a href="#certs">Credentials</a>
@@ -632,7 +619,6 @@
 
 <main>
 
-  <!-- ── ABOUT ──────────────────────────────────────────────── -->
   <section id="about">
     <div class="section-header">
       <span class="section-label">01 / About</span>
@@ -651,7 +637,7 @@
         </div>
         <div class="stat-row">
           <div class="stat-num">2K</div>
-          <div class="stat-desc"><strong>Enterprise Users</strong>Impacted by AI documentation systems at SAP</div>
+          <div class="stat-desc"><strong>Enterprise Users</strong>Impacted by documentation systems at SAP</div>
         </div>
         <div class="stat-row">
           <div class="stat-num">10K+</div>
@@ -665,163 +651,173 @@
     </div>
   </section>
 
-  <!-- ── Work Samples ───────────────────────────────────────── -->
   <section id="work">
-  <div class="section-header">
-    <span class="section-label">02 / Work Samples</span>
-    <div class="rule-line"></div>
-  </div>
-  <div class="work-grid">
+    <div class="section-header">
+      <span class="section-label">02 / Highlights & Work Samples</span>
+      <div class="rule-line"></div>
+    </div>
+    <div class="work-grid">
 
-    <div class="work-card reveal">
-  <div class="card-type">Content Design Audit</div>
-  <div class="card-title">Gemini UI Text Audit</div>
-  <div class="card-desc">Audited Google Gemini's music generation feature to evaluate how AI product copy communicates accuracy, uncertainty, and capability limits. Identified inconsistent error messaging, missing latency communication, and non-actionable failure guidance with content design recommendations for each finding.</div>
-  <div class="card-tags">
-    <span class="tag">Content Design</span>
-    <span class="tag">UX Writing</span>
-    <span class="tag">AI Products</span>
-    <span class="tag">Error Messaging</span>
-  </div>
-  <a href="work/gemini-audit.html" class="card-link">View Audit</a>
-</div>
+      <div class="work-card reveal">
+        <div class="card-type">Content Design Audit</div>
+        <div class="card-title">Gemini UI Text Audit</div>
+        <div class="card-desc">Audited Google Gemini's music generation feature to evaluate how AI product copy communicates accuracy, uncertainty, and capability limits. Identified inconsistent error messaging, missing latency communication, and non-actionable failure guidance with content design recommendations for each finding.</div>
+        <div class="card-tags">
+          <span class="tag">Content Design</span>
+          <span class="tag">UX Writing</span>
+          <span class="tag">AI Products</span>
+          <span class="tag">Error Messaging</span>
+        </div>
+        <a href="work/gemini-audit.html" class="card-link">View Audit</a>
+      </div>
 
-<div class="work-card reveal">
-  <div class="card-type">Case Study</div>
-  <div class="card-title">SAP Ariba REST API Documentation</div>
-  <div class="card-desc">Audited incomplete API documentation for SAP Ariba's procurement and sourcing platform, tested endpoints to verify actual behavior, and partnered with engineering to document accurate error codes and OAuth authentication requirements for internal engineers and Developer Portal users.</div>
-  <div class="card-tags">
-    <span class="tag">API Documentation</span>
-    <span class="tag">REST APIs</span>
-    <span class="tag">OAuth</span>
-    <span class="tag">Developer Portal</span>
-  </div>
-  <a href="work/api-case-study.html" class="card-link">View Case Study</a>
-</div>
+      <div class="work-card reveal">
+        <div class="card-type">Case Study</div>
+        <div class="card-title">SAP Ariba REST API Documentation</div>
+        <div class="card-desc">Audited incomplete API documentation for SAP Ariba's procurement and sourcing platform, tested endpoints to verify actual behavior, and partnered with engineering to document accurate error codes and OAuth authentication requirements for internal engineers and Developer Portal users.</div>
+        <div class="card-tags">
+          <span class="tag">API Documentation</span>
+          <span class="tag">REST APIs</span>
+          <span class="tag">OAuth</span>
+          <span class="tag">Developer Portal</span>
+        </div>
+        <a href="work/api-case-study.html" class="card-link">View Case Study</a>
+      </div>
 
-<div class="work-card reveal">
-  <div class="card-type">Case Study</div>
-  <div class="card-title">Measuring What Actually Works</div>
-  <div class="card-desc">A framework for defining, tracking, and acting on technical writing metrics that go beyond page views. Covers three measurement levels: findability, effectiveness, and impact, with specific metrics at each level, qualitative signals, and a north star principle grounded in behavioral change rather than activity.</div>
-  <div class="card-tags">
-    <span class="tag">Content Metrics</span>
-    <span class="tag">Documentation Strategy</span>
-    <span class="tag">Content Effectiveness</span>
-    <span class="tag">Case Study</span>
-  </div>
-  <a href="work/tech-writing-metrics.html" class="card-link">View Case Study</a>
-</div>
+      <div class="work-card reveal">
+        <div class="card-type">Case Study</div>
+        <div class="card-title">Measuring What Actually Works</div>
+        <div class="card-desc">A framework for defining, tracking, and acting on technical writing metrics that go beyond page views. Covers three measurement levels: findability, effectiveness, and impact, with specific metrics at each level, qualitative signals, and a north star principle grounded in behavioral change rather than activity.</div>
+        <div class="card-tags">
+          <span class="tag">Content Metrics</span>
+          <span class="tag">Documentation Strategy</span>
+          <span class="tag">Content Effectiveness</span>
+          <span class="tag">Case Study</span>
+        </div>
+        <a href="work/tech-writing-metrics.html" class="card-link">View Case Study</a>
+      </div>
 
-<div class="work-card reveal">
-  <div class="card-type">Research Documentation</div>
-  <div class="card-title">Burial, Identity, and the Post-Roman World</div>
-  <div class="card-desc">Undergraduate thesis research conducted at the Sanisera necropolis in Menorca, Spain. Analyzed 93 artifacts across 14 disturbed tombs to understand how early Christianity reshaped burial practice for women in 5th to 7th century post-Roman Menorca, working with fragmentary evidence, looted stratigraphy, and a sample too small for statistical analysis.</div>
-  <div class="card-tags">
-    <span class="tag">Primary Research</span>
-    <span class="tag">Mortuary Analysis</span>
-    <span class="tag">Field Documentation</span>
-    <span class="tag">Comparative Analysis</span>
-  </div>
-  <a href="work/sanisera-research.html" class="card-link">View Case Study</a>
-</div>
+      <div class="work-card reveal">
+        <div class="card-type">Research Documentation</div>
+        <div class="card-title">Burial, Identity, and the Post-Roman World</div>
+        <div class="card-desc">Undergraduate thesis research conducted at the Sanisera necropolis in Menorca, Spain. Analyzed 93 artifacts across 14 disturbed tombs to understand how early Christianity reshaped burial practice for women in 5th to 7th century post-Roman Menorca, working with fragmentary evidence, looted stratigraphy, and a sample too small for statistical analysis.</div>
+        <div class="card-tags">
+          <span class="tag">Primary Research</span>
+          <span class="tag">Mortuary Analysis</span>
+          <span class="tag">Field Documentation</span>
+          <span class="tag">Comparative Analysis</span>
+        </div>
+        <a href="work/sanisera-research.html" class="card-link">View Case Study</a>
+      </div>
 
-<div class="work-card reveal">
-  <div class="card-type">Style Guide</div>
-  <div class="card-title">Developer Content Style Guide</div>
-  <div class="card-desc">A structured style guide covering five developer content types: tutorials, API reference, error messages, blog posts, and release notes. Written for both human writers and AI agents, with explicit grammar rules, banned word lists, UI conventions, and content patterns with annotated examples throughout.</div>
-  <div class="card-tags">
-    <span class="tag">Content Strategy</span>
-    <span class="tag">Style Guide</span>
-    <span class="tag">AI Agent</span>
-    <span class="tag">Developer Docs</span>
-  </div>
-  <a href="work/style-guide.html" class="card-link">View Style Guide</a>
-</div>
+      <div class="work-card reveal">
+        <div class="card-type">Style Guide</div>
+        <div class="card-title">Developer Content Style Guide</div>
+        <div class="card-desc">A structured style guide covering five developer content types: tutorials, API reference, error messages, blog posts, and release notes. Written for both human writers and AI agents, with explicit grammar rules, banned word lists, UI conventions, and content patterns with annotated examples throughout.</div>
+        <div class="card-tags">
+          <span class="tag">Content Strategy</span>
+          <span class="tag">Style Guide</span>
+          <span class="tag">AI Agent</span>
+          <span class="tag">Developer Docs</span>
+        </div>
+        <a href="work/style-guide.html" class="card-link">View Style Guide</a>
+      </div>
 
-<div class="work-card reveal">
-  <div class="card-type">Writing Sample</div>
-  <div class="card-title">AI Documentation Quality Initiative</div>
-  <div class="card-desc">A speculative director-level memo presenting AI documentation governance results to senior leadership. Demonstrates executive communication, content strategy thinking, and the ability to translate documentation work into business value.</div>
-  <div class="card-tags">
-    <span class="tag">Executive Comms</span>
-    <span class="tag">AI Documentation</span>
-    <span class="tag">Content Strategy</span>
-    <span class="tag">Writing Sample</span>
-  </div>
-  <a href="work/ai-governance-sample.html" class="card-link">View Sample</a>
-</div>
+      <div class="work-card reveal">
+        <div class="card-type">Writing Sample</div>
+        <div class="card-title">AI Documentation Quality Initiative</div>
+        <div class="card-desc">A speculative director-level memo presenting AI documentation governance results to senior leadership. Demonstrates executive communication, content strategy thinking, and the ability to translate documentation work into business value.</div>
+        <div class="card-tags">
+          <span class="tag">Executive Comms</span>
+          <span class="tag">AI Documentation</span>
+          <span class="tag">Content Strategy</span>
+          <span class="tag">Writing Sample</span>
+        </div>
+        <a href="work/ai-governance-sample.html" class="card-link">View Sample</a>
+      </div>
 
-<div class="work-card reveal">
-  <div class="card-type">How-To Guide</div>
-  <div class="card-title">How to Write an Error Message</div>
-  <div class="card-desc">A practical how-to guide covering the three-question structure for writing clear, actionable, non-blaming error messages. Includes a reusable template, non-negotiable rules, three fully worked examples with analysis, and a pre-publish checklist.</div>
-  <div class="card-tags">
-    <span class="tag">UX Writing</span>
-    <span class="tag">Error Messaging</span>
-    <span class="tag">How-To</span>
-    <span class="tag">Content Design</span>
-  </div>
-  <a href="work/how-to-error-message.html" class="card-link">View Guide</a>
-</div>
+      <div class="work-card reveal">
+        <div class="card-type">How-To Guide</div>
+        <div class="card-title">How to Write an Error Message</div>
+        <div class="card-desc">A practical how-to guide covering the three-question structure for writing clear, actionable, non-blaming error messages. Includes a reusable template, non-negotiable rules, three fully worked examples with analysis, and a pre-publish checklist.</div>
+        <div class="card-tags">
+          <span class="tag">UX Writing</span>
+          <span class="tag">Error Messaging</span>
+          <span class="tag">How-To</span>
+          <span class="tag">Content Design</span>
+        </div>
+        <a href="work/how-to-error-message.html" class="card-link">View Guide</a>
+      </div>
 
-<div class="work-card reveal">
-  <div class="card-type">Personal Project</div>
-  <div class="card-title">Nymbra — AI Robot Dog</div>
-  <div class="card-desc">A conversational AI robot dog built on the SunFounder PiDog platform that treats uncertainty handling, session boundaries, and human-led governance as first-class design concerns. Fully documented to a reproducible standard across five phases.</div>
-  <div class="card-tags">
-    <span class="tag">Raspberry Pi</span>
-    <span class="tag">Python</span>
-    <span class="tag">Governance docs</span>
-    <span class="tag">Docs-as-code</span>
-  </div>
-  <a href="https://elianajain.github.io/Nymbra" class="card-link" target="_blank">View Project</a>
-</div>
+      <div class="work-card reveal">
+        <div class="card-type">Release Note</div>
+        <div class="card-title">Nymbra Handler Guide v2.0</div>
+        <div class="card-desc">A release note documenting the second version of the Nymbra handler guide. Covers updated session initialization, a new unfamiliar handler protocol, expanded refusal behavior guidance with handler responses for all six refusal categories, and a rewritten three-tier emergency stop procedure.</div>
+        <div class="card-tags">
+          <span class="tag">Release Notes</span>
+          <span class="tag">Robotics</span>
+          <span class="tag">Safety Docs</span>
+          <span class="tag">Governance</span>
+        </div>
+        <a href="work/release-note-nymbra-handler-guide.html" class="card-link">View Release Note</a>
+      </div>
 
-<div class="work-card reveal">
-  <div class="card-type">Research Project</div>
-  <div class="card-title">Nymbra Anthropos</div>
-  <div class="card-desc">A humanoid robotics research project applying bioarchaeological and osteological analysis to platform design. Treats the archaeological skeletal record as a failure database and source of design constraints. Four research domains, sixteen constraints, full governance and safety review.</div>
-  <div class="card-tags">
-    <span class="tag">Bioarchaeology</span>
-    <span class="tag">Robotics docs</span>
-    <span class="tag">ISO 10218</span>
-    <span class="tag">Research spec</span>
-  </div>
-  <a href="https://elianajain.github.io/nymbra-anthropos" class="card-link" target="_blank">View Research</a>
-</div>
+      <div class="work-card reveal">
+        <div class="card-type">Personal Project</div>
+        <div class="card-title">Nymbra — AI Robot Dog</div>
+        <div class="card-desc">A conversational AI robot dog built on the SunFounder PiDog platform that treats uncertainty handling, session boundaries, and human-led governance as first-class design concerns. Fully documented to a reproducible standard across five phases.</div>
+        <div class="card-tags">
+          <span class="tag">Raspberry Pi</span>
+          <span class="tag">Python</span>
+          <span class="tag">Governance Docs</span>
+          <span class="tag">Docs-as-Code</span>
+        </div>
+        <a href="https://elianajain.github.io/Nymbra" class="card-link" target="_blank">View Project</a>
+      </div>
 
-<div class="work-card reveal">
-  <div class="card-type">Technical Documentation</div>
-  <div class="card-title">SAP Business Network for Supply Chain</div>
-  <div class="card-desc">Authored cXML element references, attribute tables, and annotated code samples for SAP Business Network for Supply Chain and industry, covering aerospace and defense industry procurement domains.</div>
-  <div class="card-tags">
-    <span class="tag">cXML</span>
-    <span class="tag">DITA/XML</span>
-    <span class="tag">GitHub</span>
-    <span class="tag">Technical Docs</span>
-  </div>
-  <div style="display:flex; flex-direction:column; gap:0.4rem; margin-top:0.5rem;">
-    <a href="https://help.sap.com/docs/business-network-for-supply-chain/cxml-solutions/incoterm-element" class="card-link" target="_blank">Sample 1: IncoTerm Element</a>
-    <a href="https://help.sap.com/docs/business-network-for-supply-chain/cxml-solutions/dpas-element" class="card-link" target="_blank">Sample 2: DPAS Element</a>
-  </div>
+      <div class="work-card reveal">
+        <div class="card-type">Research Project</div>
+        <div class="card-title">Nymbra Anthropos</div>
+        <div class="card-desc">A humanoid robotics research project applying bioarchaeological and osteological analysis to platform design. Treats the archaeological skeletal record as a failure database and source of design constraints. Four research domains, sixteen constraints, full governance and safety review.</div>
+        <div class="card-tags">
+          <span class="tag">Bioarchaeology</span>
+          <span class="tag">Robotics Docs</span>
+          <span class="tag">ISO 10218</span>
+          <span class="tag">Research Spec</span>
+        </div>
+        <a href="https://elianajain.github.io/nymbra-anthropos" class="card-link" target="_blank">View Research</a>
+      </div>
 
-<div class="work-card reveal">
-  <div class="card-type">Release Note</div>
-  <div class="card-title">Nymbra Handler Guide v2.0</div>
-  <div class="card-desc">A release note documenting the second version of the Nymbra handler guide. Covers updated session initialization, a new unfamiliar handler protocol, expanded refusal behavior guidance with handler responses for all six refusal categories, and a rewritten three-tier emergency stop procedure.</div>
-  <div class="card-tags">
-    <span class="tag">Release Notes</span>
-    <span class="tag">Robotics</span>
-    <span class="tag">Safety Docs</span>
-    <span class="tag">Governance</span>
-  </div>
-  <a href="work/release-note-nymbra-handler-guide.html" class="card-link">View Release Note</a>
-</div>
-    
-  </div>
-</section>
+      <div class="work-card reveal">
+        <div class="card-type">Technical Documentation</div>
+        <div class="card-title">SAP Business Network for Supply Chain</div>
+        <div class="card-desc">Authored cXML element references, attribute tables, and annotated code samples for SAP Business Network for Supply Chain and industry, covering aerospace and defense industry procurement domains.</div>
+        <div class="card-tags">
+          <span class="tag">cXML</span>
+          <span class="tag">DITA/XML</span>
+          <span class="tag">GitHub</span>
+          <span class="tag">Technical Docs</span>
+        </div>
+        <a href="https://help.sap.com/docs/business-network-for-supply-chain/cxml-solutions/incoterm-element" class="card-link" target="_blank">Sample 1: IncoTerm Element</a>
+        <a href="https://help.sap.com/docs/business-network-for-supply-chain/cxml-solutions/dpas-element" class="card-link" target="_blank">Sample 2: DPAS Element</a>
+      </div>
 
-  <!-- ── EXPERIENCE ─────────────────────────────────────────── -->
+      <div class="work-card reveal">
+        <div class="card-type">Content Strategy</div>
+        <div class="card-title">Score and Weights — Category Management</div>
+        <div class="card-desc">Wrote user-facing conceptual documentation for SAP Ariba Category Management explaining weighted scoring logic, calculation methods, and optional question handling for category management administrators.</div>
+        <div class="card-tags">
+          <span class="tag">Conceptual Docs</span>
+          <span class="tag">User-Facing</span>
+          <span class="tag">Content Ops</span>
+          <span class="tag">Enterprise</span>
+        </div>
+        <a href="https://help.sap.com/docs/categories/sap-ariba-category-management-administration-guide/about-score-and-weights" class="card-link" target="_blank">View on SAP Help Portal</a>
+      </div>
+
+    </div>
+  </section>
+
   <section id="experience">
     <div class="section-header">
       <span class="section-label">03 / Experience</span>
@@ -837,9 +833,9 @@
         <div>
           <div class="tl-role">AI Conversational Robot</div>
           <ul class="tl-bullets">
-            <li>·	Building an AI-powered robot dog using <em class="tl-highlight">Raspberry Pi and SunFounder</em> hardware, targeting autonomous movement and computer vision across embedded systems, Python, and AI/ML integration.</li>
-            <li>Maintaining a public <em class="tl-highlight">GitHub repository</em> documenting the full build process, from from hardware assembly to Python integration.</li>
-            <li>·	Publishing ongoing build logs to <em class="tl-highlight">Hashnode</em> for a developer audience covering hardware/software integrations.</li>
+            <li>Building an AI-powered robot dog using <em class="tl-highlight">Raspberry Pi and SunFounder</em> hardware, targeting autonomous movement and computer vision across embedded systems, Python, and AI/ML integration.</li>
+            <li>Maintaining a public <em class="tl-highlight">GitHub repository</em> documenting the full build process, from hardware assembly to Python integration.</li>
+            <li>Publishing ongoing build logs to <em class="tl-highlight">Hashnode</em> for a developer audience covering hardware and software integrations.</li>
           </ul>
         </div>
       </div>
@@ -856,7 +852,7 @@
             <li>Quality tested <em class="tl-highlight">Joule</em>, SAP's AI assistant, verifying accuracy of AI-fetched help content against source documentation.</li>
             <li>Authored cXML documentation for SAP Business Network for Supply Chain, including element references, attribute tables, and annotated code samples for domains including aerospace and defense procurement.</li>
             <li>Coached and mentored 10 writers through the editorial process, improving draft quality, content structure, and consistency across the team.</li>
-            <li>Reviewed and evaluated AI-generated content for quality and accuracy before publishing. </li>
+            <li>Reviewed and evaluated AI-generated content for quality and accuracy before publishing.</li>
             <li>Led 3 complex cross-functional projects redesigning SAP Business Network for <em class="tl-highlight">terminology, compliance, and content standards</em>, ensuring consistency at enterprise scale.</li>
             <li>Maintained scalable <em class="tl-highlight">docs-as-code</em> pipelines using <em class="tl-highlight">DITA/XML and GitHub</em>, enabling content reuse, versioned delivery, and automated publishing aligned with sprint releases.</li>
           </ul>
@@ -873,7 +869,7 @@
           <ul class="tl-bullets">
             <li>Produced and maintained <em class="tl-highlight">API reference documentation</em> including endpoint descriptions, parameters, and code samples in collaboration with engineering teams.</li>
             <li>Wrote user-facing documentation for <em class="tl-highlight">SAP Ariba Category Management</em>, covering weighted scoring logic, calculation methods, and administrator configuration.</li>
-            <li>Authored Intelligent Configuration Manager parameter reference topics for <em class="tl-highlight">SAP Ariba Strategic Sourcing</em> solutions. </li>
+            <li>Authored Intelligent Configuration Manager parameter reference topics for <em class="tl-highlight">SAP Ariba Strategic Sourcing</em> solutions.</li>
             <li>Automated documentation authoring and publishing tasks using <em class="tl-highlight">PowerShell</em> and docs-as-code pipelines, reducing manual overhead across release cycles.</li>
             <li>Coordinated multi-team release notes and documentation planning in an <em class="tl-highlight">Agile</em> environment.</li>
           </ul>
@@ -892,8 +888,8 @@
             <li>Assisted with evaluation tracking, reporting, and cross-team coordination.</li>
           </ul>
         </div>
-        
       </div>
+
       <div class="timeline-item reveal">
         <div class="tl-meta">
           <div class="tl-period">Jul 2017 – Jan 2018</div>
@@ -902,11 +898,11 @@
         <div>
           <div class="tl-role">IT Services Coordinator (Internship)</div>
           <ul class="tl-bullets">
-            <li>Delivered end-to-end IT support for <enm>Windows and macOS devices</enm>, spanning enterprise onboarding, equipment deployment, and systems access provisioning, with ownership of service request triage, cross-team coordination, and detailed records of tickets, assets, and escalations.</li>
+            <li>Delivered end-to-end IT support for Windows and macOS devices, spanning enterprise onboarding, equipment deployment, and systems access provisioning, with ownership of service request triage, cross-team coordination, and detailed records of tickets, assets, and escalations.</li>
           </ul>
         </div>
-        
       </div>
+
       <div class="timeline-item reveal">
         <div class="tl-meta">
           <div class="tl-period">Mar 2014 – Jul 2016</div>
@@ -915,7 +911,7 @@
         <div>
           <div class="tl-role">User Operations Analyst (Contract)</div>
           <ul class="tl-bullets">
-            <li>Supported ML model training by defining <em class="tl-highlight">10,000+ image annotations</em> and established annotation standards that improved model accuracy, consistency, and output quality across products.</li>
+            <li>Supported ML model training by defining <em class="tl-highlight">10,000+ image annotations</em>, establishing annotation standards that improved model accuracy, consistency, and output quality across products.</li>
           </ul>
         </div>
       </div>
@@ -928,15 +924,14 @@
         <div>
           <div class="tl-role">Marketing Consultant (Contract)</div>
           <ul class="tl-bullets">
-            <li>Strategically identified core target demographics, forged partnerships, and cultivated relationships with startup leadership, contributing to growth to 9 million active users.</li>
+            <li>Strategically identified core target demographics, forged partnerships, and cultivated relationships with startup leadership, contributing to growth to <em class="tl-highlight">9 million active users</em>.</li>
           </ul>
         </div>
       </div>
-      
+
     </div>
   </section>
 
-  <!-- ── SKILLS ─────────────────────────────────────────────── -->
   <section id="skills">
     <div class="section-header">
       <span class="section-label">04 / Skills</span>
@@ -946,19 +941,19 @@
       <div class="skills-group reveal">
         <h3>Core Competencies</h3>
         <div class="skill-list">
-          <div class="skill-item"><div class="skill-dot"></div>AI-Assisted Content Workflows & Human-in-the-Loop Systems</div>
-          <div class="skill-item"><div class="skill-dot"></div>LLM Evaluation & Prompt Engineering</div>
-          <div class="skill-item"><div class="skill-dot"></div>Documentation Strategy & Information Architecture</div>
-          <div class="skill-item"><div class="skill-dot"></div>Docs-as-Code & Versioned Content Workflows</div>
-          <div class="skill-item"><div class="skill-dot"></div>API, Admin, & User Documentation</div>
+          <div class="skill-item"><div class="skill-dot"></div>AI-Assisted Content Workflows and Human-in-the-Loop Systems</div>
+          <div class="skill-item"><div class="skill-dot"></div>LLM Evaluation and Prompt Engineering</div>
+          <div class="skill-item"><div class="skill-dot"></div>Documentation Strategy and Information Architecture</div>
+          <div class="skill-item"><div class="skill-dot"></div>Docs-as-Code and Versioned Content Workflows</div>
+          <div class="skill-item"><div class="skill-dot"></div>API, Admin, and User Documentation</div>
           <div class="skill-item"><div class="skill-dot"></div>Cross-Functional Collaboration (Eng, PM, UX, Support)</div>
-          <div class="skill-item"><div class="skill-dot"></div>Quality Standards, Guidelines & Evaluation Frameworks</div>
-          <div class="skill-item"><div class="skill-dot"></div>Agile Delivery & Content Operations</div>
-          <div class="skill-item"><div class="skill-dot"></div>AP Style & Chicago Style</div>
+          <div class="skill-item"><div class="skill-dot"></div>Quality Standards, Guidelines and Evaluation Frameworks</div>
+          <div class="skill-item"><div class="skill-dot"></div>Agile Delivery and Content Operations</div>
+          <div class="skill-item"><div class="skill-dot"></div>AP Style, Chicago Style, Microsoft Writing Style Guide</div>
         </div>
       </div>
       <div class="skills-group reveal">
-        <h3>Tools & Technologies</h3>
+        <h3>Tools and Technologies</h3>
         <div class="tools-cloud">
           <span class="tool-badge">DITA CMS</span>
           <span class="tool-badge">ServiceNow</span>
@@ -988,15 +983,15 @@
     </div>
   </section>
 
-  <!-- ── CERTS & AWARDS ─────────────────────────────────────── -->
   <section id="certs">
     <div class="section-header">
       <span class="section-label">05 / Credentials</span>
       <div class="rule-line"></div>
     </div>
+    <div class="certs-grid">
       <div class="cert-card">
         <div class="cert-name">Basics of Robotics</div>
-        <div class="cert-issuer">SIEMENS (Coursera)</div>
+        <div class="cert-issuer">Siemens (Coursera)</div>
       </div>
       <div class="cert-card">
         <div class="cert-name">UI/UX Design for AI Products</div>
@@ -1019,12 +1014,13 @@
         <div class="cert-issuer">University of Wisconsin – La Crosse</div>
         <div class="cert-detail">Undergraduate thesis research in mortuary archaeology, Sanisera, Menorca, Spain. Funded by UW La Crosse Undergraduate Research Grant.</div>
       </div>
+    </div>
 
     <div class="award-box reveal">
       <div class="award-icon">🏆</div>
       <div>
         <div class="award-title">Hasso Plattner Founders' Award — Finalist</div>
-        <div class="award-desc">SAP, 2023 · Contributed to the SAP Ariba Category Management project, recognized for innovation in Products & Technology. One of SAP's most prestigious internal innovation awards.</div>
+        <div class="award-desc">SAP, 2023 · Contributed to the SAP Ariba Category Management project, recognized for innovation in Products and Technology. One of SAP's most prestigious internal innovation awards.</div>
       </div>
     </div>
   </section>
@@ -1033,11 +1029,10 @@
 
 <footer>
   <div class="footer-name">Technical Writing Portfolio</div>
-  <div class="footer-note">Built with HTML · Hosted on GitHub Pages · Updated May 2026</div>
+  <div class="footer-note">Built with HTML · Hosted on GitHub Pages · Updated 2026</div>
 </footer>
 
 <script>
-  // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
@@ -1050,7 +1045,6 @@
   }, { threshold: 0.1 });
   reveals.forEach(el => io.observe(el));
 
-  // Active nav on scroll
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('nav a');
   window.addEventListener('scroll', () => {
