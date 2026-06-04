@@ -19,6 +19,7 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     html { scroll-behavior: smooth; }
 
     body {
@@ -30,6 +31,7 @@
       overflow-x: hidden;
     }
 
+    /* ── MASTHEAD ─────────────────────────────────────────────── */
     header {
       border-bottom: 2px solid var(--ink);
       padding: clamp(3rem, 8vw, 6rem) var(--col-gap) clamp(2rem, 5vw, 3.5rem);
@@ -135,6 +137,7 @@
     }
     .header-links a:hover { color: var(--accent); border-color: var(--accent); }
 
+    /* ── NAV ───────────────────────────────────────────────────── */
     nav {
       border-bottom: 1px solid var(--rule);
       padding: 0 var(--col-gap);
@@ -160,6 +163,7 @@
     nav a:hover { color: var(--ink); border-color: var(--ink); }
     nav a.active { color: var(--accent); border-color: var(--accent); }
 
+    /* ── LAYOUT ────────────────────────────────────────────────── */
     main {
       max-width: 1280px;
       margin: 0 auto;
@@ -206,6 +210,7 @@
       margin-bottom: 0.4rem;
     }
 
+    /* ── ABOUT ─────────────────────────────────────────────────── */
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -223,11 +228,7 @@
     .about-copy p { margin-bottom: 1rem; color: var(--ink); }
     .about-copy p:last-child { margin-bottom: 0; }
 
-    .about-stats {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-    }
+    .about-stats { display: flex; flex-direction: column; gap: 1.25rem; }
 
     .stat-row {
       display: grid;
@@ -246,33 +247,16 @@
       line-height: 1;
     }
 
-    .stat-desc {
-      font-size: 0.85rem;
-      color: var(--mid);
-      line-height: 1.35;
-    }
+    .stat-desc { font-size: 0.85rem; color: var(--mid); line-height: 1.35; }
+    .stat-desc strong { display: block; color: var(--ink); font-weight: 600; font-size: 0.9rem; }
 
-    .stat-desc strong {
-      display: block;
-      color: var(--ink);
-      font-weight: 600;
-      font-size: 0.9rem;
-    }
-
+    /* ── WORK GRID ─────────────────────────────────────────────── */
     .work-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr));
       gap: 1.5px;
       background: var(--rule);
       border: 1.5px solid var(--rule);
-    }
-
-    @media (max-width: 900px) {
-      .work-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (max-width: 560px) {
-      .work-grid { grid-template-columns: 1fr; }
     }
 
     .work-card {
@@ -301,19 +285,9 @@
       color: var(--ink);
     }
 
-    .card-desc {
-      font-size: 0.9rem;
-      color: var(--mid);
-      line-height: 1.6;
-      flex: 1;
-    }
+    .card-desc { font-size: 0.9rem; color: var(--mid); line-height: 1.6; flex: 1; }
 
-    .card-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-top: auto;
-    }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto; }
 
     .tag {
       font-family: 'DM Mono', monospace;
@@ -341,12 +315,118 @@
       transition: color 0.2s, border-color 0.2s;
     }
     .card-link:hover { color: var(--accent); border-color: var(--accent); }
+    .card-link::after { content: '→'; }
 
-    .timeline {
+    /* ── LATEST WRITING ────────────────────────────────────────── */
+    .writing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--col-gap);
+    }
+
+    @media (max-width: 700px) {
+      .writing-grid { grid-template-columns: 1fr; }
+    }
+
+    .writing-source { display: flex; flex-direction: column; gap: 0; }
+
+    .writing-source-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .writing-source-name {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .writing-source-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      color: var(--mid);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .writing-source-link:hover { color: var(--accent); border-color: var(--accent); }
+
+    .writing-post {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--rule);
       display: flex;
       flex-direction: column;
-      gap: 0;
+      gap: 0.35rem;
+      text-decoration: none;
+      color: inherit;
     }
+    .writing-post:last-child { border-bottom: none; }
+    .writing-post:hover .writing-post-title { color: var(--accent); }
+
+    .writing-post-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 0.98rem;
+      line-height: 1.3;
+      color: var(--ink);
+      transition: color 0.2s;
+    }
+
+    .writing-post-date {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      color: var(--mid);
+      text-transform: uppercase;
+    }
+
+    .writing-post-desc {
+      font-size: 0.82rem;
+      color: var(--mid);
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .writing-skeleton {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .writing-skeleton-line {
+      height: 12px;
+      background: var(--rule);
+      border-radius: 2px;
+      animation: shimmer 1.4s ease infinite;
+    }
+
+    @keyframes shimmer {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    .writing-error {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--mid);
+      padding: 1rem 0;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── EXPERIENCE TIMELINE ───────────────────────────────────── */
+    .timeline { display: flex; flex-direction: column; gap: 0; }
 
     .timeline-item {
       display: grid;
@@ -362,7 +442,6 @@
     }
 
     .timeline-item:last-child { border-bottom: none; }
-
     .tl-meta { padding-top: 0.15rem; }
 
     .tl-period {
@@ -389,12 +468,7 @@
       color: var(--ink);
     }
 
-    .tl-bullets {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-    }
+    .tl-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
 
     .tl-bullets li {
       font-size: 0.9rem;
@@ -403,15 +477,7 @@
       position: relative;
       line-height: 1.55;
     }
-    .tl-bullets li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0.55em;
-      width: 5px;
-      height: 1px;
-      background: var(--accent);
-    }
+    .tl-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--accent); font-weight: 400; }
 
     .tl-highlight {
       display: inline-block;
@@ -422,15 +488,10 @@
       font-style: normal;
     }
 
-    .skills-wrapper {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--col-gap);
-    }
+    /* ── SKILLS ────────────────────────────────────────────────── */
+    .skills-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: var(--col-gap); }
 
-    @media (max-width: 600px) {
-      .skills-wrapper { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 600px) { .skills-wrapper { grid-template-columns: 1fr; } }
 
     .skills-group h3 {
       font-family: 'DM Mono', monospace;
@@ -443,33 +504,13 @@
       border-bottom: 1px solid var(--rule);
     }
 
-    .skill-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
+    .skill-list { display: flex; flex-direction: column; gap: 0.5rem; }
 
-    .skill-item {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 0.88rem;
-      color: var(--ink);
-    }
+    .skill-item { display: flex; align-items: center; gap: 0.75rem; font-size: 0.88rem; color: var(--ink); }
 
-    .skill-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      flex-shrink: 0;
-    }
+    .skill-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
 
-    .tools-cloud {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
+    .tools-cloud { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 
     .tool-badge {
       font-family: 'DM Mono', monospace;
@@ -483,6 +524,7 @@
     }
     .tool-badge:hover { border-color: var(--accent); color: var(--accent); }
 
+    /* ── CERTS & AWARDS ────────────────────────────────────────── */
     .certs-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
@@ -499,25 +541,13 @@
     }
     .cert-card:hover { border-color: var(--accent); }
 
-    .cert-name {
-      font-size: 0.92rem;
-      font-weight: 600;
-      color: var(--ink);
-      line-height: 1.3;
-    }
+    .cert-name { font-size: 0.92rem; font-weight: 600; color: var(--ink); line-height: 1.3; }
 
     .cert-issuer {
       font-family: 'DM Mono', monospace;
       font-size: 0.68rem;
       color: var(--accent);
       letter-spacing: 0.08em;
-    }
-
-    .cert-detail {
-      font-size: 0.78rem;
-      color: var(--mid);
-      line-height: 1.5;
-      margin-top: 0.3rem;
     }
 
     .award-box {
@@ -532,19 +562,10 @@
     }
 
     .award-icon { font-size: 3rem; line-height: 1; }
+    .award-title { font-family: 'DM Serif Display', serif; font-size: 1.4rem; margin-bottom: 0.35rem; }
+    .award-desc { font-size: 0.85rem; color: #b0aba5; line-height: 1.55; }
 
-    .award-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.4rem;
-      margin-bottom: 0.35rem;
-    }
-
-    .award-desc {
-      font-size: 0.85rem;
-      color: #b0aba5;
-      line-height: 1.55;
-    }
-
+    /* ── FOOTER ────────────────────────────────────────────────── */
     footer {
       border-top: 2px solid var(--ink);
       padding: 2.5rem var(--col-gap);
@@ -555,28 +576,16 @@
       gap: 1rem;
     }
 
-    .footer-name {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.25rem;
-      color: var(--ink);
-    }
+    .footer-name { font-family: 'DM Serif Display', serif; font-size: 1.25rem; color: var(--ink); }
+    .footer-note { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--mid); letter-spacing: 0.08em; }
 
-    .footer-note {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.68rem;
-      color: var(--mid);
-      letter-spacing: 0.08em;
-    }
-
+    /* ── ANIMATIONS ────────────────────────────────────────────── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(18px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    .fade-up {
-      opacity: 0;
-      animation: fadeUp 0.55s ease forwards;
-    }
+    .fade-up { opacity: 0; animation: fadeUp 0.55s ease forwards; }
     .fade-up:nth-child(1) { animation-delay: 0.05s; }
     .fade-up:nth-child(2) { animation-delay: 0.15s; }
     .fade-up:nth-child(3) { animation-delay: 0.25s; }
@@ -611,7 +620,8 @@
 
 <nav>
   <a href="#about" class="active">About</a>
-  <a href="#work">Highlights & Work Samples</a>
+  <a href="#work">Highlights &amp; Work Samples</a>
+  <a href="#writing">Latest Writing</a>
   <a href="#experience">Experience</a>
   <a href="#skills">Skills</a>
   <a href="#certs">Credentials</a>
@@ -619,6 +629,7 @@
 
 <main>
 
+  <!-- ── ABOUT ──────────────────────────────────────────────── -->
   <section id="about">
     <div class="section-header">
       <span class="section-label">01 / About</span>
@@ -637,7 +648,7 @@
         </div>
         <div class="stat-row">
           <div class="stat-num">2K</div>
-          <div class="stat-desc"><strong>Enterprise Users</strong>Impacted by documentation systems at SAP</div>
+          <div class="stat-desc"><strong>Enterprise Users</strong>Impacted by AI documentation systems at SAP</div>
         </div>
         <div class="stat-row">
           <div class="stat-num">10K+</div>
@@ -651,9 +662,10 @@
     </div>
   </section>
 
+  <!-- ── WORK SAMPLES ───────────────────────────────────────── -->
   <section id="work">
     <div class="section-header">
-      <span class="section-label">02 / Highlights & Work Samples</span>
+      <span class="section-label">02 / Highlights &amp; Work Samples</span>
       <div class="rule-line"></div>
     </div>
     <div class="work-grid">
@@ -685,22 +697,9 @@
       </div>
 
       <div class="work-card reveal">
-        <div class="card-type">Case Study</div>
-        <div class="card-title">Measuring What Actually Works</div>
-        <div class="card-desc">A framework for defining, tracking, and acting on technical writing metrics that go beyond page views. Covers three measurement levels: findability, effectiveness, and impact, with specific metrics at each level, qualitative signals, and a north star principle grounded in behavioral change rather than activity.</div>
-        <div class="card-tags">
-          <span class="tag">Content Metrics</span>
-          <span class="tag">Documentation Strategy</span>
-          <span class="tag">Content Effectiveness</span>
-          <span class="tag">Case Study</span>
-        </div>
-        <a href="work/tech-writing-metrics.html" class="card-link">View Case Study</a>
-      </div>
-
-      <div class="work-card reveal">
         <div class="card-type">Research Documentation</div>
         <div class="card-title">Burial, Identity, and the Post-Roman World</div>
-        <div class="card-desc">Undergraduate thesis research conducted at the Sanisera necropolis in Menorca, Spain. Analyzed 93 artifacts across 14 disturbed tombs to understand how early Christianity reshaped burial practice for women in 5th to 7th century post-Roman Menorca, working with fragmentary evidence, looted stratigraphy, and a sample too small for statistical analysis.</div>
+        <div class="card-desc">Undergraduate thesis research conducted at the Sanisera necropolis in Menorca, Spain. Analyzed 93 artifacts across 14 disturbed tombs to understand how early Christianity reshaped burial practice for women in 5th to 7th century post-Roman Menorca.</div>
         <div class="card-tags">
           <span class="tag">Primary Research</span>
           <span class="tag">Mortuary Analysis</span>
@@ -708,19 +707,6 @@
           <span class="tag">Comparative Analysis</span>
         </div>
         <a href="work/sanisera-research.html" class="card-link">View Case Study</a>
-      </div>
-
-      <div class="work-card reveal">
-        <div class="card-type">Style Guide</div>
-        <div class="card-title">Developer Content Style Guide</div>
-        <div class="card-desc">A structured style guide covering five developer content types: tutorials, API reference, error messages, blog posts, and release notes. Written for both human writers and AI agents, with explicit grammar rules, banned word lists, UI conventions, and content patterns with annotated examples throughout.</div>
-        <div class="card-tags">
-          <span class="tag">Content Strategy</span>
-          <span class="tag">Style Guide</span>
-          <span class="tag">AI Agent</span>
-          <span class="tag">Developer Docs</span>
-        </div>
-        <a href="work/style-guide.html" class="card-link">View Style Guide</a>
       </div>
 
       <div class="work-card reveal">
@@ -737,66 +723,14 @@
       </div>
 
       <div class="work-card reveal">
-        <div class="card-type">How-To Guide</div>
-        <div class="card-title">How to Write an Error Message</div>
-        <div class="card-desc">A practical how-to guide covering the three-question structure for writing clear, actionable, non-blaming error messages. Includes a reusable template, non-negotiable rules, three fully worked examples with analysis, and a pre-publish checklist.</div>
-        <div class="card-tags">
-          <span class="tag">UX Writing</span>
-          <span class="tag">Error Messaging</span>
-          <span class="tag">How-To</span>
-          <span class="tag">Content Design</span>
-        </div>
-        <a href="work/how-to-error-message.html" class="card-link">View Guide</a>
-      </div>
-
-      <div class="work-card reveal">
-        <div class="card-type">Release Note</div>
-        <div class="card-title">Nymbra Handler Guide v2.0</div>
-        <div class="card-desc">A release note documenting the second version of the Nymbra handler guide. Covers updated session initialization, a new unfamiliar handler protocol, expanded refusal behavior guidance with handler responses for all six refusal categories, and a rewritten three-tier emergency stop procedure.</div>
-        <div class="card-tags">
-          <span class="tag">Release Notes</span>
-          <span class="tag">Robotics</span>
-          <span class="tag">Safety Docs</span>
-          <span class="tag">Governance</span>
-        </div>
-        <a href="work/release-note-nymbra-handler-guide.html" class="card-link">View Release Note</a>
-      </div>
-
-      <div class="work-card reveal">
-        <div class="card-type">Personal Project</div>
-        <div class="card-title">Nymbra — AI Robot Dog</div>
-        <div class="card-desc">A conversational AI robot dog built on the SunFounder PiDog platform that treats uncertainty handling, session boundaries, and human-led governance as first-class design concerns. Fully documented to a reproducible standard across five phases.</div>
-        <div class="card-tags">
-          <span class="tag">Raspberry Pi</span>
-          <span class="tag">Python</span>
-          <span class="tag">Governance Docs</span>
-          <span class="tag">Docs-as-Code</span>
-        </div>
-        <a href="https://elianajain.github.io/Nymbra" class="card-link" target="_blank">View Project</a>
-      </div>
-
-      <div class="work-card reveal">
-        <div class="card-type">Research Project</div>
-        <div class="card-title">Nymbra Anthropos</div>
-        <div class="card-desc">A humanoid robotics research project applying bioarchaeological and osteological analysis to platform design. Treats the archaeological skeletal record as a failure database and source of design constraints. Four research domains, sixteen constraints, full governance and safety review.</div>
-        <div class="card-tags">
-          <span class="tag">Bioarchaeology</span>
-          <span class="tag">Robotics Docs</span>
-          <span class="tag">ISO 10218</span>
-          <span class="tag">Research Spec</span>
-        </div>
-        <a href="https://elianajain.github.io/nymbra-anthropos" class="card-link" target="_blank">View Research</a>
-      </div>
-
-      <div class="work-card reveal">
-        <div class="card-type">Technical Documentation</div>
+        <div class="card-type">Developer Documentation</div>
         <div class="card-title">SAP Business Network for Supply Chain</div>
-        <div class="card-desc">Authored cXML element references, attribute tables, and annotated code samples for SAP Business Network for Supply Chain and industry, covering aerospace and defense industry procurement domains.</div>
+        <div class="card-desc">Authored cXML element references, attribute tables, and annotated code samples for SAP Business Network for Supply Chain, covering domains including aerospace and defense procurement.</div>
         <div class="card-tags">
           <span class="tag">cXML</span>
           <span class="tag">DITA/XML</span>
           <span class="tag">GitHub</span>
-          <span class="tag">Technical Docs</span>
+          <span class="tag">Developer Docs</span>
         </div>
         <a href="https://help.sap.com/docs/business-network-for-supply-chain/cxml-solutions/incoterm-element" class="card-link" target="_blank">Sample 1: IncoTerm Element</a>
         <a href="https://help.sap.com/docs/business-network-for-supply-chain/cxml-solutions/dpas-element" class="card-link" target="_blank">Sample 2: DPAS Element</a>
@@ -810,17 +744,79 @@
           <span class="tag">Conceptual Docs</span>
           <span class="tag">User-Facing</span>
           <span class="tag">Content Ops</span>
-          <span class="tag">Enterprise</span>
+          <span class="tag">Style Guide</span>
         </div>
-        <a href="https://help.sap.com/docs/categories/sap-ariba-category-management-administration-guide/about-score-and-weights" class="card-link" target="_blank">View on SAP Help Portal</a>
+        <a href="https://help.sap.com/docs/categories/sap-ariba-category-management-administration-guide/about-score-and-weights" class="card-link" target="_blank">Sample Work</a>
+      </div>
+
+      <div class="work-card reveal">
+        <div class="card-type">Personal Project</div>
+        <div class="card-title">Nymbra — AI Robot Dog</div>
+        <div class="card-desc">A conversational AI robot dog built on the SunFounder PiDog platform that treats uncertainty handling, session boundaries, and human-led governance as first-class design concerns. Fully documented across five phases.</div>
+        <div class="card-tags">
+          <span class="tag">Raspberry Pi</span>
+          <span class="tag">Python</span>
+          <span class="tag">Governance docs</span>
+          <span class="tag">Docs-as-code</span>
+        </div>
+        <a href="https://elianajain.github.io/Nymbra" class="card-link" target="_blank">View project</a>
+      </div>
+
+      <div class="work-card reveal">
+        <div class="card-type">Research Project</div>
+        <div class="card-title">Nymbra Anthropos</div>
+        <div class="card-desc">A humanoid robotics research project applying bioarchaeological and osteological analysis to platform design. Treats the archaeological skeletal record as a failure database and source of design constraints. Four research domains, sixteen constraints, full governance and safety review.</div>
+        <div class="card-tags">
+          <span class="tag">Bioarchaeology</span>
+          <span class="tag">Robotics docs</span>
+          <span class="tag">ISO 10218</span>
+          <span class="tag">Research spec</span>
+        </div>
+        <a href="https://elianajain.github.io/nymbra-anthropos" class="card-link" target="_blank">View research</a>
       </div>
 
     </div>
   </section>
 
+  <!-- ── LATEST WRITING ─────────────────────────────────────── -->
+  <section id="writing">
+    <div class="section-header">
+      <span class="section-label">03 / Latest Writing</span>
+      <div class="rule-line"></div>
+    </div>
+    <div class="writing-grid">
+
+      <div class="writing-source reveal">
+        <div class="writing-source-header">
+          <span class="writing-source-name">Hashnode</span>
+          <a class="writing-source-link" href="https://elianajain.hashnode.dev" target="_blank">View all →</a>
+        </div>
+        <div id="hashnode-posts">
+          <div class="writing-skeleton"><div class="writing-skeleton-line" style="width:80%"></div><div class="writing-skeleton-line" style="width:40%"></div></div>
+          <div class="writing-skeleton"><div class="writing-skeleton-line" style="width:70%"></div><div class="writing-skeleton-line" style="width:35%"></div></div>
+          <div class="writing-skeleton"><div class="writing-skeleton-line" style="width:85%"></div><div class="writing-skeleton-line" style="width:45%"></div></div>
+        </div>
+      </div>
+
+      <div class="writing-source reveal">
+        <div class="writing-source-header">
+          <span class="writing-source-name">Substack</span>
+          <a class="writing-source-link" href="https://ellyjain.substack.com" target="_blank">View all →</a>
+        </div>
+        <div id="substack-posts">
+          <div class="writing-skeleton"><div class="writing-skeleton-line" style="width:75%"></div><div class="writing-skeleton-line" style="width:38%"></div></div>
+          <div class="writing-skeleton"><div class="writing-skeleton-line" style="width:65%"></div><div class="writing-skeleton-line" style="width:42%"></div></div>
+          <div class="writing-skeleton"><div class="writing-skeleton-line" style="width:80%"></div><div class="writing-skeleton-line" style="width:36%"></div></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── EXPERIENCE ─────────────────────────────────────────── -->
   <section id="experience">
     <div class="section-header">
-      <span class="section-label">03 / Experience</span>
+      <span class="section-label">04 / Experience</span>
       <div class="rule-line"></div>
     </div>
     <div class="timeline">
@@ -835,7 +831,7 @@
           <ul class="tl-bullets">
             <li>Building an AI-powered robot dog using <em class="tl-highlight">Raspberry Pi and SunFounder</em> hardware, targeting autonomous movement and computer vision across embedded systems, Python, and AI/ML integration.</li>
             <li>Maintaining a public <em class="tl-highlight">GitHub repository</em> documenting the full build process, from hardware assembly to Python integration.</li>
-            <li>Publishing ongoing build logs to <em class="tl-highlight">Hashnode</em> for a developer audience covering hardware and software integrations.</li>
+            <li>Publishing ongoing build logs to <em class="tl-highlight">Hashnode</em> for a developer audience covering hardware/software integrations.</li>
           </ul>
         </div>
       </div>
@@ -911,20 +907,7 @@
         <div>
           <div class="tl-role">User Operations Analyst (Contract)</div>
           <ul class="tl-bullets">
-            <li>Supported ML model training by defining <em class="tl-highlight">10,000+ image annotations</em>, establishing annotation standards that improved model accuracy, consistency, and output quality across products.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="timeline-item reveal">
-        <div class="tl-meta">
-          <div class="tl-period">Jul 2013 – Mar 2014</div>
-          <div class="tl-company">MeWe</div>
-        </div>
-        <div>
-          <div class="tl-role">Marketing Consultant (Contract)</div>
-          <ul class="tl-bullets">
-            <li>Strategically identified core target demographics, forged partnerships, and cultivated relationships with startup leadership, contributing to growth to <em class="tl-highlight">9 million active users</em>.</li>
+            <li>Supported ML model training by defining <em class="tl-highlight">10,000+ image annotations</em> — established annotation standards that improved model accuracy, consistency, and output quality across products.</li>
           </ul>
         </div>
       </div>
@@ -932,28 +915,29 @@
     </div>
   </section>
 
+  <!-- ── SKILLS ─────────────────────────────────────────────── -->
   <section id="skills">
     <div class="section-header">
-      <span class="section-label">04 / Skills</span>
+      <span class="section-label">05 / Skills</span>
       <div class="rule-line"></div>
     </div>
     <div class="skills-wrapper">
       <div class="skills-group reveal">
         <h3>Core Competencies</h3>
         <div class="skill-list">
-          <div class="skill-item"><div class="skill-dot"></div>AI-Assisted Content Workflows and Human-in-the-Loop Systems</div>
-          <div class="skill-item"><div class="skill-dot"></div>LLM Evaluation and Prompt Engineering</div>
-          <div class="skill-item"><div class="skill-dot"></div>Documentation Strategy and Information Architecture</div>
-          <div class="skill-item"><div class="skill-dot"></div>Docs-as-Code and Versioned Content Workflows</div>
-          <div class="skill-item"><div class="skill-dot"></div>API, Admin, and User Documentation</div>
+          <div class="skill-item"><div class="skill-dot"></div>AI-Assisted Content Workflows &amp; Human-in-the-Loop Systems</div>
+          <div class="skill-item"><div class="skill-dot"></div>LLM Evaluation &amp; Prompt Engineering</div>
+          <div class="skill-item"><div class="skill-dot"></div>Documentation Strategy &amp; Information Architecture</div>
+          <div class="skill-item"><div class="skill-dot"></div>Docs-as-Code &amp; Versioned Content Workflows</div>
+          <div class="skill-item"><div class="skill-dot"></div>API, Admin, &amp; User Documentation</div>
           <div class="skill-item"><div class="skill-dot"></div>Cross-Functional Collaboration (Eng, PM, UX, Support)</div>
-          <div class="skill-item"><div class="skill-dot"></div>Quality Standards, Guidelines and Evaluation Frameworks</div>
-          <div class="skill-item"><div class="skill-dot"></div>Agile Delivery and Content Operations</div>
-          <div class="skill-item"><div class="skill-dot"></div>AP Style, Chicago Style, Microsoft Writing Style Guide</div>
+          <div class="skill-item"><div class="skill-dot"></div>Quality Standards, Guidelines &amp; Evaluation Frameworks</div>
+          <div class="skill-item"><div class="skill-dot"></div>Agile Delivery &amp; Content Operations</div>
+          <div class="skill-item"><div class="skill-dot"></div>AP Style &amp; Chicago Style</div>
         </div>
       </div>
       <div class="skills-group reveal">
-        <h3>Tools and Technologies</h3>
+        <h3>Tools &amp; Technologies</h3>
         <div class="tools-cloud">
           <span class="tool-badge">DITA CMS</span>
           <span class="tool-badge">ServiceNow</span>
@@ -983,15 +967,16 @@
     </div>
   </section>
 
+  <!-- ── CREDENTIALS ────────────────────────────────────────── -->
   <section id="certs">
     <div class="section-header">
-      <span class="section-label">05 / Credentials</span>
+      <span class="section-label">06 / Credentials</span>
       <div class="rule-line"></div>
     </div>
     <div class="certs-grid">
       <div class="cert-card">
         <div class="cert-name">Basics of Robotics</div>
-        <div class="cert-issuer">Siemens (Coursera)</div>
+        <div class="cert-issuer">SIEMENS (Coursera)</div>
       </div>
       <div class="cert-card">
         <div class="cert-name">UI/UX Design for AI Products</div>
@@ -1012,7 +997,6 @@
       <div class="cert-card">
         <div class="cert-name">B.Sc. Archaeological Studies</div>
         <div class="cert-issuer">University of Wisconsin – La Crosse</div>
-        <div class="cert-detail">Undergraduate thesis research in mortuary archaeology, Sanisera, Menorca, Spain. Funded by UW La Crosse Undergraduate Research Grant.</div>
       </div>
     </div>
 
@@ -1020,7 +1004,7 @@
       <div class="award-icon">🏆</div>
       <div>
         <div class="award-title">Hasso Plattner Founders' Award — Finalist</div>
-        <div class="award-desc">SAP, 2023 · Contributed to the SAP Ariba Category Management project, recognized for innovation in Products and Technology. One of SAP's most prestigious internal innovation awards.</div>
+        <div class="award-desc">SAP, 2023 · Contributed to the SAP Ariba Category Management project, recognized for innovation in Products &amp; Technology. One of SAP's most prestigious internal innovation awards.</div>
       </div>
     </div>
   </section>
@@ -1029,10 +1013,11 @@
 
 <footer>
   <div class="footer-name">Technical Writing Portfolio</div>
-  <div class="footer-note">Built with HTML · Hosted on GitHub Pages · Updated 2026</div>
+  <div class="footer-note">Built with HTML · Hosted on GitHub Pages · Updated Jun 2026</div>
 </footer>
 
 <script>
+  // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
@@ -1045,6 +1030,7 @@
   }, { threshold: 0.1 });
   reveals.forEach(el => io.observe(el));
 
+  // Active nav on scroll
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('nav a');
   window.addEventListener('scroll', () => {
@@ -1056,6 +1042,37 @@
       a.classList.toggle('active', a.getAttribute('href') === '#' + current);
     });
   });
+
+  // RSS feed loader
+  async function loadFeed(rssUrl, containerId, limit) {
+    const container = document.getElementById(containerId);
+    try {
+      const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}&count=${limit}`;
+      const res = await fetch(apiUrl);
+      if (!res.ok) throw new Error('Feed unavailable');
+      const data = await res.json();
+      if (data.status !== 'ok' || !data.items?.length) throw new Error('No posts found');
+      container.innerHTML = data.items.map(item => {
+        const date = new Date(item.pubDate).toLocaleDateString('en-US', {
+          year: 'numeric', month: 'short', day: 'numeric'
+        });
+        const desc = item.description
+          ? item.description.replace(/<[^>]+>/g, '').slice(0, 120).trim() + '\u2026'
+          : '';
+        return `<a class="writing-post" href="${item.link}" target="_blank" rel="noopener">
+          <div class="writing-post-title">${item.title}</div>
+          <div class="writing-post-date">${date}</div>
+          ${desc ? `<div class="writing-post-desc">${desc}</div>` : ''}
+        </a>`;
+      }).join('');
+    } catch (err) {
+      const base = rssUrl.replace('/rss.xml', '').replace('/feed', '');
+      container.innerHTML = `<div class="writing-error">Could not load posts — <a href="${base}" target="_blank" style="color:var(--accent)">view on site →</a></div>`;
+    }
+  }
+
+  loadFeed('https://elianajain.hashnode.dev/rss.xml', 'hashnode-posts', 4);
+  loadFeed('https://ellyjain.substack.com/feed', 'substack-posts', 4);
 </script>
 </body>
 </html>
