@@ -27,6 +27,7 @@ I am currently building an AI-powered robot dog using Raspberry Pi and SunFounde
 |Gemini UI Text Audit                      |Content Design Audit   |[View Audit](https://elianajain.github.io/ElianaJainPortfolio/work/gemini-audit.html)                                         |
 |Measuring What Actually Works             |Case Study             |[View Case Study](https://elianajain.github.io/ElianaJainPortfolio/work/tech-writing-metrics.html)                            |
 |Burial, Identity, and the Post-Roman World|Research Documentation |[View Case Study](https://elianajain.github.io/ElianaJainPortfolio/work/sanisera-research.html)                               |
+|SAP Ariba REST API Documentation          |Case Study             |[View Case Study](https://elianajain.github.io/ElianaJainPortfolio/work/api-case-study.html)                                  |
 |Developer Content Style Guide             |Style Guide            |[View Style Guide](https://elianajain.github.io/ElianaJainPortfolio/work/style-guide.html)                                    |
 |AI Documentation Quality Initiative       |Writing Sample         |[View Sample](https://elianajain.github.io/ElianaJainPortfolio/work/ai-governance-sample.html)                                |
 |How to Write an Error Message             |How-To Guide           |[View Guide](https://elianajain.github.io/ElianaJainPortfolio/work/how-to-error-message.html)                                 |
@@ -102,6 +103,7 @@ ElianaJainPortfolio/
     ├── gemini-audit.html
     ├── tech-writing-metrics.html
     ├── sanisera-research.html
+    ├── api-case-study.html
     ├── style-guide.html
     ├── ai-governance-sample.html
     ├── how-to-error-message.html
