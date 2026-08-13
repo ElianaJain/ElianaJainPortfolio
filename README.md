@@ -1,6 +1,6 @@
 # Technical Writing Portfolio
 
-**Lead Technical Writer · Content Strategist · Developer Experience · 7+ years · API Documentation, AI Content, Developer Communications**
+**Technical Writer · Content Strategist · Developer Experience · 7+ years · API Documentation, AI Content, Developer Communications**
 
 A portfolio site built as a single HTML file, deployable to GitHub Pages. It covers content design, API documentation, research documentation, executive communications, developer content strategy, and a style guide written for both human writers and AI agents.
 
@@ -42,7 +42,7 @@ I am currently building an AI-powered robot dog using Raspberry Pi and SunFounde
 
 ## Experience
 
-**Lead Technical Writer** · SAP Ariba · Jul 2023 – Dec 2025
+**Technical Writer** · SAP Ariba · Jul 2023 – Dec 2025
 Owned end-to-end documentation strategy across user, administrator, and API content, managing the full content lifecycle from planning through publication and maintenance for 2,000+ enterprise users. Quality tested Joule, SAP’s AI assistant, verifying accuracy of AI-fetched help content against source documentation. Authored cXML documentation for SAP Business Network for Supply Chain including aerospace and defense procurement domains. Reviewed and evaluated AI-generated content for quality and accuracy before publishing. Coached and mentored 10 writers through the editorial process. Led 3 complex cross-functional projects redesigning SAP Business Network for terminology, compliance, and content standards. Implemented docs-as-code pipelines using DITA/XML and GitHub.
 
 **Associate Technical Writer** · SAP Ariba · Dec 2018 – Jul 2023
