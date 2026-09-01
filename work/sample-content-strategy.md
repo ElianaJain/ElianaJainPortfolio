@@ -1,6 +1,6 @@
 # CloudFlow Platform — Documentation & Content Strategy
 
-**Document Owner:** Eliana Jain, Lead Technical Writer  
+**Document Owner:** Eliana Jain, Technical Writer  
 **Last Updated:** September 2026  
 **Scope:** User documentation, administrator guides, API references, Help Center, knowledge base
 
