@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudFlow Platform — Documentation & Content Strategy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #f8f9fa;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 60px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 4px;
+        }
+        
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+            border-bottom: 3px solid #0066cc;
+            padding-bottom: 15px;
+        }
+        
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+        
+        h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .meta {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: #f0f7ff;
+            border-left: 4px solid #0066cc;
+            border-radius: 4px;
+        }
+        
+        .meta-item {
+            font-size: 14px;
+        }
+        
+        .meta-label {
+            font-weight: 600;
+            color: #0066cc;
+            display: block;
+            margin-bottom: 4px;
+        }
+        
+        .meta-value {
+            color: #555;
+        }
+        
+        hr {
+            border: none;
+            border-top: 1px solid #e0e0e0;
+            margin: 40px 0;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .goals {
+            background: #f9f9f9;
+            padding: 20px;
+            border-left: 4px solid #666;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        .goals ul {
+            margin: 0;
+        }
+        
+        .goals li {
+            margin-bottom: 10px;
+            margin-left: 20px;
+        }
+        
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: "Courier New", monospace;
+            font-size: 14px;
+            color: #d63384;
+        }
+        
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: "Courier New", monospace;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        table th {
+            background: #0066cc;
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+            border: 1px solid #0052a3;
+        }
+        
+        table td {
+            padding: 12px 15px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        
+        table tr:hover {
+            background: #f0f7ff;
+        }
+        
+        .section-intro {
+            margin: 25px 0;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 4px;
+        }
+        
+        strong {
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+        
+        .appendix {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+            background: #fafafa;
+            padding: 20px;
+            border-radius: 4px;
+        }
+        
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            text-align: right;
+            font-size: 13px;
+            color: #888;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            .meta {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            h2 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CloudFlow Platform — Documentation & Content Strategy</h1>
+        
+        <div class="meta">
+            <div class="meta-item">
+                <span class="meta-label">Document Owner:</span>
+                <span class="meta-value">Eliana Jain, Technical Writer</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Last Updated:</span>
+                <span class="meta-value">September 2026</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Scope:</span>
+                <span class="meta-value">User documentation, administrator guides, API references, Help Center, knowledge base</span>
+            </div>
+        </div>
+        
+        <hr>
+        
+        <!-- Section 1 -->
+        <h2>1. Strategic Overview</h2>
+        <p>CloudFlow is a SaaS procurement automation platform serving 1,500+ enterprise customers across supply chain, finance, and operations. This strategy establishes a unified, governance-driven approach to documentation that scales across concurrent product launches, feature rollouts, and customer support workflows.</p>
+        
+        <h3>Goals</h3>
+        <div class="goals">
+            <ul>
+                <li>Establish a <strong>single source of truth</strong> for all product documentation across user, administrator, and developer audiences</li>
+                <li>Reduce go-live friction through structured <strong>launch readiness documentation</strong> and localization coordination</li>
+                <li>Implement <strong>AI-assisted content workflows</strong> with human-in-the-loop validation to scale Help Center content without sacrificing accuracy</li>
+                <li>Enable <strong>self-service support</strong> through knowledge base optimization and chatbot-ready content</li>
+            </ul>
+        </div>
+        
+        <!-- Section 2 -->
+        <h2>2. Content Architecture & Docs-as-Code Implementation</h2>
+        
+        <h3>2.1 Repository Structure (DITA/XML + GitHub)</h3>
+        <pre>cloudflow-docs/
+├── source/
+│   ├── user-guides/
+│   │   ├── getting-started/
+│   │   ├── workflows/
+│   │   ├── reporting/
+│   │   └── integrations/
+│   ├── admin-guides/
+│   │   ├── configuration/
+│   │   ├── user-management/
+│   │   ├── compliance/
+│   │   └── system-administration/
+│   ├── api-reference/
+│   │   ├── endpoints/
+│   │   ├── authentication/
+│   │   ├── webhooks/
+│   │   └── code-samples/
+│   ├── help-center/
+│   │   ├── faqs/
+│   │   ├── troubleshooting/
+│   │   └── best-practices/
+│   └── shared/
+│       ├── glossary.ditamap
+│       ├── snippets/
+│       └── graphics/
+├── config/
+│   ├── build-profiles.yaml
+│   └── publishing-rules.yaml
+└── ci-cd/
+    ├── .github/workflows/
+    │   ├── validate-dita.yml
+    │   ├── build-html.yml
+    │   └── deploy-production.yml
+    └── linting-rules/</pre>
+        
+        <h3>2.2 Publishing Pipeline</h3>
+        <div class="section-intro">
+            <p><strong>Trigger:</strong> Sprint release → Merge to main branch<br>
+            <strong>Validation:</strong> Automated DITA validation, link checking, metadata compliance<br>
+            <strong>Build:</strong> HTML, PDF (admin guides), and JSON (Help Center API)<br>
+            <strong>Deployment:</strong> CloudFlow Help Center, knowledge base platform, customer portal<br>
+            <strong>Versioning:</strong> Git tags aligned with product releases (e.g., <code>v2024.09</code>)</p>
+        </div>
+        
+        <!-- Section 3 -->
+        <h2>3. Content Types & Governance</h2>
+        
+        <h3>3.1 User Documentation</h3>
+        <p><strong>Audience:</strong> End users, minimal technical background</p>
+        <p><strong>Content Types:</strong></p>
+        <ul>
+            <li><strong>Getting Started Guides</strong> — onboarding workflows, first-time setup, role-based entry points</li>
+            <li><strong>Feature Guides</strong> — task-based walkthroughs, screenshots, common workflows</li>
+            <li><strong>Best Practices</strong> — configuration recommendations, optimization strategies</li>
+        </ul>
+        <p><strong>Governance:</strong></p>
+        <ul>
+            <li>Plain language, active voice, max 100-word paragraphs</li>
+            <li>Reviewed by product, UX, and customer success teams pre-launch</li>
+            <li>Versioned per release; deprecation notices for removed features</li>
+        </ul>
+        
+        <h3>3.2 Administrator Documentation</h3>
+        <p><strong>Audience:</strong> IT admins, system integrators, power users</p>
+        <p><strong>Content Types:</strong></p>
+        <ul>
+            <li><strong>Configuration References</strong> — parameter tables, decision matrices, system requirements</li>
+            <li><strong>User Management Guides</strong> — role setup, permission matrices, SSO/SAML integration</li>
+            <li><strong>Troubleshooting & Logs</strong> — error code references, diagnostic workflows, support escalation paths</li>
+        </ul>
+        <p><strong>Governance:</strong></p>
+        <ul>
+            <li>Technical precision; assume familiarity with enterprise systems</li>
+            <li>Peer-reviewed by platform engineers and customer success engineers</li>
+            <li>Quarterly updates for API changes, security patches, and compliance updates</li>
+        </ul>
+        
+        <h3>3.3 API Documentation</h3>
+        <p><strong>Audience:</strong> Developers, integration partners, system integrators</p>
+        <p><strong>Content Types:</strong></p>
+        <ul>
+            <li><strong>Endpoint References</strong> — method, parameters, request/response schemas, error codes</li>
+            <li><strong>Authentication Guides</strong> — OAuth 2.0 flows, API key management, token refresh</li>
+            <li><strong>Code Samples</strong> — cURL, Python, Node.js, with real-world procurement scenarios</li>
+            <li><strong>Webhook Documentation</strong> — event types, retry logic, payload structures</li>
+        </ul>
+        <p><strong>Governance:</strong></p>
+        <ul>
+            <li>Auto-generated from OpenAPI 3.0 spec; hand-authored guides for workflows</li>
+            <li>Sample code tested against current API version in CI/CD pipeline</li>
+            <li>Reviewed by API engineering team; kept in sync with SDK releases</li>
+        </ul>
+        
+        <h3>3.4 Help Center & Knowledge Base</h3>
+        <p><strong>Audience:</strong> Self-service users, support-tier customers</p>
+        <p><strong>Content Types:</strong></p>
+        <ul>
+            <li><strong>FAQs</strong> — common questions, quick answers, decision trees</li>
+            <li><strong>Troubleshooting Articles</strong> — problem → diagnosis → solution workflows</li>
+            <li><strong>How-To Articles</strong> — optimized for search; structured for chatbot ingestion</li>
+            <li><strong>Release Notes</strong> — feature announcements, breaking changes, migration guidance</li>
+        </ul>
+        <p><strong>Governance:</strong></p>
+        <ul>
+            <li>Optimized for search and discoverability (SEO, internal search)</li>
+            <li>Structured with H2/H3 hierarchy for chatbot parsing</li>
+            <li>AI-assisted drafting (Claude) with mandatory human review before publication</li>
+            <li>Customer feedback loop: support ticket data → content gap identification</li>
+        </ul>
+        
+        <!-- Section 4 -->
+        <h2>4. AI Content Governance Framework</h2>
+        
+        <h3>4.1 AI-Assisted Workflows</h3>
+        <p><strong>Scope:</strong> Help Center articles, troubleshooting content, FAQ generation</p>
+        <p><strong>Process:</strong></p>
+        <ol>
+            <li><strong>Input:</strong> Support ticket clusters, feature request data, user session analytics</li>
+            <li><strong>Generation:</strong> Claude generates initial draft (HR, FAQ, troubleshooting workflow)</li>
+            <li><strong>Validation Layer:</strong>
+                <ul>
+                    <li>Fact-check against source documentation</li>
+                    <li>Verify technical accuracy with product team</li>
+                    <li>Validate tone and brand voice</li>
+                    <li>Test code samples against live API</li>
+                </ul>
+            </li>
+            <li><strong>Human Review:</strong> Technical writer + subject matter expert sign-off</li>
+            <li><strong>Publication:</strong> Deploy to Help Center; monitor user feedback</li>
+        </ol>
+        
+        <h3>4.2 Chatbot Content Standards</h3>
+        <p><strong>Content Eligible for Chatbot Ingestion:</strong></p>
+        <ul>
+            <li>Troubleshooting articles (step 1, 2, 3 format)</li>
+            <li>FAQs with clear Q&A structure</li>
+            <li>How-to articles under 800 words</li>
+            <li>Configuration references with decision matrices</li>
+        </ul>
+        <p><strong>Chatbot Response Validation:</strong></p>
+        <ul>
+            <li>Monthly audit: pull sample chatbot responses</li>
+            <li>Cross-reference against source documentation</li>
+            <li>Flag hallucinations or outdated information</li>
+            <li>Retrain model with corrections</li>
+        </ul>
+        
+        <!-- Section 5 -->
+        <h2>5. Launch Readiness & Feature Rollout Process</h2>
+        
+        <h3>5.1 Pre-Launch Checklist (T-6 weeks)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Milestone</th>
+                    <th>Owner</th>
+                    <th>Deliverable</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>T-6 weeks</strong></td>
+                    <td>Product Manager</td>
+                    <td>Feature spec, use cases, user personas</td>
+                </tr>
+                <tr>
+                    <td><strong>T-5 weeks</strong></td>
+                    <td>Technical Writer</td>
+                    <td>Documentation outline, content map, writer assignment</td>
+                </tr>
+                <tr>
+                    <td><strong>T-4 weeks</strong></td>
+                    <td>Technical Writer + Product</td>
+                    <td>Draft user guides, admin references, API docs</td>
+                </tr>
+                <tr>
+                    <td><strong>T-3 weeks</strong></td>
+                    <td>Technical Writer + Engineering</td>
+                    <td>Peer review, technical accuracy validation, code samples tested</td>
+                </tr>
+                <tr>
+                    <td><strong>T-2 weeks</strong></td>
+                    <td>Technical Writer + Support</td>
+                    <td>Help Center articles drafted, FAQ outline, chatbot content structured</td>
+                </tr>
+                <tr>
+                    <td><strong>T-1 week</strong></td>
+                    <td>Technical Writer + Product + Support</td>
+                    <td>Final review, localization QA, launch readiness sign-off</td>
+                </tr>
+                <tr>
+                    <td><strong>T-0</strong></td>
+                    <td>Release Engineering</td>
+                    <td>Deploy docs, Help Center update, release notes published</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>5.2 Go-Live Readiness Validation</h3>
+        <p><strong>Documentation Completeness:</strong></p>
+        <ul>
+            <li>✓ All user workflows documented in help center</li>
+            <li>✓ Admin configuration guide published</li>
+            <li>✓ API endpoints documented with code samples</li>
+            <li>✓ Troubleshooting guide covers known issues</li>
+            <li>✓ Release notes published 24 hours before launch</li>
+        </ul>
+        <p><strong>Quality Assurance:</strong></p>
+        <ul>
+            <li>✓ Links verified; no broken references</li>
+            <li>✓ Screenshots match current UI</li>
+            <li>✓ Code samples executable against staging environment</li>
+            <li>✓ Glossary terms consistent across documentation</li>
+            <li>✓ Help Center search indexed and working</li>
+        </ul>
+        <p><strong>Customer Support Readiness:</strong></p>
+        <ul>
+            <li>✓ Support team trained on feature; documentation reviewed</li>
+            <li>✓ FAQ shared with support; response templates drafted</li>
+            <li>✓ Escalation paths documented for edge cases</li>
+            <li>✓ Chatbot content deployed and validated</li>
+        </ul>
+        
+        <!-- Section 6 -->
+        <h2>6. Localization & Global Deployment</h2>
+        
+        <h3>6.1 Localization Strategy</h3>
+        <p><strong>Primary Languages:</strong> English (US), German, French, Japanese, Simplified Chinese</p>
+        <p><strong>Approach:</strong> English source → XLIFF files for professional translation → QA validation → deployment</p>
+        <p><strong>Workflow:</strong></p>
+        <ol>
+            <li><strong>English Freeze:</strong> T-2 weeks before release</li>
+            <li><strong>Extraction:</strong> DITA files → XLIFF translation packages</li>
+            <li><strong>Translation:</strong> Vendor translation + in-house SME review</li>
+            <li><strong>QA:</strong> Proof-read for technical accuracy, context, terminology alignment</li>
+            <li><strong>Deployment:</strong> Language-specific Help Center instances updated simultaneously</li>
+        </ol>
+        <p><strong>Terminology Governance:</strong></p>
+        <ul>
+            <li>Master glossary (English) maintained in shared Git repository</li>
+            <li>Translation memory (TM) reused across releases to ensure consistency</li>
+            <li>Quarterly terminology audits to catch drift and new terms</li>
+        </ul>
+        
+        <!-- Section 7 -->
+        <h2>7. Content Metrics & Optimization</h2>
+        
+        <h3>7.1 Tracking & KPIs</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Metric</th>
+                    <th>Target</th>
+                    <th>Frequency</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Help Center Search Success Rate</td>
+                    <td>>85%</td>
+                    <td>Weekly</td>
+                </tr>
+                <tr>
+                    <td>Avg. Time to Resolution (user docs)</td>
+                    <td>&lt;3 min</td>
+                    <td>Monthly</td>
+                </tr>
+                <tr>
+                    <td>Support Ticket Reduction (post-launch)</td>
+                    <td>20% decrease</td>
+                    <td>Per release</td>
+                </tr>
+                <tr>
+                    <td>Chatbot Accuracy Rate</td>
+                    <td>>90%</td>
+                    <td>Bi-weekly</td>
+                </tr>
+                <tr>
+                    <td>Customer Documentation NPS</td>
+                    <td>>4.2/5</td>
+                    <td>Quarterly</td>
+                </tr>
+                <tr>
+                    <td>Peer Review Turnaround</td>
+                    <td>&lt;3 days</td>
+                    <td>Per review</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>7.2 Feedback Loops</h3>
+        <p><strong>User Feedback Channels:</strong></p>
+        <ul>
+            <li>Help Center feedback widget (thumbs up/down + comment)</li>
+            <li>Support ticket tagging for doc-related issues</li>
+            <li>Product in-app help links with usage analytics</li>
+            <li>Quarterly customer surveys on documentation usefulness</li>
+        </ul>
+        <p><strong>Continuous Improvement:</strong></p>
+        <ul>
+            <li>Monthly content audit: prioritize high-volume searches, low-satisfaction articles</li>
+            <li>Quarterly trend analysis: What docs are missing? Which are outdated?</li>
+            <li>Feature feedback → documentation roadmap integration</li>
+        </ul>
+        
+        <!-- Section 8 -->
+        <h2>8. Team Structure & Responsibilities</h2>
+        
+        <h3>8.1 Roles</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Role</th>
+                    <th>Responsibilities</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Lead Technical Writer</strong></td>
+                    <td>Strategy, launch coordination, governance, mentoring</td>
+                </tr>
+                <tr>
+                    <td><strong>Senior Technical Writer</strong></td>
+                    <td>API docs, complex admin guides, peer review</td>
+                </tr>
+                <tr>
+                    <td><strong>Technical Writer</strong></td>
+                    <td>User guides, Help Center content, feature documentation</td>
+                </tr>
+                <tr>
+                    <td><strong>Documentation Engineer</strong></td>
+                    <td>Docs-as-code pipelines, publishing automation, CI/CD</td>
+                </tr>
+                <tr>
+                    <td><strong>Content Strategist</strong> (part-time)</td>
+                    <td>Localization coordination, customer feedback analysis, content roadmap</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>8.2 Collaboration Model</h3>
+        <ul>
+            <li><strong>Daily standups</strong> during launch sprints (product team + writers + engineering)</li>
+            <li><strong>Weekly content reviews</strong> with SMEs and product managers</li>
+            <li><strong>Bi-weekly publishing cycles</strong> aligned with sprint releases</li>
+            <li><strong>Monthly strategy meetings</strong> to refine processes, discuss metrics, plan next release</li>
+        </ul>
+        
+        <!-- Section 9 -->
+        <h2>9. Tools & Technology Stack</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Function</th>
+                    <th>Tool</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Authoring</strong></td>
+                    <td>Oxygen XML Editor, VS Code (DITA)</td>
+                </tr>
+                <tr>
+                    <td><strong>Version Control</strong></td>
+                    <td>GitHub (Git)</td>
+                </tr>
+                <tr>
+                    <td><strong>Publishing</strong></td>
+                    <td>DITA Open Toolkit + custom XSL templates</td>
+                </tr>
+                <tr>
+                    <td><strong>Help Center Platform</strong></td>
+                    <td>Zendesk Guide (customer-facing)</td>
+                </tr>
+                <tr>
+                    <td><strong>Knowledge Base</strong></td>
+                    <td>Confluence (internal)</td>
+                </tr>
+                <tr>
+                    <td><strong>API Documentation</strong></td>
+                    <td>Swagger UI (auto-generated from OpenAPI spec)</td>
+                </tr>
+                <tr>
+                    <td><strong>Collaboration</strong></td>
+                    <td>Jira (task tracking), Slack (communication)</td>
+                </tr>
+                <tr>
+                    <td><strong>Analytics</strong></td>
+                    <td>Mixpanel (Help Center usage), Google Analytics</td>
+                </tr>
+                <tr>
+                    <td><strong>AI Assistance</strong></td>
+                    <td>Claude API (content generation + validation)</td>
+                </tr>
+                <tr>
+                    <td><strong>Localization</strong></td>
+                    <td>Phrase (translation platform), MemoQ (TM management)</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <!-- Section 10 -->
+        <h2>10. Success Metrics & Review Cycle</h2>
+        
+        <h3>10.1 Quarterly Reviews</h3>
+        <ul>
+            <li>Documentation completeness vs. feature rollout schedule</li>
+            <li>Help Center engagement and satisfaction metrics</li>
+            <li>Support ticket volume and resolution time trends</li>
+            <li>Team capacity and workload balance</li>
+            <li>Localization turnaround and quality metrics</li>
+        </ul>
+        
+        <h3>10.2 Annual Strategy Review</h3>
+        <ul>
+            <li>Alignment with product roadmap and market needs</li>
+            <li>Documentation architecture scalability</li>
+            <li>Investment in tooling, automation, and team growth</li>
+            <li>Customer feedback trends and strategic gaps</li>
+            <li>Competitive analysis: how peers approach enterprise documentation</li>
+        </ul>
+        
+        <!-- Appendix -->
+        <div class="appendix">
+            <h2>Appendix: Terminology Standards & Style Guide Excerpt</h2>
+            
+            <h3>Voice & Tone</h3>
+            <ul>
+                <li><strong>Professional but approachable:</strong> Avoid jargon without explanation</li>
+                <li><strong>Active voice:</strong> "Click Save" not "The Save button should be clicked"</li>
+                <li><strong>Positive framing:</strong> "Set this configuration to enable X" not "Failure to set this will disable X"</li>
+            </ul>
+            
+            <h3>Key Terms (Glossary Snapshot)</h3>
+            <ul>
+                <li><strong>Procurement Workflow:</strong> A sequence of approval steps from requisition to payment</li>
+                <li><strong>Spend Analysis:</strong> The process of categorizing and analyzing supplier spending data</li>
+                <li><strong>Contract Compliance:</strong> Verification that supplier transactions align with negotiated terms</li>
+                <li><strong>System Configuration:</strong> Administrative settings that control platform behavior at the tenant level</li>
+            </ul>
+            
+            <h3>Punctuation & Formatting</h3>
+            <ul>
+                <li>Use bullet lists for 3+ items</li>
+                <li>Bold for UI elements: <strong>Save</strong>, <strong>Configuration Menu</strong></li>
+                <li>Code font for technical terms: <code>webhook</code>, <code>OAuth token</code></li>
+                <li>Links inline in text, not at bottom of page</li>
+            </ul>
+        </div>
+        
+        <div class="footer">
+            <p><strong>Document Version:</strong> 1.0<br>
+            <strong>Next Review:</strong> Q1 2027</p>
+        </div>
+    </div>
+</body>
+</html>
