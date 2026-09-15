@@ -81,10 +81,11 @@
 
     h1 {
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(2.8rem, 6vw, 5.2rem);
+      font-size: clamp(2.3rem, 4.5vw, 4rem);
       line-height: 1.05;
       letter-spacing: -0.02em;
       color: var(--ink);
+      max-width: 900px;
     }
 
     h1 em { font-style: italic; color: var(--accent); }
@@ -136,6 +137,11 @@
       transition: color 0.2s, border-color 0.2s;
     }
     .header-links a:hover { color: var(--accent); border-color: var(--accent); }
+
+    a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
 
     /* ── NAV ───────────────────────────────────────────────────── */
     nav {
@@ -223,6 +229,7 @@
       header { grid-template-columns: 1fr; }
       .header-meta { align-items: flex-start; text-align: left; }
       .header-links { justify-content: flex-start; }
+      h1 { font-size: clamp(2.2rem, 10vw, 3.2rem); }
     }
 
     .about-copy p { margin-bottom: 1rem; color: var(--ink); }
@@ -385,6 +392,13 @@
       letter-spacing: 0.08em;
       color: var(--mid);
       text-transform: uppercase;
+    }
+
+    .writing-source-description {
+      margin-top: 1rem;
+      font-size: 0.82rem;
+      color: var(--mid);
+      line-height: 1.5;
     }
 
     .writing-post-desc {
@@ -595,6 +609,16 @@
 
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
     .reveal.visible { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
   </style>
 </head>
 <body>
@@ -607,13 +631,13 @@
   </div>
   <div class="header-meta">
     <div class="meta-pill">Open to opportunities</div>
-    <div class="meta-pill" style="background:var(--accent);">Technical Writer</div>
+    <!-- <div class="meta-pill" style="background:var(--accent);">Technical Writer</div>  -->
     <div class="header-links">
-      <a href="https://github.com/ElianaJain" target="_blank">GitHub</a>
-      <a href="https://www.linkedin.com/in/elianajain/" target="_blank">LinkedIn</a>
+      <a href="https://github.com/ElianaJain" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://www.linkedin.com/in/elianajain/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       <a href="mailto:jain.eliana@gmail.com">Email</a>
-      <a href="https://ellyjain.substack.com/" target="_blank">Substack</a>
-      <a href="https://elianajain.hashnode.dev" target="_blank">Hashnode</a>
+      <a href="https://ellyjain.substack.com/" target="_blank" rel="noopener noreferrer">Substack</a>
+      <a href="https://elianajain.hashnode.dev" target="_blank" rel="noopener noreferrer">Hashnode</a>
     </div>
   </div>
 </header>
@@ -679,8 +703,7 @@
           <span class="tag">Launch Coordination</span>
           <span class="tag">AI Content Governance</span>
         </div>
-        <a href="work/sample-content-strategy.html" class="card-link" target="_blank">View Sample</a>
-      </div>
+        <a href="work/sample-content-strategy.html" class="card-link" target="_blank" rel="noopener noreferrer">View Sample</a>
       </div>
 
       <div class="work-card reveal">
@@ -754,101 +777,57 @@
 
   <!-- ── LATEST WRITING ─────────────────────────────────────── -->
   <section id="writing">
-  <div class="section-header">
-    <span class="section-label">03 / Latest Writing</span>
-    <div class="rule-line"></div>
-  </div>
-  <div class="about-grid">
-    <div>
-      <div class="tl-company" style="margin-bottom:0.75rem;">Hashnode</div>
-      <p style="color:var(--mid);font-size:0.9rem;margin-bottom:1rem;">Writing about the intersection of archaeology, AI documentation, and robotics for a developer audience.</p>
-      <a href="https://elianajain.hashnode.dev" class="card-link" target="_blank">View all posts</a>
-    </div>
-    <div>
-      <div class="tl-company" style="margin-bottom:0.75rem;">Substack</div>
-      <p style="color:var(--mid);font-size:0.9rem;margin-bottom:1rem;">A research journal documenting my genealogy journey, where I use AI-assisted research, historical records, and archival sources to uncover family stories and connections. The project explores how emerging AI tools can support genealogical research while I develop the findings into a book.</p>
-      <a href="https://ellyjain.substack.com" class="card-link" target="_blank">View all posts</a>
-    </div>
-  </div>
-</section>
-
-  <!-- ── EXPERIENCE ─────────────────────────────────────────── -->
-  <section id="experience">
     <div class="section-header">
-      <span class="section-label">04 / Experience</span>
+      <span class="section-label">03 / Latest Writing</span>
       <div class="rule-line"></div>
     </div>
-    <div class="timeline">
 
-      <div class="timeline-item reveal">
-        <div class="tl-meta">
-          <div class="tl-period">Jul 2023 – Dec 2025</div>
-          <div class="tl-company">SAP Ariba</div>
+    <div class="writing-grid">
+      <div class="writing-source">
+        <div class="writing-source-header">
+          <div class="writing-source-name">Hashnode</div>
+          <a href="https://elianajain.hashnode.dev"
+             class="writing-source-link"
+             target="_blank"
+             rel="noopener noreferrer">View all</a>
         </div>
-        <div>
-          <div class="tl-role">User Assistance Developer</div>
-          <ul class="tl-bullets">
-            <li>Owned documentation strategy across user, admin, and API content for <em class="tl-highlight">SAP Business Network</em> and its Supply Chain platform, serving 2,000+ enterprise users.</li>
-            <li>Built prompt evaluation rubrics and human-in-the-loop review protocols for AI-assisted documentation, and quality tested SAP's <em class="tl-highlight">Joule</em> assistant for accuracy against source content.</li>
-            <li>Implemented docs-as-code pipelines with DITA/XML and GitHub, and mentored 10 writers through the editorial process.</li>
-          </ul>
+        <div id="hashnode-posts">
+          <div class="writing-skeleton">
+            <div class="writing-skeleton-line" style="width:85%;"></div>
+            <div class="writing-skeleton-line" style="width:55%;"></div>
+          </div>
+          <div class="writing-skeleton">
+            <div class="writing-skeleton-line" style="width:70%;"></div>
+            <div class="writing-skeleton-line" style="width:45%;"></div>
+          </div>
         </div>
+        <p class="writing-source-description">
+          Writing about the intersection of archaeology, AI documentation, and robotics for a developer audience.
+        </p>
       </div>
 
-      <div class="timeline-item reveal">
-        <div class="tl-meta">
-          <div class="tl-period">Dec 2018 – Jul 2023</div>
-          <div class="tl-company">SAP Ariba</div>
+      <div class="writing-source">
+        <div class="writing-source-header">
+          <div class="writing-source-name">Substack</div>
+          <a href="https://ellyjain.substack.com"
+             class="writing-source-link"
+             target="_blank"
+             rel="noopener noreferrer">View all</a>
         </div>
-        <div>
-          <div class="tl-role">User Assistance Developer Associate</div>
-          <ul class="tl-bullets">
-            <li>Wrote API reference and configuration documentation for SAP Ariba Strategic Sourcing and Category Management, translating complex scoring logic into clear guidance for administrators.</li>
-            <li>Automated authoring and publishing with PowerShell and docs-as-code pipelines, cutting manual work across release cycles.</li>
-            <li>SAP Ariba Category Management team named as finalist for SAP's Hasso Plattner Founders' Award (2023).</li>
-          </ul>
+        <div id="substack-posts">
+          <div class="writing-skeleton">
+            <div class="writing-skeleton-line" style="width:80%;"></div>
+            <div class="writing-skeleton-line" style="width:50%;"></div>
+          </div>
+          <div class="writing-skeleton">
+            <div class="writing-skeleton-line" style="width:65%;"></div>
+            <div class="writing-skeleton-line" style="width:40%;"></div>
+          </div>
         </div>
+        <p class="writing-source-description">
+          A research journal documenting my genealogy journey, using AI-assisted research, historical records, and archival sources to uncover family stories and connections while developing the findings into a book.
+        </p>
       </div>
-
-      <div class="timeline-item reveal">
-        <div class="tl-meta">
-          <div class="tl-period">Jul 2018 – Nov 2018</div>
-          <div class="tl-company">Facebook / Aditi Consulting</div>
-        </div>
-        <div>
-          <div class="tl-role">Product Operations Analyst (Contract)</div>
-          <ul class="tl-bullets">
-            <li>Wrote internal process documentation for workflows spanning 100+ news publishers.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="timeline-item reveal">
-        <div class="tl-meta">
-          <div class="tl-period">Jul 2017 – Jan 2018</div>
-          <div class="tl-company">SAP America</div>
-        </div>
-        <div>
-          <div class="tl-role">IT Services Coordinator (Internship)</div>
-          <ul class="tl-bullets">
-            <li>Supported enterprise onboarding and systems access across Windows and macOS environments.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="timeline-item reveal">
-        <div class="tl-meta">
-          <div class="tl-period">Mar 2014 – Jul 2016</div>
-          <div class="tl-company">Facebook / Aditi Consulting</div>
-        </div>
-        <div>
-          <div class="tl-role">User Operations Analyst (Contract)</div>
-          <ul class="tl-bullets">
-            <li>Set annotation standards and contributed 10,000+ image annotations to ML model training pipelines.</li>
-          </ul>
-        </div>
-      </div>
-
     </div>
   </section>
 
@@ -945,7 +924,7 @@
 
 <footer>
   <div class="footer-name">Technical Writing Portfolio</div>
-  <div class="footer-note">Built with HTML · Hosted on GitHub Pages · Updated Jun 2026</div>
+  <div class="footer-note">Built with HTML · Hosted on GitHub Pages · Updated Sep 2026</div>
 </footer>
 
 <script>
@@ -991,7 +970,7 @@
         const desc = item.description
           ? item.description.replace(/<[^>]+>/g, '').slice(0, 120).trim() + '\u2026'
           : '';
-        return `<a class="writing-post" href="${item.link}" target="_blank" rel="noopener">
+        return `<a class="writing-post" href="${item.link}" target="_blank" rel="noopener noreferrer">
           <div class="writing-post-title">${item.title}</div>
           <div class="writing-post-date">${date}</div>
           ${desc ? `<div class="writing-post-desc">${desc}</div>` : ''}
@@ -999,7 +978,7 @@
       }).join('');
     } catch (err) {
       const base = rssUrl.replace('/rss.xml', '').replace('/feed', '');
-      container.innerHTML = `<div class="writing-error">Could not load posts — <a href="${base}" target="_blank" style="color:var(--accent)">view on site →</a></div>`;
+      container.innerHTML = `<div class="writing-error">Could not load posts — <a href="${base}" target="_blank" rel="noopener noreferrer">view on site →</a></div>`;
     }
   }
 
