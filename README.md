@@ -40,7 +40,7 @@ I am currently building an AI-powered robot dog using Raspberry Pi and SunFounde
 
 -----
 
-## Experience
+## Experience Highlights
 
 **Technical Writer** · SAP Ariba · Jul 2023 – Dec 2025
 Owned end-to-end documentation strategy across user, administrator, and API content, managing the full content lifecycle from planning through publication and maintenance for 2,000+ enterprise users. Quality tested Joule, SAP’s AI assistant, verifying accuracy of AI-fetched help content against source documentation. Authored cXML documentation for SAP Business Network for Supply Chain including aerospace and defense procurement domains. Reviewed and evaluated AI-generated content for quality and accuracy before publishing. Coached and mentored 10 writers through the editorial process. Led 3 complex cross-functional projects redesigning SAP Business Network for terminology, compliance, and content standards. Implemented docs-as-code pipelines using DITA/XML and GitHub.
@@ -53,9 +53,6 @@ Developed and maintained internal process documentation supporting workflows for
 
 **User Operations Analyst** · Facebook via Aditi Consulting · Mar 2014 – Jul 2016
 Supported ML model training by defining 10,000+ image annotations, establishing annotation standards that improved model accuracy, consistency, and output quality across products.
-
-**Marketing Consultant (Contract)** · MeWe · Jul 2013 – Mar 2014
-Strategically identified core target demographics, forged partnerships, and cultivated relationships with startup leadership, contributing to growth to 9 million active users.
 
 -----
 
