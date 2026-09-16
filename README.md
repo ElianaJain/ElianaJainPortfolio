@@ -1,6 +1,6 @@
 # Eliana's Writing Portfolio
 
-**Technical Writer · User Assistance · Content Strategist · Developer Experience · 7+ years · API Documentation, AI Content, Developer Communications**
+**Technical Writer · User Assistance · Content Strategist · Developer Experience · 10 years · API Documentation, AI Content, Developer Communications**
 
 A portfolio site built as a single HTML file, deployable to GitHub Pages. It covers content design, API documentation, research documentation, executive communications, developer content strategy, and a style guide written for both human writers and AI agents.
 
@@ -14,7 +14,7 @@ A portfolio site built as a single HTML file, deployable to GitHub Pages. It cov
 
 ## About
 
-This portfolio represents 7+ years of owning developer and enterprise documentation for complex SaaS platforms. It highlights work across content design, API reference, primary research, content strategy, and developer-facing writing.
+This portfolio represents 10 years of owning developer and enterprise documentation for complex SaaS platforms. It highlights work across content design, API reference, primary research, content strategy, and developer-facing writing.
 
 I am currently building an AI-powered robot dog using Raspberry Pi and SunFounder hardware and documenting the full process publicly on Hashnode and GitHub. I also write about the intersection of archaeology and AI documentation at [elianajain.hashnode.dev](https://elianajain.hashnode.dev).
 
