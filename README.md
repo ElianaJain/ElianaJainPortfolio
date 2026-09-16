@@ -14,7 +14,7 @@ A portfolio site built as a single HTML file, deployable to GitHub Pages. It cov
 
 ## About
 
-This portfolio represents 10 years of owning developer and enterprise documentation for complex SaaS platforms. It highlights work across content design, API reference, primary research, content strategy, and developer-facing writing.
+This portfolio represents 10 years of owning developer and enterprise documentation for complex SaaS platforms, content planning and strategy, content design, and AI-assisted documentation. It highlights work across content design, API reference, primary research, content strategy, and developer-facing writing.
 
 I am currently building an AI-powered robot dog using Raspberry Pi and SunFounder hardware and documenting the full process publicly on Hashnode and GitHub. I also write about the intersection of archaeology and AI documentation at [elianajain.hashnode.dev](https://elianajain.hashnode.dev).
 
