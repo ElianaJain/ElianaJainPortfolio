@@ -1062,7 +1062,8 @@
       const base = rssUrl.replace('/rss.xml', '').replace('/feed', '');
       container.innerHTML = `<div class="writing-error">Couldn't load posts. <a href="${base}" target="_blank" rel="noopener noreferrer">View on site</a></div>`;
     }
-
+  }
+  
   loadFeed('https://elianajain.hashnode.dev/rss.xml', 'hashnode-posts', 4);
   loadFeed('https://ellyjain.substack.com/feed', 'substack-posts', 4);
 </script>
