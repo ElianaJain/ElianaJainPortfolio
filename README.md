@@ -24,6 +24,7 @@ I am currently building an AI-powered robot dog using Raspberry Pi and SunFounde
 
 |Sample                                    |Type                   |Link                                                                                                                          |
 |------------------------------------------|-----------------------|------------------------------------------------------------------------------------------------------------------------------|
+|Fieldwork Localization                     |Case Study            |[View Case Study] (https://elianajain.github.io/ElianaJainPortfolio/work/fieldwork-notifications-naming-localization.html) 
 |Gemini UI Text Audit                      |Content Design Audit   |[View Audit](https://elianajain.github.io/ElianaJainPortfolio/work/gemini-audit.html)                                         |
 |Measuring What Actually Works             |Case Study             |[View Case Study](https://elianajain.github.io/ElianaJainPortfolio/work/tech-writing-metrics.html)                            |
 |Burial, Identity, and the Post-Roman World|Research Documentation |[View Case Study](https://elianajain.github.io/ElianaJainPortfolio/work/sanisera-research.html)                               |
