@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fieldwork: notifications, feature naming, and localization-ready copy</title>
+<style>
+:root{--bg:#eef1f0;--surface:#fff;--ink:#14282c;--muted:#51656a;--line:#cfd8d7;--urgent:#b3261e;--action:#1f6b8f;--fyi:#5d7a52;--accent:#12333a;--accent-ink:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101a1c;--surface:#172528;--ink:#e6eeee;--muted:#9bb0b3;--line:#2a3d40;--urgent:#ff8a80;--action:#7cc4e6;--fyi:#a6c79a;--accent:#cfe7e4;--accent-ink:#101a1c}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:var(--action)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--action);outline-offset:2px}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+nav{border-bottom:1px solid var(--line);background:var(--surface)}
+nav .wrap{display:flex;flex-wrap:wrap;gap:6px 20px;padding-top:12px;padding-bottom:12px;font-size:14px}
+nav a{text-decoration:none;color:var(--muted)}
+nav a:first-child{color:var(--ink);font-weight:700;margin-right:auto}
+h1,h2,h3{font-family:Charter,"Iowan Old Style",Georgia,serif;line-height:1.2;margin:0}
+h1{font-size:clamp(2rem,5vw,3rem);max-width:18ch;letter-spacing:-.01em}
+h2{font-size:1.7rem;margin-bottom:12px}
+h3{font-size:1.15rem;margin:28px 0 8px}
+header.hero{padding:56px 0 40px}
+.lede{max-width:60ch;color:var(--muted);font-size:1.1rem;margin:16px 0 0}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}
+.tags li{border:1px solid var(--line);border-radius:999px;padding:2px 12px;font-size:13px;color:var(--muted)}
+section{padding:40px 0;border-top:1px solid var(--line)}
+p{max-width:68ch;margin:0 0 14px}
+.tray{display:grid;gap:12px;margin-top:32px;max-width:520px}
+.note{background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--c);border-radius:6px;padding:12px 14px}
+.note.urgent{--c:var(--urgent)}.note.action{--c:var(--action)}.note.fyi{--c:var(--fyi)}
+.note b{display:block}
+.note span{display:block;font-size:14px;color:var(--muted)}
+.note small{display:block;margin-top:6px;font-size:12px;color:var(--c);font-weight:600}
+.scroll{overflow-x:auto;margin:12px 0 20px}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px;background:var(--surface)}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--accent);color:var(--accent-ink);font-weight:600}
+code{font:13px/1.4 ui-monospace,Menlo,Consolas,monospace;background:var(--bg);padding:1px 5px;border-radius:4px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0 20px}
+.pair div{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px 14px;font-size:14px}
+.pair .bad{border-top:4px solid var(--urgent)}.pair .good{border-top:4px solid var(--fyi)}
+.pair strong{display:block;margin-bottom:4px}
+@media(max-width:620px){.pair{grid-template-columns:1fr}}
+.callout{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin:16px 0;max-width:68ch}
+footer{border-top:1px solid var(--line);padding:28px 0 48px;font-size:14px;color:var(--muted)}
+footer a{margin-right:16px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<nav aria-label="Page"><div class="wrap">
+<a href="#top">Fieldwork / UX writing, part 2</a>
+<a href="#notifications">Notifications</a><a href="#naming">Feature naming</a><a href="#localization">Localization</a><a href="#research">UX research plan</a><a href="#figma">Figma spec</a>
+</div></nav>
+
+<main id="top">
+<header class="hero"><div class="wrap">
+<h1>Notifications, feature naming, and localization-ready copy</h1>
+<p class="lede">A UX writing sample for Fieldwork, a fictional field operations app. It extends my error and validation sample with the copy that reaches users outside the app: push alerts, in-app notices, email subjects, and the names of features.</p>
+<ul class="tags"><li>Notifications</li><li>Feature naming</li><li>Localization</li><li>UX research plan</li><li>Figma component spec</li></ul>
+<div class="tray" role="list" aria-label="Three notification tiers">
+<div class="note urgent" role="listitem"><b>Inspection report is overdue</b><span>Northern Region Q3 was due Friday. Open it to submit or request more time.</span><small>Urgent: blocks work</small></div>
+<div class="note action" role="listitem"><b>Priya Nair assigned you 3 tasks</b><span>Bridge inspection Q3. View them to confirm or reassign.</span><small>Needs action</small></div>
+<div class="note fyi" role="listitem"><b>Report draft is ready</b><span>Review the Northern Region Q3 draft before you publish.</span><small>For your information</small></div>
+</div>
+</div></header>
+
+<section id="notifications"><div class="wrap">
+<h2>Notifications: three tiers, one structure</h2>
+<p>Field crews read notifications on a lock screen, often between tasks. Each message has to say what changed and what to do in the first few words. I sorted every notification into one of three tiers, and the tier decides the channel, the tone, and whether it carries a button.</p>
+<div class="scroll"><table>
+<caption class="sr" style="position:absolute;left:-9999px">Notification copy by tier and channel</caption>
+<tr><th scope="col">ID</th><th scope="col">Tier / channel</th><th scope="col">Title or subject</th><th scope="col">Body</th><th scope="col">Action</th></tr>
+<tr><td>NT-01</td><td>Urgent / push</td><td>Inspection report is overdue</td><td>Northern Region Q3 was due Friday. Open it to submit or request more time.</td><td>Open report</td></tr>
+<tr><td>NT-02</td><td>Needs action / in-app</td><td><code>{assignerName}</code> assigned you <code>{count}</code> tasks</td><td><code>{projectName}</code>. View them to confirm or reassign.</td><td>View tasks</td></tr>
+<tr><td>NT-03</td><td>For your information / in-app</td><td>Report draft is ready</td><td>Review the <code>{projectName}</code> draft before you publish.</td><td>Review draft</td></tr>
+<tr><td>NT-04</td><td>Needs action / email</td><td><code>{count}</code> tasks are due tomorrow in <code>{projectName}</code></td><td>Preheader: Open Fieldwork to mark them done or reschedule.</td><td>Open tasks</td></tr>
+<tr><td>NT-05</td><td>For your information / toast</td><td>Back online</td><td><code>{count}</code> changes synced.</td><td>None</td></tr>
+</table></div>
+<h3>Rules I applied</h3>
+<p>Lead with the thing that changed, not a greeting. Name the object (the project, the report) so the message makes sense without opening the app. The button repeats the verb in the body, so "Review the draft" leads to a button that says "Review draft". Informational messages carry no urgency words, and exclamation marks never appear. For this sample, push titles stay at 40 characters or fewer and bodies at 90 or fewer, so they survive truncation on most lock screens.</p>
+<div class="pair">
+<div class="bad"><strong>Before</strong>Hey! You have new notifications!<br>Tap to see what's new.</div>
+<div class="good"><strong>After</strong>Priya Nair assigned you 3 tasks<br>Bridge inspection Q3. View them to confirm or reassign.</div>
+</div>
+</div></section>
+
+<section id="naming"><div class="wrap">
+<h2>Feature naming: name what it produces</h2>
+<p>Fieldwork can assemble a first version of an inspection report from a project's completed tasks. The feature needed a name that would work in a button, a notification, a help article, and other languages.</p>
+<h3>Criteria</h3>
+<p>The name has to be literal, so a new user can guess what it does. It has to translate, so no puns, brand coinages, or compounds that break in other languages. It has to set the right expectation, which here means the output is a draft that a person reviews. And it cannot collide with existing terms in the product.</p>
+<div class="scroll"><table>
+<tr><th scope="col">Candidate</th><th scope="col">Decision</th><th scope="col">Reason</th></tr>
+<tr><td>Smart report</td><td>Rejected</td><td>"Smart" says nothing specific, does not translate cleanly, and implies the output is correct without review.</td></tr>
+<tr><td>ReportBot</td><td>Rejected</td><td>Personifies the feature and builds a compound that localizes poorly.</td></tr>
+<tr><td>Auto-report</td><td>Rejected</td><td>Hyphenation varies by language, and "auto" does not signal that review is needed.</td></tr>
+<tr><td><strong>Report draft</strong></td><td>Chosen</td><td>Plain noun phrase. Says what it produces and that it is unfinished. Pairs with the verbs "Create report draft" and "Review draft".</td></tr>
+</table></div>
+<p>One naming rule came out of this: name the output, not the mechanism. Users manage reports; they do not manage "automation".</p>
+</div></section>
+
+<section id="localization"><div class="wrap">
+<h2>Localization: write strings translators can finish</h2>
+<p>Good English copy can still be unusable in translation if it is built from fragments. These are the rules I wrote for the Fieldwork string set, with the reason behind each one.</p>
+<div class="pair">
+<div class="bad"><strong>Incorrect: concatenated fragments</strong><code>"You have " + n + " task" + (n &gt; 1 ? "s" : "") + " in " + project</code></div>
+<div class="good"><strong>Correct: one complete message</strong><code>{count, plural, one {# task is due tomorrow in {projectName}} other {# tasks are due tomorrow in {projectName}}}</code></div>
+</div>
+<div class="scroll"><table>
+<tr><th scope="col">Rule</th><th scope="col">Why</th></tr>
+<tr><td>Write whole sentences with named variables.</td><td>Word order, gender, and case change by language. Translators need the full sentence to reorder it.</td></tr>
+<tr><td>Use plural messages, not "task(s)".</td><td>English has two plural forms. Polish, Russian, and Arabic have more, and a plural message lets translators add them.</td></tr>
+<tr><td>Format dates and numbers by locale.</td><td>Pass <code>{dueDate, date, medium}</code> instead of typing "Oct 3".</td></tr>
+<tr><td>Plan for about 30 percent text growth.</td><td>German and Finnish run long. A 40-character English title needs room for roughly 52.</td></tr>
+<tr><td>Avoid idioms and wordplay.</td><td>"Heads up" and "all caught up" rarely translate. Say "No tasks are due today."</td></tr>
+<tr><td>Add a translator note to every string.</td><td>Context prevents wrong guesses, such as "Draft" as a noun versus a verb.</td></tr>
+</table></div>
+<h3>String inventory with translator notes</h3>
+<div class="scroll"><table>
+<tr><th scope="col">ID</th><th scope="col">Source string</th><th scope="col">Translator note</th><th scope="col">Max length</th></tr>
+<tr><td>LC-01</td><td>Report draft is ready</td><td>"Draft" is a noun: a first version of a document. Push title.</td><td>40</td></tr>
+<tr><td>LC-02</td><td><code>{assignerName}</code> assigned you <code>{count, plural, one {# task} other {# tasks}}</code></td><td>Assigner is a person's full name. Keep the name unchanged.</td><td>40</td></tr>
+<tr><td>LC-03</td><td>Review draft</td><td>Button. "Review" is a verb meaning to read and check before publishing.</td><td>16</td></tr>
+<tr><td>LC-04</td><td>Back online</td><td>Toast shown when the device reconnects to the network.</td><td>20</td></tr>
+<tr><td>LC-05</td><td><code>{count, plural, one {# change synced} other {# changes synced}}</code></td><td>"Synced" means saved to the server. Count is the number of edits.</td><td>30</td></tr>
+</table></div>
+<div class="callout"><strong>Right-to-left check.</strong> The notification layout is designed to mirror for Arabic and Hebrew: the tier marker moves to the right edge, and the action button aligns to the start of the line. Names, numbers, and project titles keep their own text direction.</div>
+</div></section>
+
+<section id="research"><div class="wrap">
+<h2>UX research plan for the names and notifications</h2>
+<p>This is a plan, not a results report. I wrote it to show how I would check the choices above before they ship. No findings are claimed.</p>
+<div class="scroll"><table>
+<tr><th scope="col">Question</th><th scope="col">Method</th><th scope="col">Success measure, set before testing</th></tr>
+<tr><td>Do users read "Report draft" as a first version they must review?</td><td>Unmoderated first-impression test. Show the button label (A: Smart report, B: Report draft) and ask what happens when you select it.</td><td>At least 80 percent of participants on B say they would review or edit before sending.</td></tr>
+<tr><td>Can users tell what to do next from a notification alone?</td><td>Five-second test of the three tiers, followed by "What would you do next?"</td><td>Participants name the correct next action for each tier without opening the app.</td></tr>
+<tr><td>Does the copy survive translation?</td><td>Linguist review of LC-01 to LC-05 in German, Polish, and Arabic, with a truncation check in the layout.</td><td>No string overflows its container, and linguists flag no ambiguous terms.</td></tr>
+</table></div>
+<p>Participants would be field supervisors and crew leads, recruited in small rounds of five to eight. If Smart report outperforms Report draft, I would keep the plain name and test a clearer description instead of switching to a vague one.</p>
+</div></section>
+
+<section id="figma"><div class="wrap">
+<h2>Figma component spec: notification</h2>
+<!-- Add the Figma file or prototype link here. -->
+<p>The component is built for reuse across push previews, in-app notices, and toasts. Text styles and color tokens are named by role, not by value, so the tier changes with one property.</p>
+<div class="scroll"><table>
+<tr><th scope="col">Part</th><th scope="col">Spec</th></tr>
+<tr><td>Tier marker</td><td>Left edge bar plus icon. Color is never the only signal, so each tier also has its own icon and a text label for screen readers.</td></tr>
+<tr><td>Title</td><td>One line, 40 characters or fewer in English. Truncates with an ellipsis.</td></tr>
+<tr><td>Body</td><td>Two lines maximum, 90 characters or fewer. Wraps, never truncates mid-variable.</td></tr>
+<tr><td>Timestamp</td><td>Relative and locale-formatted, such as "2 min ago".</td></tr>
+<tr><td>Action</td><td>Text button with a verb that matches the body. Hidden for FYI toasts.</td></tr>
+<tr><td>Variants</td><td>Tier (urgent, needs action, FYI) by surface (push, in-app, toast) by direction (left-to-right, right-to-left).</td></tr>
+<tr><td>Auto layout</td><td>Vertical stack, fixed padding, text fields set to hug so longer translations grow the component.</td></tr>
+</table></div>
+</div></section>
+
+<section><div class="wrap">
+<h2>What I would push further</h2>
+<p><strong>Notification volume.</strong> Three tiers help, but they do not stop fatigue. I would look at how often FYI messages are opened and consider a daily digest for that tier.</p>
+<p><strong>Plural categories.</strong> The plural messages are written for English. I would ask linguists to add the extra forms for each language rather than assume two are enough.</p>
+<p><strong>Name testing with real users.</strong> The naming criteria came from my own review. A comprehension test with field supervisors would show whether "draft" reads the way I intend.</p>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+<p><strong>Eliana Jain</strong>, UX writer and content designer. Built as a portfolio work sample. Fieldwork is a fictional product.</p>
+<a href="https://elianajain.github.io/ElianaJainPortfolio/">Back to portfolio</a><a href="https://elianajain.github.io/ElianaJainPortfolio/work/ux-writing.html">Part 1: error states</a><a href="https://github.com/ElianaJain">GitHub</a><a href="#top">Back to top</a>
+</div></footer>
+</body>
+</html>
